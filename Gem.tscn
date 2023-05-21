@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gems.png" type="Texture" id=1]
+[ext_resource path="res://triangle.png" type="Texture" id=2]
+
+[node name="Gem" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+rotation = 0.785398
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 1777.51, 141.769, 512.734, 509.383 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 2436.08, 92.4205, 594.379, 604.285 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 2, 23 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
