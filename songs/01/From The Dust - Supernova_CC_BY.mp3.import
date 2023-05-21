@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/From The Dust - Supernova_CC_BY.mp3-3e91058fc82bb9cb25694da2945ab7fb.mp3str"
+
+[deps]
+
+source_file="res://songs/01/From The Dust - Supernova_CC_BY.mp3"
+dest_files=[ "res://.import/From The Dust - Supernova_CC_BY.mp3-3e91058fc82bb9cb25694da2945ab7fb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,9 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://coins2.png" type="Texture" id=1]
 [ext_resource path="res://coins.png" type="Texture" id=2]
 [ext_resource path="res://coins_anim.png" type="Texture" id=3]
-[ext_resource path="res://Coin.gd" type="Script" id=4]
+[ext_resource path="res://BaseNote.gd" type="Script" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -68,8 +68,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Coin" type="Node2D"]
+[sub_resource type="CircleShape2D" id=13]
+radius = 47.0425
+
+[node name="Coin" type="Node2D" groups=["note"]]
 script = ExtResource( 4 )
+size = "big"
 
 [node name="Skull" type="Sprite" parent="."]
 visible = false
@@ -80,10 +84,9 @@ region_enabled = true
 region_rect = Rect2( 40, 100, 1000, 1000 )
 
 [node name="Skull2" type="Sprite" parent="."]
-visible = false
 modulate = Color( 0.992157, 0.815686, 0, 1 )
 position = Vector2( 0.999999, 9.53674e-07 )
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.12, 0.12 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 900, 100, 1000, 1000 )
@@ -134,3 +137,9 @@ scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 292.457, 201.635, 748.315, 671.191 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 1, 1 )
+shape = SubResource( 13 )
