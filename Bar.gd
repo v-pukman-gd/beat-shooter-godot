@@ -96,6 +96,23 @@ func add_notes(curr_line):
 #	self.position.y = y # Y has positive values from top to bottom
 #	$Line.position.y = 0
 #	$Line2.position.y = -y*0.5
+
+	$Grid/Line.position.y = 0
+	$Grid/Line_h2.position.y = length*note_scale*0.5
+	$Grid/Line_h3.position.y = length*note_scale*0.25
+	$Grid/Line_h4.position.y = length*note_scale*0.75
+	
+	$Grid/Line3.scale.x = note_scale
+	$Grid/Line4.scale.x = note_scale
+	$Grid/Line5.scale.x = note_scale
+	$Grid/Line6.scale.x = note_scale
+	
+	$Grid/Line3.position.y = length*note_scale*0.5
+	$Grid/Line4.position.y = length*note_scale*0.5
+	$Grid/Line5.position.y = length*note_scale*0.5
+	$Grid/Line6.position.y = length*note_scale*0.5
+	#$Line4.position.y = length*note_scale*0.5
+	#$Line5.position.y = length*note_scale*0.5
 	
 	return curr_line
 		

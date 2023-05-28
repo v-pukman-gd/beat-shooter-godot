@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.52 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 1000
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.324444 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+width = 1600
+
+[node name="BarsGrid" type="Node2D"]
+
+[node name="Line" type="Sprite" parent="."]
+position = Vector2( 250, 0 )
+texture = SubResource( 2 )
+
+[node name="Line_h2" type="Sprite" parent="."]
+position = Vector2( 250, 512 )
+texture = SubResource( 2 )
+
+[node name="Line_h3" type="Sprite" parent="."]
+position = Vector2( 250, 512 )
+texture = SubResource( 2 )
+
+[node name="Line_h4" type="Sprite" parent="."]
+position = Vector2( 250, 512 )
+texture = SubResource( 2 )
+
+[node name="Line3" type="Sprite" parent="."]
+position = Vector2( 225, 225 )
+rotation = 1.5708
+scale = Vector2( 1, 4 )
+texture = SubResource( 4 )
+
+[node name="Line4" type="Sprite" parent="."]
+position = Vector2( 100, 225 )
+rotation = 1.5708
+scale = Vector2( 1, 4 )
+texture = SubResource( 4 )
+
+[node name="Line5" type="Sprite" parent="."]
+position = Vector2( 475, 225 )
+rotation = 1.5708
+scale = Vector2( 1, 4 )
+texture = SubResource( 4 )
+
+[node name="Line6" type="Sprite" parent="."]
+position = Vector2( 350, 225 )
+rotation = 1.5708
+scale = Vector2( 1, 4 )
+texture = SubResource( 4 )
