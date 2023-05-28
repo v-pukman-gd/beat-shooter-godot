@@ -1,6 +1,7 @@
 extends Node2D
 
-var short_note_scn = preload("res://Gem.tscn")
+var short_note_scn = preload("res://InstantNote.tscn")
+var middle_note_scn = preload("res://Gem.tscn")
 var normal_note_scn = preload("res://Coin.tscn")
 
 var notes_data = [
@@ -68,10 +69,15 @@ func _ready():
 		is_ready = true
 
 func add_notes(curr_line):
+	var index = 0
 	for note_data in notes_data:
 		if curr_line < 0: curr_line = rand_line()
 		
-		add_note(curr_line, note_data)
+		var next_note_data = null
+		if notes_data.size() > index + 1:
+			next_note_data = notes_data[index+1]
+		
+		add_note(curr_line, note_data, next_note_data)
 		
 		var next_line
 	
@@ -84,6 +90,7 @@ func add_notes(curr_line):
 			
 		
 		curr_line = next_line
+		index += 1
 		
 #	var y = length*note_scale
 #	self.position.y = y # Y has positive values from top to bottom
@@ -92,11 +99,17 @@ func add_notes(curr_line):
 	
 	return curr_line
 		
-func add_note(curr_line, note_data):
+func add_note(curr_line, note_data, next_note_data):
 	var note_scn = normal_note_scn
-	
-	if note_data.full_len < 400:
+		
+	if note_data.markers.has("big"):
+		note_scn = normal_note_scn
+	elif note_data.markers.has("middle"):
+		note_scn = middle_note_scn
+	elif note_data.full_len <= 100 or note_data.markers.has("short"):
 		note_scn = short_note_scn
+	elif note_data.full_len < 400:
+		note_scn = middle_note_scn
 		
 	var note = note_scn.instance()
 	note.position = Vector2(125*curr_line-25, -float(note_data.pos)*note_scale)

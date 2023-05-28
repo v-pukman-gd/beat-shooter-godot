@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://InstantNote.gd" type="Script" id=1]
+[ext_resource path="res://stars.png" type="Texture" id=2]
+[ext_resource path="res://coin1.wav" type="AudioStream" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 33.0625, 30.9062 )
+
+[node name="InstantNote" type="Node2D" groups=["instant"]]
+script = ExtResource( 1 )
+particle_color = Color( 0.211765, 0.796078, 1, 1 )
+
+[node name="SpriteC" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="SpriteC"]
+self_modulate = Color( 0.211765, 0.796078, 1, 1 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 909.336, 249.056, 763.125, 690.327 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )

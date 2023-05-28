@@ -46,8 +46,12 @@ func _input(event):
 	
 func _on_area_enter(b):
 	print(b.get_parent(), b.get_parent().is_in_group("note"))
-	if b and b.get_parent() and b.get_parent().is_in_group("note"):
-		b.get_parent().is_colliding = true
+	if b and b.get_parent():
+		var node = b.get_parent()
+		if node.is_in_group("note"):
+			node.is_colliding = true
+		elif node.is_in_group("instant"):
+			node.collect()
 	
 func _on_area_exit(b):
 	if b and b.get_parent() and b.get_parent().is_in_group("note"):
