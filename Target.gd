@@ -1,6 +1,6 @@
 extends Node2D
 
-
+signal missed
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -31,10 +31,16 @@ func _process(delta):
 		$AudioStreamPlayer2D.stream = big_fire_sound
 		$AudioStreamPlayer2D.play()
 		
+		var collected = 0
 		for n in get_tree().get_nodes_in_group("note"):
 			if n.is_colliding:
-				n.collect()
+				var res = n.collect()
+				if res: collected += 1
 				#break
+			
+		print("check collected:", collected)	
+		if collected <= 0:
+			emit_signal("missed", global_position)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

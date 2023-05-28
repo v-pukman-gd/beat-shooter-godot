@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://BulletHole.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Bomb.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icons8-crab-94.png" type="Texture" id=4]
 [ext_resource path="res://Star.tscn" type="PackedScene" id=5]
@@ -137,10 +136,5 @@ scale = Vector2( 0.5, 0.733333 )
 texture = SubResource( 4 )
 
 [node name="BulletHoleC" type="Node2D" parent="."]
-visible = false
-position = Vector2( 25, 7 )
-
-[node name="BulletHole" parent="BulletHoleC" instance=ExtResource( 2 )]
-position = Vector2( 7, 30 )
 
 [node name="Target" parent="." instance=ExtResource( 11 )]

@@ -142,7 +142,6 @@ region_enabled = true
 region_rect = Rect2( 292.457, 201.635, 748.315, 671.191 )
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 1, 1 )

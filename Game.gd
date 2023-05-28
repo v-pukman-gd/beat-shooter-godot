@@ -22,10 +22,13 @@ var flow
 
 var is_ready = false
 
+var bullet_hole_scn = preload("res://BulletHole.tscn")
+
 func _ready():
 	audio = load(audio_path)
 	map = load_map()
 	setup()
+	$Target.connect("missed", self, "_on_missed_shot")
 	
 func load_map():
 	var file = File.new()
@@ -73,3 +76,9 @@ func _process(delta):
 		return
 		
 	flow.process_with_time(music.time, delta)
+
+func _on_missed_shot(pos):
+	print("missed at:", pos)
+	var h = bullet_hole_scn.instance()
+	h.position = pos
+	$BulletHoleC.add_child(h)
