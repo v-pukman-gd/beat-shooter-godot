@@ -74,8 +74,11 @@ radius = 47.0425
 [node name="Coin" type="Node2D" groups=["note"]]
 script = ExtResource( 4 )
 size = "big"
+particle_color = Color( 1, 1, 0.611765, 1 )
 
-[node name="Skull" type="Sprite" parent="."]
+[node name="SpriteC" type="Node2D" parent="."]
+
+[node name="Skull" type="Sprite" parent="SpriteC"]
 visible = false
 position = Vector2( 0.999999, 9.53674e-07 )
 scale = Vector2( 0.1, 0.1 )
@@ -83,7 +86,7 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 40, 100, 1000, 1000 )
 
-[node name="Skull2" type="Sprite" parent="."]
+[node name="Skull2" type="Sprite" parent="SpriteC"]
 modulate = Color( 0.992157, 0.815686, 0, 1 )
 position = Vector2( 0.999999, 9.53674e-07 )
 scale = Vector2( 0.12, 0.12 )
@@ -91,7 +94,7 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 900, 100, 1000, 1000 )
 
-[node name="Skull4" type="Sprite" parent="."]
+[node name="Skull4" type="Sprite" parent="SpriteC"]
 visible = false
 position = Vector2( 0.999999, 9.53674e-07 )
 scale = Vector2( 0.1, 0.1 )
@@ -99,7 +102,7 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 900, 100, 1000, 1000 )
 
-[node name="Skull3" type="Sprite" parent="."]
+[node name="Skull3" type="Sprite" parent="SpriteC"]
 visible = false
 position = Vector2( 0.999999, 9.53674e-07 )
 scale = Vector2( 0.1, 0.1 )
@@ -107,7 +110,7 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 1795, 100, 1000, 1000 )
 
-[node name="Dollar" type="Sprite" parent="."]
+[node name="Dollar" type="Sprite" parent="SpriteC"]
 visible = false
 modulate = Color( 0.635294, 0.988235, 0.996078, 1 )
 scale = Vector2( 0.1, 0.1 )
@@ -115,14 +118,14 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 900, 30, 1000, 1000 )
 
-[node name="Dollar2" type="Sprite" parent="."]
+[node name="Dollar2" type="Sprite" parent="SpriteC"]
 visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 30, 30, 1000, 1000 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="SpriteC"]
 visible = false
 position = Vector2( 3, -1 )
 scale = Vector2( 0.2, 0.2 )
@@ -130,7 +133,7 @@ frames = SubResource( 12 )
 frame = 2
 speed_scale = 3.0
 
-[node name="Sprite6" type="Sprite" parent="."]
+[node name="Sprite6" type="Sprite" parent="SpriteC"]
 visible = false
 position = Vector2( 3, -1 )
 scale = Vector2( 0.15, 0.15 )
@@ -139,6 +142,7 @@ region_enabled = true
 region_rect = Rect2( 292.457, 201.635, 748.315, 671.191 )
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 1, 1 )
