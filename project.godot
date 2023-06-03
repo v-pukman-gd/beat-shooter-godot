@@ -14,10 +14,18 @@ config/name="BeatShooterDev"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameEvent="*res://GameEvent.gd"
+
 [display]
 
 window/size/width=600
 window/size/height=1024
+
+[global]
+
+font=false
 
 [gui]
 

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/quarterback-font/Quarterback-6YrgD.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+outline_size = 2
+outline_color = Color( 0, 0, 0, 0.658824 )
+extra_spacing_bottom = -12
+font_data = ExtResource( 1 )
+
+[node name="StartScreen" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 87.0
+margin_top = 18.0
+margin_right = 486.0
+margin_bottom = 183.0
+custom_colors/font_color = Color( 1, 0.113725, 0.113725, 1 )
+custom_colors/font_color_shadow = Color( 0.952941, 0.952941, 0.952941, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "beat
+fire
+shooter"
+align = 1

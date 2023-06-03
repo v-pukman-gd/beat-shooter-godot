@@ -23,12 +23,14 @@ var flow
 var is_ready = false
 
 var bullet_hole_scn = preload("res://BulletHole.tscn")
+var shot_score_scn = preload("res://ShotScore.tscn")
 
 func _ready():
 	audio = load(audio_path)
 	map = load_map()
 	setup()
 	$Target.connect("missed", self, "_on_missed_shot")
+	$Target.connect("hit", self, "_on_hit")
 	
 func load_map():
 	var file = File.new()
@@ -82,3 +84,10 @@ func _on_missed_shot(pos):
 	var h = bullet_hole_scn.instance()
 	h.position = pos
 	$BulletHoleC.add_child(h)
+
+func _on_hit(score, particle_color, pos):
+	var shot_score = shot_score_scn.instance()
+	shot_score.score = score
+	shot_score.position = pos 
+	shot_score.modulate = particle_color
+	$ShotScoreC.add_child(shot_score)

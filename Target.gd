@@ -1,6 +1,7 @@
 extends Node2D
 
 signal missed
+signal hit
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -34,8 +35,11 @@ func _process(delta):
 		var collected = 0
 		for n in get_tree().get_nodes_in_group("note"):
 			if n.is_colliding:
-				var res = n.collect()
-				if res: collected += 1
+				var note_collected = n.collect()
+				if note_collected: 
+					collected += 1
+					# handle hit signal here as we need target position, not the note's position
+					emit_signal("hit", n.score, n.score_color, global_position)
 				#break
 			
 		print("check collected:", collected)	
@@ -58,6 +62,7 @@ func _on_area_enter(b):
 			node.is_colliding = true
 		elif node.is_in_group("instant"):
 			node.collect()
+			emit_signal("hit", node.score, node.score_color, global_position)
 	
 func _on_area_exit(b):
 	if b and b.get_parent() and b.get_parent().is_in_group("note"):

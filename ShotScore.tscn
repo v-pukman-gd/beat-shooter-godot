@@ -1,0 +1,123 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://fonts/quarterback-font/Quarterback-6YrgD.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/Foldit/static/Foldit-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/Foldit/static/Foldit-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://GameTheme.tres" type="Theme" id=4]
+[ext_resource path="res://ShotScore.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=8]
+size = 40
+outline_size = 1
+outline_color = Color( 0, 0, 0, 0.576471 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 0.329412 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+
+[sub_resource type="Animation" id=6]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("LabelC:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 100, -50 ), Vector2( 200, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LabelC:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "fade2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("LabelC:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 200 ), Vector2( 0, 250 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LabelC:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.396078 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="ShotScore" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="LabelC" type="Node2D" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+
+[node name="Label" type="Label" parent="LabelC"]
+margin_left = -300.0
+margin_right = 300.0
+margin_bottom = 60.0
+theme = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.47451 )
+custom_fonts/font = SubResource( 8 )
+text = "+100 "
+align = 1
+
+[node name="Label2" type="Label" parent="LabelC"]
+visible = false
+margin_left = -300.0
+margin_top = -2.0
+margin_right = 300.0
+margin_bottom = 37.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0745098 )
+custom_fonts/font = SubResource( 2 )
+text = "+100 "
+align = 1
+
+[node name="Label3" type="Label" parent="LabelC"]
+visible = false
+margin_left = -300.0
+margin_right = 360.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 3 )
+text = "$100 "
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/fade = SubResource( 6 )
+anims/fade2 = SubResource( 7 )
