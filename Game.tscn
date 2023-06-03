@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://fonts/Foldit/static/Foldit-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Bomb.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icons8-crab-94.png" type="Texture" id=4]
 [ext_resource path="res://Star.tscn" type="PackedScene" id=5]
@@ -14,6 +15,9 @@
 [ext_resource path="res://Games_1_Text_Effect.png" type="Texture" id=13]
 [ext_resource path="res://icons8-nut-94.png" type="Texture" id=14]
 [ext_resource path="res://StartScreen.tscn" type="PackedScene" id=15]
+[ext_resource path="res://UI/pb4.png" type="Texture" id=16]
+[ext_resource path="res://UI/pg4_c.png" type="Texture" id=17]
+[ext_resource path="res://BulletSet.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.988604, 1 )
@@ -36,6 +40,12 @@ colors = PoolColorArray( 1, 1, 1, 0.584314, 1, 1, 1, 0.368627, 1, 1, 1, 0 )
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
 width = 1024
+
+[sub_resource type="DynamicFont" id=7]
+size = 40
+outline_size = 1
+outline_color = Color( 0, 0, 0, 0.576471 )
+font_data = ExtResource( 2 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 12 )
@@ -112,6 +122,7 @@ visible = false
 position = Vector2( 434, 492 )
 
 [node name="FlowC" type="Node2D" parent="."]
+position = Vector2( 45, 0 )
 
 [node name="BgLeaf" type="Sprite" parent="."]
 position = Vector2( 301, 523 )
@@ -141,6 +152,32 @@ texture = SubResource( 4 )
 [node name="Target" parent="." instance=ExtResource( 11 )]
 
 [node name="StartScreen" parent="." instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 6, 0 )
 
 [node name="ShotScoreC" type="Node2D" parent="."]
+
+[node name="BulletSet" parent="." instance=ExtResource( 18 )]
+position = Vector2( 37, 165 )
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="TotalScoreLabel" type="Label" parent="UI"]
+visible = false
+modulate = Color( 0.00784314, 0.764706, 0.0392157, 1 )
+margin_right = 600.0
+margin_bottom = 48.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.576471 )
+custom_fonts/font = SubResource( 7 )
+text = "$1000"
+align = 1
+valign = 1
+
+[node name="ProgressBar" type="TextureProgress" parent="UI"]
+margin_left = 35.0
+margin_top = 24.0
+margin_right = 973.0
+margin_bottom = 163.0
+rect_scale = Vector2( 0.6, 0.6 )
+texture_under = ExtResource( 16 )
+texture_progress = ExtResource( 17 )

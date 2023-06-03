@@ -70,6 +70,8 @@ func setup():
 	flow.speed = Vector2(0, speed)
 	 
 	$FlowC.add_child(flow)
+	
+	$UI/ProgressBar.max_value = flow.notes_count
 
 	is_ready = true
 
@@ -78,6 +80,7 @@ func _process(delta):
 		return
 		
 	flow.process_with_time(music.time, delta)
+	
 
 func _on_missed_shot(pos):
 	print("missed at:", pos)
@@ -91,3 +94,9 @@ func _on_hit(score, particle_color, pos):
 	shot_score.position = pos 
 	shot_score.modulate = particle_color
 	$ShotScoreC.add_child(shot_score)
+	
+	$UI/ProgressBar.value = $UI/ProgressBar.value + 1
+	$UI/ProgressBar.update()
+	
+	print($UI/ProgressBar.value, $UI/ProgressBar.max_value)
+	

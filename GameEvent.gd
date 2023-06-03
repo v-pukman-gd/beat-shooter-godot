@@ -1,3 +1,4 @@
 extends Node
 
-signal add_score
+signal no_bullets
+signal reload_gun
