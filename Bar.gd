@@ -59,6 +59,7 @@ var note_scale = 0.5
 var length = 1600 
 var notes = []
 var is_ready = false
+var speed = 0
 
 func _ready():
 	#add_notes(4)
@@ -130,6 +131,7 @@ func add_note(curr_line, note_data, next_note_data):
 		
 	var note = note_scn.instance()
 	note.position = Vector2(125*curr_line-25, -float(note_data.pos)*note_scale)
+	note.speed = speed
 	
 	notes.append(note)
 	

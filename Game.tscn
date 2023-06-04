@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://fonts/Foldit/static/Foldit-Bold.ttf" type="DynamicFontData" id=2]
@@ -34,6 +34,7 @@ colors = PoolColorArray( 1, 1, 1, 0.415686 )
 
 [sub_resource type="GradientTexture" id=6]
 gradient = SubResource( 5 )
+width = 1500
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.129231, 0.649573 )
@@ -42,6 +43,9 @@ colors = PoolColorArray( 1, 1, 1, 0.584314, 1, 1, 1, 0.368627, 1, 1, 1, 0 )
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
 width = 1024
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 312.5, 229.5 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 40
@@ -134,20 +138,28 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BootomTop" type="Sprite" parent="."]
+[node name="BottomC" type="Node2D" parent="."]
+
+[node name="BootomTop" type="Sprite" parent="BottomC"]
 position = Vector2( 331, 648 )
-scale = Vector2( 1500, 1 )
 texture = SubResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Bottom" type="Sprite" parent="BootomTop"]
+[node name="Bottom" type="Sprite" parent="BottomC/BootomTop"]
 self_modulate = Color( 1, 1, 1, 0.576471 )
 position = Vector2( 0.0186667, 256 )
 rotation = 1.5708
-scale = Vector2( 0.5, 0.733333 )
+scale = Vector2( 0.5, 1500 )
 texture = SubResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="BottomC"]
+position = Vector2( -4, 712 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomC/Area2D"]
+position = Vector2( 302.5, 219.5 )
+shape = SubResource( 8 )
 
 [node name="BulletHoleC" type="Node2D" parent="."]
 

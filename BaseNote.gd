@@ -2,6 +2,7 @@ extends Node2D
 
 var is_colliding = false
 var is_collected = false
+var entered_bottom = false
 export var size = "small"
 export var score = 100
 
@@ -10,6 +11,8 @@ export(Color) var score_color = Color.yellow
 var particle_scn = preload("res://ShotParticle.tscn")
 
 onready var sprite_c = $SpriteC
+
+var speed = 0 # will be set by bar
 
 func collect():
 	if !is_colliding: return false
@@ -35,3 +38,9 @@ func play_shot_anim():
 		p.lifetime = 0.3
 		p.process_material.set("scale", 35)
 	add_child(p)
+	
+	
+func _process(delta):
+	# play fade anim
+	if entered_bottom and self.modulate.a > 0:
+		self.modulate.a = max(0, self.modulate.a - 4*delta*(speed/733.3))

@@ -34,6 +34,8 @@ func _ready():
 	
 	$UI/ProgressBar.value = 0
 	
+	$BottomC/Area2D.connect("area_entered", self, "_on_bottom_area_enter")
+	
 func load_map():
 	var file = File.new()
 	file.open(map_path, File.READ)
@@ -102,3 +104,6 @@ func _on_hit(score, particle_color, pos):
 	
 	print($UI/ProgressBar.value, $UI/ProgressBar.max_value)
 	
+func _on_bottom_area_enter(area):
+	if area.get_parent().is_in_group("note"):
+		area.get_parent().entered_bottom = true

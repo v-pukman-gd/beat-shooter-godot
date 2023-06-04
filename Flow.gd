@@ -94,6 +94,7 @@ func add_bar():
 	bar.length = bar_length_in_m
 	bar.notes_data = bars_data[curr_bar_index].notes
 	bar.position = Vector2(curr_location.x, curr_location.y)
+	bar.speed = speed.y
 	curr_line = bar.add_notes(curr_line)
 	
 	bars.append(bar)
