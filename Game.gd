@@ -32,6 +32,8 @@ func _ready():
 	$Target.connect("missed", self, "_on_missed_shot")
 	$Target.connect("hit", self, "_on_hit")
 	
+	$UI/ProgressBar.value = 0
+	
 func load_map():
 	var file = File.new()
 	file.open(map_path, File.READ)
