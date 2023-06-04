@@ -48,6 +48,13 @@ func _process(delta):
 					# handle hit signal here as we need target position, not the note's position
 					emit_signal("hit", n.score, n.score_color, global_position)
 				#break
+				
+		for crab in get_tree().get_nodes_in_group("crab"):
+			if crab.is_colliding:
+				collected += 1
+				var bonus = crab.hit_with_bonus()
+				if bonus > 0:
+					emit_signal("hit", bonus, Color.white, global_position, 0, -1)
 			
 		print("check collected:", collected)	
 		if collected <= 0:
@@ -64,19 +71,20 @@ func play_sound(channel, sound):
 	channel.stream = sound
 	channel.play()
 	
-func _on_area_enter(b):
-	print(b.get_parent(), b.get_parent().is_in_group("note"))
-	if b and b.get_parent():
-		var node = b.get_parent()
-		if node.is_in_group("note"):
-			node.is_colliding = true
-		elif node.is_in_group("instant"):
-			node.collect()
-			emit_signal("hit", node.score, node.score_color, global_position)
+func _on_area_enter(area):
+	print(area.get_parent(), area.get_parent().is_in_group("note"))
+	if area and area.get_parent():
+		var el = area.get_parent()
+		if el.is_in_group("note") or el.is_in_group("crab"):
+			el.is_colliding = true
+		elif el.is_in_group("instant"):
+			el.collect()
+			emit_signal("hit", el.score, el.score_color, global_position)
 	
-func _on_area_exit(b):
-	if b and b.get_parent() and b.get_parent().is_in_group("note"):
-		b.get_parent().is_colliding = false
+func _on_area_exit(area):
+	if area and area.get_parent():
+		if area.get_parent().is_in_group("note") or area.get_parent().is_in_group("crab"):
+			area.get_parent().is_colliding = false
 
 func _on_no_bullets():
 	no_bullets = true

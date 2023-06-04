@@ -92,17 +92,18 @@ func _on_missed_shot(pos):
 	h.position = pos
 	$BulletHoleC.add_child(h)
 
-func _on_hit(score, particle_color, pos):
+func _on_hit(score, particle_color, pos, progress_val=1, dir=1):
 	var shot_score = shot_score_scn.instance()
 	shot_score.score = score
 	shot_score.position = pos 
 	shot_score.modulate = particle_color
+	shot_score.dir = dir
 	$ShotScoreC.add_child(shot_score)
 	
-	$UI/ProgressBar.value = $UI/ProgressBar.value + 1
-	$UI/ProgressBar.update()
+	$UI/ProgressBar.value = $UI/ProgressBar.value + progress_val
+	#$UI/ProgressBar.update()
 	
-	print($UI/ProgressBar.value, $UI/ProgressBar.max_value)
+	#print($UI/ProgressBar.value, $UI/ProgressBar.max_value)
 	
 func _on_bottom_area_enter(area):
 	if area.get_parent().is_in_group("note"):

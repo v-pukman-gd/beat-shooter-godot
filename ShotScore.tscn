@@ -25,36 +25,8 @@ font_data = ExtResource( 1 )
 [sub_resource type="Animation" id=5]
 length = 0.001
 
-[sub_resource type="Animation" id=6]
-resource_name = "fade"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("LabelC:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6, 1.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 100, -50 ), Vector2( 200, -10 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("LabelC:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
 [sub_resource type="Animation" id=7]
-resource_name = "fade2"
+resource_name = "fade_down"
 tracks/0/type = "value"
 tracks/0/path = NodePath("LabelC:position")
 tracks/0/interp = 2
@@ -66,6 +38,33 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 200 ), Vector2( 0, 250 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LabelC:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.396078 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "fade_up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("LabelC:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -200 ), Vector2( 0, -250 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("LabelC:modulate")
@@ -119,5 +118,5 @@ valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 5 )
-anims/fade = SubResource( 6 )
-anims/fade2 = SubResource( 7 )
+anims/fade_down = SubResource( 7 )
+anims/fade_up = SubResource( 9 )
