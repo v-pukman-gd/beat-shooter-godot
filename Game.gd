@@ -77,6 +77,7 @@ func setup():
 	$BottomC.position.y = SHOOT_LINE_Y	 
 	$FlowC.add_child(flow)
 	
+	$UI.setup_title(map.audio.artist, map.audio.title)
 	$UI.update_total_score(total_score)
 	$UI.setup_progress(flow.notes_count)
 

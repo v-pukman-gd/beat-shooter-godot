@@ -8,7 +8,7 @@
 [ext_resource path="res://UI/UI.gd" type="Script" id=6]
 [ext_resource path="res://GameTheme.tres" type="Theme" id=7]
 [ext_resource path="res://fonts/swanston/Swanston.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://UI/disk256.png" type="Texture" id=9]
+[ext_resource path="res://UI/disk128.png" type="Texture" id=9]
 [ext_resource path="res://fonts/swanston/Swanston-Bold.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="DynamicFont" id=7]
@@ -131,7 +131,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Artıst" type="Label" parent="TitleC"]
+[node name="Artist" type="Label" parent="TitleC"]
 margin_left = 89.0
 margin_top = 10.0
 margin_right = 674.0
@@ -141,7 +141,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 9 )
 text = "Vıc Rock"
 
-[node name="Song" type="Label" parent="TitleC"]
+[node name="Title" type="Label" parent="TitleC"]
 margin_left = 92.0
 margin_top = 40.0
 margin_right = 677.0
@@ -154,5 +154,5 @@ text = "Song name привет chock suselüğ"
 [node name="Icon" type="Sprite" parent="TitleC"]
 position = Vector2( 43, 40 )
 rotation = -2.13178
-scale = Vector2( 0.285156, 0.222656 )
+scale = Vector2( 0.5, 0.4 )
 texture = ExtResource( 9 )

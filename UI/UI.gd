@@ -21,6 +21,10 @@ func setup_progress(val_max):
 	$TitleC/ProgressBar.max_value = progress_max
 	$TitleC/ProgressBar.value = progress_curr
 	
+func setup_title(artist, title):
+	$TitleC/Artist.text = artist
+	$TitleC/Title.text = title
+	
 func update_progress(val):
 	progress_curr += val
 	$TitleC/ProgressBar.value = progress_curr

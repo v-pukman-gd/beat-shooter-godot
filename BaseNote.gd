@@ -42,5 +42,5 @@ func play_shot_anim():
 	
 func _process(delta):
 	# play fade anim
-	if entered_bottom and self.modulate.a > 0:
-		self.modulate.a = max(0, self.modulate.a - 4*delta*(speed/733.3))
+	if entered_bottom and sprite_c.modulate.a > 0:
+		sprite_c.modulate.a = max(0, sprite_c.modulate.a - 4*delta*(speed/733.3))
