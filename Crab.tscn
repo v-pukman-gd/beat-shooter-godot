@@ -36,6 +36,7 @@ self_modulate = Color( 0.776471, 1, 0.776471, 1 )
 position = Vector2( 504, 960 )
 scale = Vector2( 0.3, 0.3 )
 z_index = 1
+emitting = false
 amount = 5
 lifetime = 3.0
 speed_scale = 3.0

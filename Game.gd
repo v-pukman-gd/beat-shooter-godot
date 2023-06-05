@@ -25,14 +25,17 @@ var is_ready = false
 var bullet_hole_scn = preload("res://BulletHole.tscn")
 var shot_score_scn = preload("res://ShotScore.tscn")
 
+var total_score = 0
+
 func _ready():
 	audio = load(audio_path)
 	map = load_map()
 	setup()
 	$Target.connect("missed", self, "_on_missed_shot")
 	$Target.connect("hit", self, "_on_hit")
+	#$UI.connect("hit", $UI, "_on_hit")
 	
-	$UI/ProgressBar.value = 0
+	#$UI/ProgressBar.value = 0
 	
 	$BottomC/Area2D.connect("area_entered", self, "_on_bottom_area_enter")
 	
@@ -75,7 +78,9 @@ func setup():
 	 
 	$FlowC.add_child(flow)
 	
-	$UI/ProgressBar.max_value = flow.notes_count
+	$UI.update_total_score(total_score)
+	
+	#$UI/ProgressBar.max_value = flow.notes_count
 
 	is_ready = true
 
@@ -100,7 +105,10 @@ func _on_hit(score, particle_color, pos, progress_val=1, dir=1):
 	shot_score.dir = dir
 	$ShotScoreC.add_child(shot_score)
 	
-	$UI/ProgressBar.value = $UI/ProgressBar.value + progress_val
+	total_score += score
+	$UI.update_total_score(total_score)
+	
+	#$UI/ProgressBar.value = $UI/ProgressBar.value + progress_val
 	#$UI/ProgressBar.update()
 	
 	#print($UI/ProgressBar.value, $UI/ProgressBar.max_value)
