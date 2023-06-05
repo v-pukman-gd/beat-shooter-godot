@@ -23,7 +23,6 @@ region_enabled = true
 region_rect = Rect2( 909.336, 249.056, 763.125, 690.327 )
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )

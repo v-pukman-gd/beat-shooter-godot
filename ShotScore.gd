@@ -3,10 +3,12 @@ extends Node2D
 export (int)var score = 100
 export (int)var dir = 1
 
-func _ready():	
-	$LabelC/Label.text = "$%s" % score
-	$LabelC/Label2.text = "$%s" % score
-	$LabelC/Label3.text = "$%s" % score
+func _ready():
+	var prefix = ""
+	if score < 0: prefix = "- "	
+	$LabelC/Label.text = prefix + "$" + str(abs(score))
+	$LabelC/Label2.text = prefix + "$" + str(abs(score))
+	$LabelC/Label3.text = prefix + "$" + str(abs(score))
 	if dir == 1:
 		$AnimationPlayer.play("fade_down")
 	else:

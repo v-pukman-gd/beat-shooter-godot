@@ -54,7 +54,7 @@ func _process(delta):
 				collected += 1
 				var bonus = crab.hit_with_bonus()
 				if bonus > 0:
-					emit_signal("hit", bonus, Color.white, global_position, 0, -1, false)
+					emit_signal("hit", bonus, crab.bouns_color, global_position, 0, -1, false)
 			
 		print("check collected:", collected)	
 		if collected <= 0:
@@ -89,6 +89,7 @@ func _on_area_exit(area):
 func _on_no_bullets():
 	no_bullets = true
 
-func _on_reload_gun():
+func _on_reload_gun(reload_cost):
 	no_bullets = false
 	play_sound($AudioStreamPlayer2D2, reload_sound)
+	emit_signal("hit", -reload_cost, Color.white, global_position, 0, 1, false)

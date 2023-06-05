@@ -37,6 +37,9 @@ func _ready():
 	
 	$BottomC/Area2D.connect("area_entered", self, "_on_bottom_area_enter")
 	
+	# TODO: cleanup after the development
+	$FlowDev.queue_free()
+	
 func load_map():
 	var file = File.new()
 	file.open(map_path, File.READ)
@@ -79,6 +82,7 @@ func setup():
 	
 	$UI.setup_title(map.audio.artist, map.audio.title)
 	$UI.update_total_score(total_score)
+	$UI.hide_total_score()
 	$UI.setup_progress(flow.notes_count)
 
 	is_ready = true
@@ -113,10 +117,11 @@ func _on_hit(score, particle_color, pos, progress_val=1, dir=1, check_precision=
 	
 	if score != 0:
 		total_score += score
+		if total_score < 0: total_score = 0
 		$UI.update_total_score(total_score)
+		$UI.show_total_score()
 	
 	$UI.update_progress(progress_val)
-	
 	
 func _on_bottom_area_enter(area):
 	var n = area.get_parent()

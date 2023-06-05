@@ -1,6 +1,7 @@
 extends Node2D
 
 var index = 0
+var RELOAD_COST = 100
 
 func _ready():
 	reload_all()
@@ -11,7 +12,7 @@ func _input(event):
 	elif event.is_action_pressed("reload_gun"):
 		if index > 0:
 			reload_all()
-			GameEvent.emit_signal("reload_gun")
+			GameEvent.emit_signal("reload_gun", RELOAD_COST)
 
 
 func reload_all():

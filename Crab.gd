@@ -4,7 +4,8 @@ var is_colliding = false
 
 onready var particles_started_at = 0
 
-const BONUS_SCORE = 10
+const BONUS_SCORE = 25
+const bouns_color = Color("fc8464") 
 
 func _ready():
 	$Particles1.emitting = false 
@@ -18,6 +19,7 @@ func hit_with_bonus():
 	randomize()
 	var val = randi()%10
 	if val == 0 or val == 5:
+		$AudioStreamPlayer2D.play()
 		return BONUS_SCORE
 	else:
 		return 0

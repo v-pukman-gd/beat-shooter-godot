@@ -1,6 +1,7 @@
 extends Control
 
 var total_score = 0
+var changed = false
 
 var progress_max = 0
 var progress_curr = 0
@@ -13,6 +14,13 @@ func update_total_score(val):
 		$TotalScoreC/Label.text = "$"+str(total_score)
 		$AnimationPlayer.stop()
 		$AnimationPlayer.play("score_jump")
+		
+func hide_total_score():
+	$TotalScoreC.hide()
+	
+func show_total_score():
+	if !$TotalScoreC.visible:
+		$TotalScoreC.show()
 
 func setup_progress(val_max):
 	progress_max = val_max

@@ -6,7 +6,7 @@ func collect():
 	
 	sprite_c.hide()
 	play_shot_anim()
-	play_sound()
+	play_instant_sound()
 	
-func play_sound():
+func play_instant_sound():
 	$AudioStreamPlayer2D.play()
