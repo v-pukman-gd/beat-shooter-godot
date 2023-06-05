@@ -1,6 +1,5 @@
 extends "res://BaseNote.gd"
 
-
 func collect():
 	if is_collected: return
 	is_collected = true

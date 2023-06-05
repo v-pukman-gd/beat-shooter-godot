@@ -119,5 +119,6 @@ func _on_hit(score, particle_color, pos, progress_val=1, dir=1, check_precision=
 	
 	
 func _on_bottom_area_enter(area):
-	if area.get_parent().is_in_group("note"):
-		area.get_parent().entered_bottom = true
+	var n = area.get_parent()
+	if n.is_in_group("note") or n.is_in_group("instant"):
+		n.entered_bottom = true

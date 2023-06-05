@@ -39,8 +39,9 @@ func play_shot_anim():
 		p.process_material.set("scale", 35)
 	add_child(p)
 	
-	
-func _process(delta):
-	# play fade anim
+func process_fade_anim(delta):
 	if entered_bottom and sprite_c.modulate.a > 0:
 		sprite_c.modulate.a = max(0, sprite_c.modulate.a - 4*delta*(speed/733.3))
+	
+func _process(delta):
+	process_fade_anim(delta)
