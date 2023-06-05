@@ -35,8 +35,6 @@ func _ready():
 	$Target.connect("hit", self, "_on_hit")
 	#$UI.connect("hit", $UI, "_on_hit")
 	
-	#$UI/ProgressBar.value = 0
-	
 	$BottomC/Area2D.connect("area_entered", self, "_on_bottom_area_enter")
 	
 func load_map():
@@ -79,8 +77,7 @@ func setup():
 	$FlowC.add_child(flow)
 	
 	$UI.update_total_score(total_score)
-	
-	#$UI/ProgressBar.max_value = flow.notes_count
+	$UI.setup_progress(flow.notes_count)
 
 	is_ready = true
 
@@ -108,10 +105,8 @@ func _on_hit(score, particle_color, pos, progress_val=1, dir=1):
 	total_score += score
 	$UI.update_total_score(total_score)
 	
-	#$UI/ProgressBar.value = $UI/ProgressBar.value + progress_val
-	#$UI/ProgressBar.update()
+	$UI.update_progress(progress_val)
 	
-	#print($UI/ProgressBar.value, $UI/ProgressBar.max_value)
 	
 func _on_bottom_area_enter(area):
 	if area.get_parent().is_in_group("note"):

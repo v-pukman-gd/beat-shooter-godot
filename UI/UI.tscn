@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://UI/lightning2.png" type="Texture" id=1]
 [ext_resource path="res://fonts/Foldit/static/Foldit-Bold.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://UI/pb3_color2.png" type="Texture" id=4]
 [ext_resource path="res://UI/lightning.png" type="Texture" id=5]
 [ext_resource path="res://UI/UI.gd" type="Script" id=6]
+[ext_resource path="res://GameTheme.tres" type="Theme" id=7]
+[ext_resource path="res://fonts/swanston/Swanston.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://UI/disk256.png" type="Texture" id=9]
+[ext_resource path="res://fonts/swanston/Swanston-Bold.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="DynamicFont" id=7]
 size = 40
@@ -29,7 +33,31 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.196078, 1, 0, 0.690196 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="Gradient" id=11]
+offsets = PoolRealArray( 0, 0.351111 )
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0.571014, 0.949219, 1 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+width = 600
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 30
+outline_color = Color( 0.0588235, 0.87451, 0.313726, 1 )
+font_data = ExtResource( 8 )
+
 [node name="UI" type="Control"]
+theme = ExtResource( 7 )
 script = ExtResource( 6 )
 
 [node name="TotalScoreC" type="Control" parent="."]
@@ -79,3 +107,52 @@ texture = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/score_jump = SubResource( 8 )
+
+[node name="TitleC" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="TitleC"]
+margin_right = 600.0
+margin_bottom = 25.0
+rect_scale = Vector2( 1, 0.4 )
+custom_styles/fg = SubResource( 15 )
+custom_styles/bg = SubResource( 14 )
+step = 1.0
+value = 50.0
+percent_visible = false
+
+[node name="Bg" type="Sprite" parent="TitleC"]
+modulate = Color( 1, 1, 1, 0.101961 )
+position = Vector2( 300, 40 )
+scale = Vector2( 1, 60 )
+texture = SubResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Artıst" type="Label" parent="TitleC"]
+margin_left = 89.0
+margin_top = 10.0
+margin_right = 674.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0.988235, 0.619608, 0.619608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Vıc Rock"
+
+[node name="Song" type="Label" parent="TitleC"]
+margin_left = 92.0
+margin_top = 40.0
+margin_right = 677.0
+margin_bottom = 71.0
+custom_colors/font_color = Color( 0.960784, 0.886275, 0.886275, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "Song name привет chock suselüğ"
+
+[node name="Icon" type="Sprite" parent="TitleC"]
+position = Vector2( 43, 40 )
+rotation = -2.13178
+scale = Vector2( 0.285156, 0.222656 )
+texture = ExtResource( 9 )
