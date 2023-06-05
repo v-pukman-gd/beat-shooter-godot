@@ -54,7 +54,7 @@ func _process(delta):
 				collected += 1
 				var bonus = crab.hit_with_bonus()
 				if bonus > 0:
-					emit_signal("hit", bonus, Color.white, global_position, 0, -1)
+					emit_signal("hit", bonus, Color.white, global_position, 0, -1, false)
 			
 		print("check collected:", collected)	
 		if collected <= 0:

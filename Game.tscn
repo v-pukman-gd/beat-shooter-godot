@@ -122,9 +122,10 @@ __meta__ = {
 }
 
 [node name="BottomC" type="Node2D" parent="."]
+position = Vector2( 0, 645 )
 
 [node name="BootomTop" type="Sprite" parent="BottomC"]
-position = Vector2( 331, 648 )
+position = Vector2( 331, 0 )
 texture = SubResource( 6 )
 __meta__ = {
 "_edit_lock_": true
@@ -138,7 +139,10 @@ scale = Vector2( 0.5, 1500 )
 texture = SubResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="BottomC"]
-position = Vector2( -4, 712 )
+position = Vector2( -4, 80 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomC/Area2D"]
 position = Vector2( 302.5, 219.5 )

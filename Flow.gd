@@ -68,7 +68,7 @@ var note_scale = 0.5
 var bar_length_in_m = 1600 # default value
 var bars_data = null 
 var curr_bar_index = 0 # it's local, always starts from 0
-const Y_POS = 645
+var start_y = 645
 var curr_location = Vector2()
 var speed = Vector2(0, 10)
 var curr_line = -1 # local
@@ -80,7 +80,7 @@ func _ready():
 	calc_notes_count()
 	prepare_bars_data()
 	
-	bars_node.position.y = Y_POS
+	bars_node.position.y = start_y
 	
 	for i in range(4):
 		add_bar()
@@ -120,7 +120,7 @@ func remove_bar(bar):
 func process_with_time(time, delta):
 	bars_node.position.y += speed.y*delta
 	
-	var position_y = time * speed.y + Y_POS
+	var position_y = time * speed.y + start_y
 	
 	#print("x: ", position_x)
 	#print("curr x:", bars_node.position.x)

@@ -5,7 +5,7 @@ var map
 var audio_path = "res://songs/01/From The Dust - Supernova_CC_BY.mp3" 
 var map_path = "res://songs/01/From The Dust - Supernova_CC_BY.mboy" 
 
-var curr_bar_index = 0
+var curr_bar_index = 8
 var tempo
 var bar_length_in_m
 var quarter_time_in_sec
@@ -26,6 +26,7 @@ var bullet_hole_scn = preload("res://BulletHole.tscn")
 var shot_score_scn = preload("res://ShotScore.tscn")
 
 var total_score = 0
+const SHOOT_LINE_Y = 645
 
 func _ready():
 	audio = load(audio_path)
@@ -33,7 +34,6 @@ func _ready():
 	setup()
 	$Target.connect("missed", self, "_on_missed_shot")
 	$Target.connect("hit", self, "_on_hit")
-	#$UI.connect("hit", $UI, "_on_hit")
 	
 	$BottomC/Area2D.connect("area_entered", self, "_on_bottom_area_enter")
 	
@@ -73,7 +73,8 @@ func setup():
 	flow.bar_length_in_m = bar_length_in_m
 	flow.original_bars_data = bars
 	flow.speed = Vector2(0, speed)
-	 
+	flow.start_y = SHOOT_LINE_Y
+	$BottomC.position.y = SHOOT_LINE_Y	 
 	$FlowC.add_child(flow)
 	
 	$UI.update_total_score(total_score)
@@ -94,7 +95,13 @@ func _on_missed_shot(pos):
 	h.position = pos
 	$BulletHoleC.add_child(h)
 
-func _on_hit(score, particle_color, pos, progress_val=1, dir=1):
+func _on_hit(score, particle_color, pos, progress_val=1, dir=1, check_precision=true):
+	if check_precision:
+		if abs(pos.y - SHOOT_LINE_Y) >= 240:
+			score = 0
+		elif abs(pos.y - SHOOT_LINE_Y) >= 120:
+			score = int(score/2.0)
+		
 	var shot_score = shot_score_scn.instance()
 	shot_score.score = score
 	shot_score.position = pos 
@@ -102,8 +109,10 @@ func _on_hit(score, particle_color, pos, progress_val=1, dir=1):
 	shot_score.dir = dir
 	$ShotScoreC.add_child(shot_score)
 	
-	total_score += score
-	$UI.update_total_score(total_score)
+	
+	if score != 0:
+		total_score += score
+		$UI.update_total_score(total_score)
 	
 	$UI.update_progress(progress_val)
 	
