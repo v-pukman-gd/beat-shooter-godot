@@ -35,6 +35,8 @@ var songs = [
 	},
 ]
 
+var selected_song_params = null
+
 func _ready():
 	for params in songs:
 		#load_song_map_data(song)
@@ -42,6 +44,43 @@ func _ready():
 		var option = song_option_scn.instance()
 		option.params = params
 		$ListC/VBoxC.add_child(option)
+		option.connect("song_pressed", self, "_on_option_pressed")
 		
-#func load_song_map_data(song):
-#	song.map_data = Global.load_json(song.map_path) 
+func _on_option_pressed(params):
+	if selected_song_params: return
+	selected_song_params = params
+	
+	var option = song_option_scn.instance()
+	option.params = params
+	option.show_sections = true
+	option.connect("song_pressed", self, "_on_option_close")
+	option.connect("section_pressed", self, "_on_section_pressed")
+	
+	$DetailsC/VBoxC.add_child(option)
+	
+	$ListC.hide()
+	$DetailsC.show()
+	
+func _on_option_close(params):
+	close_song()
+
+func _on_BackBtn_pressed():
+	if selected_song_params:
+		close_song()
+	else:
+		print("back to main menu")
+		
+func close_song():
+	selected_song_params = null
+		
+	$DetailsC.hide()
+	for c in $DetailsC/VBoxC.get_children():
+		c.queue_free()
+	
+	$ListC.show()
+		
+func _on_section_pressed(params, section_id):
+	#if !selected_song_params: return
+	
+	print("play:", params.id, section_id)
+	

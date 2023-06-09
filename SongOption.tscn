@@ -16,11 +16,12 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 corner_detail = 20
 
-[node name="SongOption" type="Control"]
+[node name="SongOption" type="Button"]
 margin_right = 597.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 580, 100 )
 theme = ExtResource( 3 )
+flat = true
 script = ExtResource( 7 )
 
 [node name="Panel" type="Panel" parent="."]
@@ -133,3 +134,5 @@ scale = Vector2( 0.2, 0.15 )
 texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 1220.37, 450.062, 435.868, 607.816 )
+
+[connection signal="pressed" from="." to="." method="_on_SongOption_pressed"]

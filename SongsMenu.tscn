@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://SongOption.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GameTheme.tres" type="Theme" id=2]
 [ext_resource path="res://Logo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Bg.tscn" type="PackedScene" id=4]
@@ -35,107 +34,30 @@ anchor_bottom = 1.0
 margin_top = 200.0
 margin_right = 600.0
 margin_bottom = 950.0
-rect_min_size = Vector2( 600, 750 )
+rect_min_size = Vector2( 600, 800 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxC" type="VBoxContainer" parent="ListC"]
-margin_right = 580.0
-margin_bottom = 204.0
-
-[node name="SongOption" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-margin_right = 580.0
-
-[node name="SongOption2" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-margin_top = 104.0
-margin_right = 580.0
-margin_bottom = 204.0
-
-[node name="SongOption3" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-visible = false
-margin_top = 104.0
-margin_right = 580.0
-margin_bottom = 204.0
-
-[node name="SongOption4" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-visible = false
-margin_top = 104.0
-margin_right = 580.0
-margin_bottom = 204.0
-
-[node name="SongOption5" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-visible = false
-margin_top = 104.0
-margin_right = 580.0
-margin_bottom = 204.0
-
-[node name="SongOption6" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-visible = false
-margin_top = 104.0
-margin_right = 580.0
-margin_bottom = 204.0
-
-[node name="SongOption7" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-visible = false
-margin_top = 104.0
-margin_right = 580.0
-margin_bottom = 204.0
-
-[node name="SongOption8" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-visible = false
-margin_top = 104.0
-margin_right = 580.0
-margin_bottom = 204.0
-
-[node name="SongOption9" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-visible = false
-margin_top = 104.0
-margin_right = 580.0
-margin_bottom = 204.0
-
-[node name="SongOption10" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-visible = false
-margin_top = 104.0
-margin_right = 580.0
-margin_bottom = 204.0
-
-[node name="SongOption11" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-visible = false
-margin_top = 104.0
-margin_right = 580.0
-margin_bottom = 204.0
-
-[node name="SongOption12" parent="ListC/VBoxC" instance=ExtResource( 1 )]
-visible = false
-margin_top = 104.0
-margin_right = 580.0
-margin_bottom = 204.0
 
 [node name="DetailsC" type="ScrollContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 200.0
 margin_right = 600.0
-margin_bottom = 950.0
-rect_min_size = Vector2( 600, 750 )
+margin_bottom = 1000.0
+rect_min_size = Vector2( 600, 800 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxC" type="VBoxContainer" parent="DetailsC"]
 
-[node name="Button" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 152.0
-margin_top = 969.0
-margin_right = 452.0
-margin_bottom = 1000.0
-rect_min_size = Vector2( 300, 0 )
+[node name="BackBtn" type="Button" parent="."]
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 62.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 60, 60 )
+text = "back"
 clip_text = true
 
-[node name="Label" type="Label" parent="Button"]
-margin_right = 300.0
-margin_bottom = 25.0
-text = "Back"
-align = 1
-valign = 1
+[connection signal="pressed" from="BackBtn" to="." method="_on_BackBtn_pressed"]

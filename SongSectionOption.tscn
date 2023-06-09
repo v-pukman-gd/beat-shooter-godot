@@ -6,10 +6,11 @@
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.188235 )
 
-[node name="SongSectionOption" type="Control"]
+[node name="SongSectionOption" type="Button"]
 margin_right = 450.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 450, 60 )
+flat = true
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
@@ -56,3 +57,5 @@ self_modulate = Color( 0, 0, 0, 0.509804 )
 position = Vector2( 420, 28 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_SongSectionOption_pressed"]

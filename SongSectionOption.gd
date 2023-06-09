@@ -1,5 +1,7 @@
 extends Control
 
+signal section_pressed
+
 var section_id = "1"
 var section_name = "Part XXX"
 var quality = 1
@@ -17,3 +19,7 @@ func _ready():
 		if node:
 			node.self_modulate = Color("ffffff") # fade in
 
+
+
+func _on_SongSectionOption_pressed():
+	emit_signal("section_pressed", section_id)

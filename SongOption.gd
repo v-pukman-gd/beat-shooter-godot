@@ -1,4 +1,7 @@
-extends Control
+extends Button
+
+signal song_pressed
+signal section_pressed
 
 var progress_mark_scn = preload("res://ProgressMark.tscn")
 var song_section_option_scn = preload("res://SongSectionOption.tscn")
@@ -18,6 +21,8 @@ var params = {
 		"2": {"completed": false, "score": 0, "quality": 0},
 	}
 }
+
+var show_sections = false
 
 func _ready():
 	setup()
@@ -51,9 +56,18 @@ func setup():
 			section_node.section_name = "Part " + section_id
 			section_node.start_index = section_config.start_index
 			section_node.end_index = section_config.end_index
+			section_node.connect("section_pressed", self, "_on_section_pressed")
 			$SectionsC.add_child(section_node) 
 			
-	
-	$SectionsC.hide()
+	if show_sections:
+		$SectionsC.show()
+	else:
+		$SectionsC.hide()
 		
 
+
+func _on_SongOption_pressed():
+	emit_signal("song_pressed", params)
+
+func _on_section_pressed(section_id):
+	emit_signal("section_pressed", params, section_id)

@@ -133,24 +133,26 @@ __meta__ = {
 }
 
 [node name="Artist" type="Label" parent="TitleC"]
-margin_left = 89.0
 margin_top = 10.0
-margin_right = 674.0
+margin_right = 600.0
 margin_bottom = 41.0
 custom_colors/font_color = Color( 0.988235, 0.619608, 0.619608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 9 )
 text = "Vıc Rock"
+align = 1
+clip_text = true
 
 [node name="Title" type="Label" parent="TitleC"]
-margin_left = 92.0
 margin_top = 40.0
-margin_right = 677.0
+margin_right = 600.0
 margin_bottom = 71.0
 custom_colors/font_color = Color( 0.960784, 0.886275, 0.886275, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "Song name привет chock suselüğ"
+align = 1
+valign = 1
 
 [node name="Icon" type="Sprite" parent="TitleC"]
 visible = false
@@ -160,7 +162,16 @@ scale = Vector2( 0.5, 0.4 )
 texture = ExtResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="TitleC"]
+visible = false
 position = Vector2( 44, 42 )
 rotation = 0.523599
 scale = Vector2( 0.4, 0.3 )
 texture = ExtResource( 11 )
+
+[node name="Button" type="Button" parent="TitleC"]
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 62.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 60, 60 )
+text = "back"
