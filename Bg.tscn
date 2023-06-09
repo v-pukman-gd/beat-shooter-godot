@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.988604, 1 )
+colors = PoolColorArray( 0, 0, 0, 0.87451, 0.258652, 0.988281, 0.629167, 1, 0.14276, 0.925781, 0.054245, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[node name="Bg" type="Sprite"]
+position = Vector2( 301, 523 )
+rotation = -1.57077
+scale = Vector2( 0.538086, 709 )
+texture = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}

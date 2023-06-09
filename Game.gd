@@ -30,7 +30,7 @@ const SHOOT_LINE_Y = 645
 
 func _ready():
 	audio = load(audio_path)
-	map = load_map()
+	map = Global.load_json(map_path)
 	setup()
 	$Target.connect("missed", self, "_on_missed_shot")
 	$Target.connect("hit", self, "_on_hit")
@@ -39,13 +39,6 @@ func _ready():
 	
 	# TODO: cleanup after the development
 	$FlowDev.queue_free()
-	
-func load_map():
-	var file = File.new()
-	file.open(map_path, File.READ)
-	var content = file.get_as_text()
-	file.close()
-	return JSON.parse(content).get_result()
 
 func setup():
 	print("start at:", curr_bar_index)

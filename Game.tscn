@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=2]
@@ -12,17 +12,10 @@
 [ext_resource path="res://Coin.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Target.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Game.gd" type="Script" id=12]
-[ext_resource path="res://Games_1_Text_Effect.png" type="Texture" id=13]
+[ext_resource path="res://BgLeaf.tscn" type="PackedScene" id=13]
 [ext_resource path="res://icons8-nut-94.png" type="Texture" id=14]
-[ext_resource path="res://StartScreen.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Bg.tscn" type="PackedScene" id=15]
 [ext_resource path="res://BulletSet.tscn" type="PackedScene" id=18]
-
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.988604, 1 )
-colors = PoolColorArray( 0, 0, 0, 0.87451, 0.258652, 0.988281, 0.629167, 1, 0.14276, 0.925781, 0.054245, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
 
 [sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0.002849 )
@@ -48,14 +41,7 @@ script = ExtResource( 12 )
 
 [node name="Crab" parent="." instance=ExtResource( 4 )]
 
-[node name="Bg" type="Sprite" parent="."]
-position = Vector2( 301, 523 )
-rotation = -1.57077
-scale = Vector2( 0.538086, 709 )
-texture = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Bg" parent="." instance=ExtResource( 15 )]
 
 [node name="FlowDev" type="Node2D" parent="."]
 visible = false
@@ -113,13 +99,7 @@ position = Vector2( 434, 492 )
 [node name="FlowC" type="Node2D" parent="."]
 position = Vector2( 45, 0 )
 
-[node name="BgLeaf" type="Sprite" parent="."]
-position = Vector2( 301, 523 )
-scale = Vector2( 0.68505, 0.584098 )
-texture = ExtResource( 13 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="BgLeaf" parent="." instance=ExtResource( 13 )]
 
 [node name="BottomC" type="Node2D" parent="."]
 position = Vector2( 0, 645 )
@@ -151,10 +131,6 @@ shape = SubResource( 8 )
 [node name="BulletHoleC" type="Node2D" parent="."]
 
 [node name="Target" parent="." instance=ExtResource( 11 )]
-
-[node name="StartScreen" parent="." instance=ExtResource( 15 )]
-visible = false
-position = Vector2( 6, 0 )
 
 [node name="ShotScoreC" type="Node2D" parent="."]
 

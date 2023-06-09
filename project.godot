@@ -16,6 +16,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Global="*res://global.gd"
 GameEvent="*res://GameEvent.gd"
 
 [display]
