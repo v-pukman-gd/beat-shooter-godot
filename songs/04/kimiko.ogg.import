@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kimiko.ogg-5301d057d058ec8c0724bce63a69e66d.oggstr"
+
+[deps]
+
+source_file="res://songs/04/kimiko.ogg"
+dest_files=[ "res://.import/kimiko.ogg-5301d057d058ec8c0724bce63a69e66d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

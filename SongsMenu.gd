@@ -35,8 +35,14 @@ func _on_song_pressed(song):
 		
 func _on_section_pressed(song, section_id):	
 	GameSpace.curr_song = song
-	GameSpace.curr_section_id = section_id
-	print("play:", GameSpace.curr_song.song_id, " ", GameSpace.curr_section_id)
+	var section = null
+	for s in song.sections:
+		if s.section_id == section_id:
+			section = s
+			break
+	GameSpace.curr_section = section
+	if song and section:
+		get_tree().change_scene("res://Game.tscn")
 	
 func _on_BackBtn_pressed():
 	pass

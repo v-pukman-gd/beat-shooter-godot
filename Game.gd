@@ -5,7 +5,8 @@ var map
 var audio_path = "res://songs/01/From The Dust - Supernova_CC_BY.mp3" 
 var map_path = "res://songs/01/From The Dust - Supernova_CC_BY.mboy" 
 
-var curr_bar_index = 8
+var curr_bar_index = 0
+var last_bar_index = null
 var tempo
 var bar_length_in_m
 var quarter_time_in_sec
@@ -29,6 +30,12 @@ var total_score = 0
 const SHOOT_LINE_Y = 645
 
 func _ready():
+	if GameSpace.curr_song:
+		audio_path = GameSpace.curr_song.audio_path
+		map_path = GameSpace.curr_song.map_path
+		curr_bar_index =  GameSpace.curr_section.start_index
+		last_bar_index = GameSpace.curr_section.end_index
+		
 	audio = load(audio_path)
 	map = GameSpace.read_json_file(map_path)
 	setup()
@@ -61,7 +68,8 @@ func setup():
 	add_child(music)
 	
 	var bars = map.tracks[0].bars
-	bars = bars.slice(curr_bar_index, bars.size()-1)
+	if last_bar_index == null || last_bar_index > bars.size()-1: last_bar_index = bars.size()-1
+	bars = bars.slice(curr_bar_index, last_bar_index)
 	bars.push_front({"index": -1, "quarters_count": 4, "notes": []})
 	
 	flow = flow_scn.instance()	
@@ -69,7 +77,7 @@ func setup():
 	flow.bar_length_in_m = bar_length_in_m
 	flow.original_bars_data = bars
 	flow.speed = Vector2(0, speed)
-	flow.start_y = SHOOT_LINE_Y
+	flow.start_y = SHOOT_LINE_Y - start_pos_in_px
 	$BottomC.position.y = SHOOT_LINE_Y	 
 	$FlowC.add_child(flow)
 	

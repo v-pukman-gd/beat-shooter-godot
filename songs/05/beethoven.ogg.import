@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/beethoven.ogg-cf1cdd3be44582b9e37940c848e839b5.oggstr"
+
+[deps]
+
+source_file="res://songs/05/beethoven.ogg"
+dest_files=[ "res://.import/beethoven.ogg-cf1cdd3be44582b9e37940c848e839b5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

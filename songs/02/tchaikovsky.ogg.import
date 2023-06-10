@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tchaikovsky.ogg-e6b771b5b47ff08fdcc3efffc01e0aa3.oggstr"
+
+[deps]
+
+source_file="res://songs/02/tchaikovsky.ogg"
+dest_files=[ "res://.import/tchaikovsky.ogg-e6b771b5b47ff08fdcc3efffc01e0aa3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

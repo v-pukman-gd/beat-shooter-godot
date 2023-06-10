@@ -5,12 +5,16 @@ signal section_pressed
 var section_id = "1"
 var start_index = 0
 var end_index = 0
+var section_name = ""
 
 var progress_level = 0
 var completed = false
 
 func _ready():
-	$HBoxC/Label.text = "Part " + str(section_id)
+	if section_name == "":
+		$HBoxC/Label.text = "Part " + str(section_id)
+	else:
+		$HBoxC/Label.text = section_name
 	var progress_c = $ProgressLevelC
 	
 	for child in progress_c.get_children():

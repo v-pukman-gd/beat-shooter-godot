@@ -10,8 +10,8 @@ var song_section_option_scn = preload("res://SongSectionOption.tscn")
 var song = {
 	"map": {"audio": {"artist": "From The Dust", "title": "Supernova_CC_BY"}},
 	"sections": [
-		{"section_id": "01", "start_index": 0, "end_index": 32},
-		{"section_id": "02", "start_index": 32, "end_index": 64}
+		{"section_id": "01", "section_name": "", "start_index": 0, "end_index": 32},
+		{"section_id": "02", "section_name": "Final","start_index": 32, "end_index": 64}
 	],
 	"sections_progress": {"01": {"completed": true, "progress_level": 2} },
 }
@@ -43,6 +43,7 @@ func setup():
 		# section bar
 		var section_node = song_section_option_scn.instance()
 		section_node.section_id = section_id
+		section_node.section_name = section.section_name
 		section_node.start_index = section.start_index
 		section_node.end_index = section.end_index
 		if section_progress:

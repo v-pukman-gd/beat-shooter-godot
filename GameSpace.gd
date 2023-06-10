@@ -4,7 +4,7 @@ const GAME_SONGS_DIR = "res://songs"
 const USER_SONGS_DIR = "user://songs"
 
 var curr_song
-var curr_section_id
+var curr_section
 
 func load_json(path):
 	var file = File.new()
