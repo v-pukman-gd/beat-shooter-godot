@@ -30,7 +30,7 @@ const SHOOT_LINE_Y = 645
 
 func _ready():
 	audio = load(audio_path)
-	map = Global.load_json(map_path)
+	map = GameSpace.read_json_file(map_path)
 	setup()
 	$Target.connect("missed", self, "_on_missed_shot")
 	$Target.connect("hit", self, "_on_hit")

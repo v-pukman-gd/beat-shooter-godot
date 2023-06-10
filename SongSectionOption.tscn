@@ -39,20 +39,20 @@ rect_min_size = Vector2( 400, 0 )
 text = "Part 01"
 clip_text = true
 
-[node name="QualityC" type="Node2D" parent="."]
+[node name="ProgressLevelC" type="Node2D" parent="."]
 
-[node name="Quality1" type="Sprite" parent="QualityC"]
+[node name="Level1" type="Sprite" parent="ProgressLevelC"]
 position = Vector2( 360, 28 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 1 )
 
-[node name="Quality2" type="Sprite" parent="QualityC"]
+[node name="Level2" type="Sprite" parent="ProgressLevelC"]
 self_modulate = Color( 0, 0, 0, 0.509804 )
 position = Vector2( 390, 28 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 1 )
 
-[node name="Quality3" type="Sprite" parent="QualityC"]
+[node name="Level3" type="Sprite" parent="ProgressLevelC"]
 self_modulate = Color( 0, 0, 0, 0.509804 )
 position = Vector2( 420, 28 )
 scale = Vector2( 0.3, 0.3 )

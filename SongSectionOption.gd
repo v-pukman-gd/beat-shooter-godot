@@ -3,22 +3,23 @@ extends Control
 signal section_pressed
 
 var section_id = "1"
-var section_name = "Part XXX"
-var quality = 1
 var start_index = 0
 var end_index = 0
 
+var progress_level = 0
+var completed = false
+
 func _ready():
-	$HBoxC/Label.text = section_name
+	$HBoxC/Label.text = "Part " + str(section_id)
+	var progress_c = $ProgressLevelC
 	
-	for child in $QualityC.get_children():
+	for child in progress_c.get_children():
 		child.self_modulate = Color("82000000") # fade out
 	
-	for i in quality:
-		var node = get_node("QualityC/Quality"+str(i+1))
+	for i in progress_level:
+		var node = progress_c.get_node("Level"+str(i+1))
 		if node:
 			node.self_modulate = Color("ffffff") # fade in
-
 
 
 func _on_SongSectionOption_pressed():
