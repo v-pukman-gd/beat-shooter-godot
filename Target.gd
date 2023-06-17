@@ -39,6 +39,10 @@ func _process(delta):
 
 		play_sound($AudioStreamPlayer2D, big_fire_sound)
 		
+		if GameSpace.is_paused:
+			emit_signal("missed", global_position)
+			return
+		
 		var collected = 0
 		for n in get_tree().get_nodes_in_group("note"):
 			if n.is_colliding:
@@ -60,7 +64,7 @@ func _process(delta):
 		if collected <= 0:
 			emit_signal("missed", global_position)
 
-func _input(event):
+func _input(event):	
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif event is InputEventMouseButton and event.button_index == BUTTON_LEFT:

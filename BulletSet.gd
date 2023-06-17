@@ -7,6 +7,8 @@ func _ready():
 	reload_all()
 	
 func _input(event):
+	if GameSpace.is_paused: return
+	
 	if event.is_action_pressed("fire"):
 		shoot()
 	elif event.is_action_pressed("reload_gun"):

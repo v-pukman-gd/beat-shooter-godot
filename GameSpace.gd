@@ -5,6 +5,7 @@ const USER_SONGS_DIR = "user://songs"
 
 var curr_song
 var curr_section
+var is_paused = false
 
 func load_json(path):
 	var file = File.new()

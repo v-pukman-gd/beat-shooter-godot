@@ -22,7 +22,6 @@ var flow_scn = preload("res://Flow.tscn")
 var flow
 
 var is_ready = false
-var is_stopped = false
 
 var bullet_hole_scn = preload("res://BulletHole.tscn")
 var shot_score_scn = preload("res://ShotScore.tscn")
@@ -35,7 +34,8 @@ const missed_notes_temp_max = 5
 
 onready var result_screen = $ResultScreen
 
-func _ready():	
+func _ready():
+	GameSpace.is_paused = false
 	if GameSpace.curr_song:
 		audio_path = GameSpace.curr_song.audio_path
 		map_path = GameSpace.curr_song.map_path
@@ -106,7 +106,7 @@ func _process(delta):
 	if not is_ready:
 		return
 		
-	if is_stopped:
+	if GameSpace.is_paused:
 		return
 		
 	flow.process_with_time(music.time, delta)
@@ -163,9 +163,7 @@ func _on_bottom_area_exited(area):
 				$HurtScreen/AnimationPlayer.play("hurt")
 
 func _on_no_lifes():
-	is_stopped = true
-	$Target.pause_mode = Node.PAUSE_MODE_STOP
-	$BulletSet.pause_mode = Node.PAUSE_MODE_STOP
+	GameSpace.is_paused = true
 	music.stop()	
 	result_screen.show_fail()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
