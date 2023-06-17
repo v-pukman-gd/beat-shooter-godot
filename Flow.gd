@@ -104,6 +104,7 @@ func add_bar():
 	curr_bar_index += 1
 	
 func remove_bar(bar):
+	#TODO: back notes to pool before queue_free
 	bar.queue_free()
 	bars.erase(bar)
 	

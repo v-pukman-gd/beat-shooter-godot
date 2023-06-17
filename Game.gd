@@ -29,6 +29,9 @@ var shot_score_scn = preload("res://ShotScore.tscn")
 var total_score = 0
 const SHOOT_LINE_Y = 645
 
+var missed_notes_temp = 0
+const missed_notes_temp_max = 5
+
 func _ready():
 	if GameSpace.curr_song:
 		audio_path = GameSpace.curr_song.audio_path
@@ -43,6 +46,7 @@ func _ready():
 	$Target.connect("hit", self, "_on_hit")
 	
 	$BottomC/Area2D.connect("area_entered", self, "_on_bottom_area_enter")
+	$BottomC/Area2D.connect("area_exited", self, "_on_bottom_area_exited")
 	
 	# TODO: cleanup after the development
 	$FlowDev.queue_free()
@@ -128,3 +132,19 @@ func _on_bottom_area_enter(area):
 	var n = area.get_parent()
 	if n.is_in_group("note") or n.is_in_group("instant"):
 		n.entered_bottom = true
+		
+func _on_bottom_area_exited(area):
+	var n = area.get_parent()
+	if n.is_in_group("note") or n.is_in_group("instant"):
+		if !n.is_collected and n.entered_bottom:
+			if n.size == 'big':
+				missed_notes_temp += n.damage
+			else:
+				missed_notes_temp += n.damage
+			
+			if missed_notes_temp >= missed_notes_temp_max:
+				$LifesSet.lost_life()
+				missed_notes_temp = 0
+				
+				$HurtScreen/AnimationPlayer.stop()
+				$HurtScreen/AnimationPlayer.play("hurt")

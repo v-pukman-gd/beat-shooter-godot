@@ -5,6 +5,7 @@ var is_collected = false
 var entered_bottom = false
 export var size = "small"
 export var score = 100
+export var damage = 0.1
 
 export(Color) var particle_color = Color.yellow
 export(Color) var score_color = Color.yellow

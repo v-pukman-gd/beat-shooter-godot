@@ -92,4 +92,4 @@ func _on_no_bullets():
 func _on_reload_gun(reload_cost):
 	no_bullets = false
 	play_sound($AudioStreamPlayer2D2, reload_sound)
-	emit_signal("hit", -reload_cost, Color.white, global_position, 0, 1, false)
+	emit_signal("hit", -reload_cost, Color.white, global_position, 0, -1, false)

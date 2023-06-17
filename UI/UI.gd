@@ -36,3 +36,7 @@ func setup_title(artist, title):
 func update_progress(val):
 	progress_curr += val
 	$TitleC/ProgressBar.value = progress_curr
+
+
+func _on_BackBtn_pressed():
+	get_tree().change_scene("res://SongsMenu.tscn")

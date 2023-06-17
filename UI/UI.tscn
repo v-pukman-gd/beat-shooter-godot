@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://UI/lightning2.png" type="Texture" id=1]
 [ext_resource path="res://fonts/Foldit/static/Foldit-Bold.ttf" type="DynamicFontData" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://UI/disk128.png" type="Texture" id=9]
 [ext_resource path="res://fonts/swanston/Swanston-Bold.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://UI/disk2.png" type="Texture" id=11]
+[ext_resource path="res://UI/menu_icon128.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=7]
 size = 40
@@ -42,7 +43,7 @@ corner_detail = 1
 
 [sub_resource type="Gradient" id=11]
 offsets = PoolRealArray( 0, 0.351111 )
-colors = PoolColorArray( 1, 1, 1, 1, 0, 0.571014, 0.949219, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0.572549, 0.94902, 1 )
 
 [sub_resource type="GradientTexture" id=12]
 gradient = SubResource( 11 )
@@ -168,10 +169,14 @@ rotation = 0.523599
 scale = Vector2( 0.4, 0.3 )
 texture = ExtResource( 11 )
 
-[node name="Button" type="Button" parent="TitleC"]
-margin_left = 2.0
-margin_top = 10.0
-margin_right = 62.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 60, 60 )
-text = "back"
+[node name="BackBtn" type="Button" parent="TitleC"]
+margin_left = 9.0
+margin_top = 11.0
+margin_right = 69.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 40, 40 )
+icon = ExtResource( 12 )
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="TitleC/BackBtn" to="." method="_on_BackBtn_pressed"]

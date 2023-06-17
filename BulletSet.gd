@@ -30,3 +30,5 @@ func shoot():
 	else:
 		print("need to reload!")
 		GameEvent.emit_signal("no_bullets")
+		
+	
