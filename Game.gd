@@ -22,6 +22,7 @@ var flow_scn = preload("res://Flow.tscn")
 var flow
 
 var is_ready = false
+var is_stopped = false
 
 var bullet_hole_scn = preload("res://BulletHole.tscn")
 var shot_score_scn = preload("res://ShotScore.tscn")
@@ -32,7 +33,9 @@ const SHOOT_LINE_Y = 645
 var missed_notes_temp = 0
 const missed_notes_temp_max = 5
 
-func _ready():
+onready var result_screen = $ResultScreen
+
+func _ready():	
 	if GameSpace.curr_song:
 		audio_path = GameSpace.curr_song.audio_path
 		map_path = GameSpace.curr_song.map_path
@@ -47,6 +50,13 @@ func _ready():
 	
 	$BottomC/Area2D.connect("area_entered", self, "_on_bottom_area_enter")
 	$BottomC/Area2D.connect("area_exited", self, "_on_bottom_area_exited")
+	
+	GameEvent.connect("no_lifes", self, "_on_no_lifes")
+	
+	result_screen.connect("menu_btn_press", self, "_on_menu_btn_press")
+	result_screen.connect("replay_btn_press", self, "_on_replay_btn_press")
+	
+	$UI.connect("menu_btn_press", self, "_on_menu_btn_press")
 	
 	# TODO: cleanup after the development
 	$FlowDev.queue_free()
@@ -94,6 +104,9 @@ func setup():
 
 func _process(delta):
 	if not is_ready:
+		return
+		
+	if is_stopped:
 		return
 		
 	flow.process_with_time(music.time, delta)
@@ -148,3 +161,17 @@ func _on_bottom_area_exited(area):
 				
 				$HurtScreen/AnimationPlayer.stop()
 				$HurtScreen/AnimationPlayer.play("hurt")
+
+func _on_no_lifes():
+	is_stopped = true
+	$Target.pause_mode = Node.PAUSE_MODE_STOP
+	$BulletSet.pause_mode = Node.PAUSE_MODE_STOP
+	music.stop()	
+	result_screen.show_fail()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+func _on_menu_btn_press():
+	get_tree().change_scene("res://SongsMenu.tscn")
+	
+func _on_replay_btn_press():
+	get_tree().change_scene("res://Game.tscn")

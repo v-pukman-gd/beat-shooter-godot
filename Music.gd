@@ -27,6 +27,9 @@ func start():
 	#player.play(0)
 	#anim.play("sound_on")
 	
+func stop():
+	player.stop()
+	
 func _process(delta):
 	#if not game.game_started: return
 

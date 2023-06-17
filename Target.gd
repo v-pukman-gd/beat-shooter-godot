@@ -26,7 +26,7 @@ func _ready():
 	GameEvent.connect("no_bullets", self, "_on_no_bullets")
 	GameEvent.connect("reload_gun", self, "_on_reload_gun")
 
-func _process(delta):
+func _process(delta):	
 	self.position = get_global_mouse_position()
 	
 	if Input.is_action_just_pressed("fire"):

@@ -1,5 +1,7 @@
 extends Control
 
+signal menu_btn_press
+
 var total_score = 0
 var changed = false
 
@@ -39,4 +41,4 @@ func update_progress(val):
 
 
 func _on_BackBtn_pressed():
-	get_tree().change_scene("res://SongsMenu.tscn")
+	emit_signal("menu_btn_press")
