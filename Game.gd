@@ -30,12 +30,14 @@ var total_score = 0
 const SHOOT_LINE_Y = 645
 
 var missed_notes_temp = 0
-const missed_notes_temp_max = 5
+var heart_duration = GameSpace.heart_duration
 
 onready var result_screen = $ResultScreen
 
 func _ready():
 	GameSpace.is_paused = false
+	$Pointer.hide()
+	
 	if GameSpace.curr_song:
 		audio_path = GameSpace.curr_song.audio_path
 		map_path = GameSpace.curr_song.map_path
@@ -151,11 +153,11 @@ func _on_bottom_area_exited(area):
 	if n.is_in_group("note") or n.is_in_group("instant"):
 		if !n.is_collected and n.entered_bottom:
 			if n.size == 'big':
-				missed_notes_temp += n.damage
+				missed_notes_temp += GameSpace.big_miss_damage
 			else:
-				missed_notes_temp += n.damage
+				missed_notes_temp += GameSpace.small_miss_damage
 			
-			if missed_notes_temp >= missed_notes_temp_max:
+			if missed_notes_temp >= heart_duration:
 				$LifesSet.lost_life()
 				missed_notes_temp = 0
 				
@@ -166,7 +168,8 @@ func _on_no_lifes():
 	GameSpace.is_paused = true
 	music.stop()	
 	result_screen.show_fail()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	$Target.hide()
+	$Pointer.show()
 	
 func _on_menu_btn_press():
 	get_tree().change_scene("res://SongsMenu.tscn")

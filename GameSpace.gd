@@ -7,6 +7,12 @@ var curr_song
 var curr_section
 var is_paused = false
 
+# difficulty level
+var auto_reload_gun = true
+var small_miss_damage = 1
+var big_miss_damage = 2
+var heart_duration = 5
+
 func load_json(path):
 	var file = File.new()
 	file.open(path, File.READ)

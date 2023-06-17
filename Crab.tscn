@@ -17,7 +17,7 @@ orbit_velocity_random = 0.0
 linear_accel = 3.0
 
 [sub_resource type="CircleShape2D" id=10]
-radius = 72.0347
+radius = 133.184
 
 [node name="Crab" type="Node2D" groups=["crab"]]
 script = ExtResource( 3 )
@@ -50,7 +50,7 @@ texture = ExtResource( 2 )
 position = Vector2( 545, 1013 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -33, -42 )
+position = Vector2( -37, -42 )
 shape = SubResource( 10 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

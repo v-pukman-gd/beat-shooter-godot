@@ -1,7 +1,7 @@
 extends Node2D
 
 var index = 0
-var RELOAD_COST = 100
+var RELOAD_BONUS = 25
 
 func _ready():
 	reload_all()
@@ -13,8 +13,10 @@ func _input(event):
 		shoot()
 	elif event.is_action_pressed("reload_gun"):
 		if index > 0:
+			var bonus = 0
+			if index > get_child_count()*0.5: bonus = RELOAD_BONUS
 			reload_all()
-			GameEvent.emit_signal("reload_gun", RELOAD_COST)
+			GameEvent.emit_signal("reload_gun", bonus)
 
 
 func reload_all():
@@ -29,6 +31,11 @@ func shoot():
 		var b = get_node("Sprite" + str(index))
 		b.modulate = Color("3effffff")
 		b.self_modulate = Color("000000")
+		
+		
+		if GameSpace.auto_reload_gun and index == get_child_count():
+			reload_all()
+			GameEvent.emit_signal("reload_gun", 0)
 	else:
 		print("need to reload!")
 		GameEvent.emit_signal("no_bullets")

@@ -118,6 +118,8 @@ margin_top = 219.0
 margin_right = 161.0
 margin_bottom = 279.0
 rect_min_size = Vector2( 60, 60 )
+focus_mode = 0
+enabled_focus_mode = 0
 icon = ExtResource( 3 )
 flat = true
 expand_icon = true
@@ -128,9 +130,13 @@ margin_top = 219.0
 margin_right = 285.0
 margin_bottom = 279.0
 rect_min_size = Vector2( 60, 60 )
+focus_mode = 0
+enabled_focus_mode = 0
 icon = ExtResource( 1 )
 flat = true
 expand_icon = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="Popup/MenuBtn" to="." method="_on_MenuBtn_pressed"]
 [connection signal="pressed" from="Popup/ReplayBtn" to="." method="_on_ReplayBtn_pressed"]

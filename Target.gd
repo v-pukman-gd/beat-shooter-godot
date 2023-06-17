@@ -27,6 +27,8 @@ func _ready():
 	GameEvent.connect("reload_gun", self, "_on_reload_gun")
 
 func _process(delta):	
+	if GameSpace.is_paused: return
+	
 	self.position = get_global_mouse_position()
 	
 	if Input.is_action_just_pressed("fire"):
@@ -38,10 +40,6 @@ func _process(delta):
 		
 
 		play_sound($AudioStreamPlayer2D, big_fire_sound)
-		
-		if GameSpace.is_paused:
-			emit_signal("missed", global_position)
-			return
 		
 		var collected = 0
 		for n in get_tree().get_nodes_in_group("note"):
@@ -93,7 +91,8 @@ func _on_area_exit(area):
 func _on_no_bullets():
 	no_bullets = true
 
-func _on_reload_gun(reload_cost):
+func _on_reload_gun(reload_bonus):
 	no_bullets = false
 	play_sound($AudioStreamPlayer2D2, reload_sound)
-	emit_signal("hit", -reload_cost, Color.white, global_position, 0, -1, false)
+	if reload_bonus > 0:
+		emit_signal("hit", reload_bonus, Color.white, global_position, 0, -1, false)

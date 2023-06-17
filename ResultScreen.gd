@@ -3,6 +3,8 @@ extends Node2D
 signal menu_btn_press
 signal replay_btn_press
 
+var fail_sound = preload("res://fail2.mp3")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_all()
@@ -36,6 +38,8 @@ func show_fail():
 	hide_all()
 	show()
 	$Popup/Fail.show()
+	$AudioStreamPlayer.stream = fail_sound
+	$AudioStreamPlayer.play()
 	
 func _on_MenuBtn_pressed():
 	emit_signal("menu_btn_press")

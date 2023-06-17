@@ -1,6 +1,7 @@
 extends Control
 
 var song_option_scn = preload("res://SongOption.tscn")
+var click_sound = preload("res://click.wav")
 
 var songs_list = []
 var curr_song = null
@@ -11,7 +12,7 @@ func _ready():
 	songs_list = SongsLoader.load_songs(GameSpace.GAME_SONGS_DIR)
 	#TODO: add memory card class and load progress
 	spawn_songs()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func spawn_songs():
 	for song in songs_list:
@@ -23,7 +24,7 @@ func spawn_songs():
 		# always pick the fist section
 		#option.connect("section_pressed", self, "_on_section_pressed")
 		
-func _on_song_pressed(song):
+func _on_song_pressed(song):	
 	if !curr_song:
 		curr_song = song
 		_on_section_pressed(curr_song, curr_song.sections[0].section_id)
