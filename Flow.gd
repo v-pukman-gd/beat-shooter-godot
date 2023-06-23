@@ -1,5 +1,7 @@
 extends Node2D
 
+var Note = preload("res://Note.gd")
+signal finished
 var bar_scn = preload("res://Bar.tscn")
 
 var original_bars_data = [
@@ -64,6 +66,7 @@ var original_bars_data = [
 	]
 
 var notes_count = 0
+var max_score = 0
 var note_scale = 0.5
 var bar_length_in_m = 1600 # default value
 var bars_data = null 
@@ -77,8 +80,8 @@ var bars = []
 onready var bars_node = $BarsC
 
 func _ready():	
-	calc_notes_count()
-	prepare_bars_data()
+	#calc_notes_count()
+	#prepare_bars_data()
 	
 	bars_node.position.y = start_y
 	
@@ -86,7 +89,7 @@ func _ready():
 		add_bar()
 		
 func add_bar():
-	if  curr_bar_index >= original_bars_data.size(): return
+	if curr_bar_index >= original_bars_data.size(): return
 	if !bars_data: return
 
 	var bar = bar_scn.instance()
@@ -135,15 +138,26 @@ func process_with_time(time, delta):
 			print("delete at", bar.global_position.y - bar_length_in_m)
 			remove_bar(bar)
 			add_bar()
+			
+	if curr_bar_index >= original_bars_data.size() and bars.empty():
+		emit_signal("finished") 
+			
+func set_bars_data(data):
+	self.original_bars_data = data
+	prepare_bars_data()
 	
 func prepare_bars_data():
-	var plain_notes = []
+	var all_notes = []
 	var bar_index = 0
 	for bar in original_bars_data:
-		for note in bar.notes:
+		for original_note_data in bar.notes:
+			var note = Note.new()
+			note.pos = original_note_data.pos
+			note.length = original_note_data.len
+			note.markers = original_note_data.markers
 			note.bar_index = bar_index
 			note.global_pos = bar_index*bar_length_in_m + int(note.pos)
-			plain_notes.append(note)
+			all_notes.append(note)
 		
 		if not bars_data: bars_data = []
 		bars_data.append({"index": bar_index, "notes": []})
@@ -152,39 +166,68 @@ func prepare_bars_data():
 
 	var note_index = 0
 	var extended_notes = []
-	for note in plain_notes:
+	for note in all_notes:
 		var extended = note.markers.has("extended")
 		if extended:
 			extended_notes.append(note)
 			note_index += 1
 			continue
 		else:
-			if note_index+1 < plain_notes.size():
-				var next = plain_notes[note_index+1]
-				note.full_len = next.global_pos - note.global_pos
+			if note_index+1 < all_notes.size():
+				var next = all_notes[note_index+1]
+				note.full_length = next.global_pos - note.global_pos
 			else:
-				note.full_len = max(400, int(note.len))
+				note.full_length = max(400, int(note.length))
 				
 			if extended_notes.size() > 0:
 				var extended_note = extended_notes[0]
-				extended_note.full_len = note.global_pos - extended_note.global_pos + note.full_len
+				extended_note.full_length = note.global_pos - extended_note.global_pos + note.full_length
 				note = extended_note
 				extended_notes = []
 		
+		prepare_note_data(note)
+		notes_count += 1
+		max_score += note.score
 		bars_data[note.bar_index].notes.append(note)
+		
 		note_index += 1
+		
+func prepare_note_data(note):
+	var note_scn = "big_note_scn"
+	var size = "big" # big small
+	var score = 100
+	var damage = 1
+	if note.markers.has("big"):
+		note_scn = "big_note_scn"
+	elif note.markers.has("middle"):
+		note_scn = "middle_note_scn"
+		size = "middle"
+		score = 200
+		damage = 0.1
+	elif note.full_length <= 100 or note.markers.has("short"):
+		note_scn = "short_note_scn"
+		size = "short"
+		score = 50
+		damage = 0.1
+	elif note.full_length < 400:
+		note_scn = "middle_note_scn"
+		
+	note.note_scn = note_scn
+	note.size = size 
+	note.score = score
+	note.damage = damage
 	
-func calc_notes_count():
-	var extended = false
-	for bar in original_bars_data:
-		for note in bar.notes:
-			if extended:
-				extended = false
-				continue
-				
-			if note.markers.has("extended"):
-				extended = true
-			
-			notes_count += 1
+#func calc_notes_count():
+#	var extended = false
+#	for bar in original_bars_data:
+#		for note in bar.notes:
+#			if extended:
+#				extended = false
+#				continue
+#
+#			if note.markers.has("extended"):
+#				extended = true
+#
+#			notes_count += 1
 
 	

@@ -57,7 +57,6 @@ margin_bottom = 278.0
 rect_min_size = Vector2( 400, 300 )
 
 [node name="Success" type="Control" parent="Popup"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -83,6 +82,7 @@ align = 1
 clip_text = true
 
 [node name="ProgressLevelC" type="Node2D" parent="Popup/Success"]
+modulate = Color( 0.952941, 0.933333, 0.482353, 1 )
 position = Vector2( 97, 159 )
 
 [node name="Sprite1" type="Sprite" parent="Popup/Success/ProgressLevelC"]
@@ -116,6 +116,7 @@ position = Vector2( 189, 135 )
 texture = ExtResource( 7 )
 
 [node name="Pause" type="Control" parent="Popup"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -135,6 +136,7 @@ position = Vector2( 188, 130 )
 texture = ExtResource( 9 )
 
 [node name="PauseButtonsC" type="Control" parent="Popup"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 

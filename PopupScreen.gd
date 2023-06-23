@@ -12,6 +12,8 @@ onready var replay_buttons_c = $Popup/ReplayButtonsC
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_all()
+	#debug:
+	#show_success(1000, 3)
 	pass
 	
 func hide_all():
@@ -29,17 +31,16 @@ func show_success(score, progress_level):
 	replay_buttons_c.show()
 	
 	# show score
-	$Control/Popup/ScoreLabel.text = "$" + str(score)
+	$Popup/Success/ScoreLabel.text = "$" + str(score)
 	
 	# show progress level
-	progress_level = max(progress_level, 3)
-	var progress_c = $Control/Popup/ProgressLevelC
+	var progress_c = $Popup/Success/ProgressLevelC
 	
 	for child in progress_c.get_children():
 		child.self_modulate = Color("82000000") # fade out
 	
 	for i in progress_level:
-		var node = progress_c.get_node("Level"+str(i+1))
+		var node = progress_c.get_node("Sprite"+str(i+1))
 		if node:
 			node.self_modulate = Color("ffffff") # fade in
 

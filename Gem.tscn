@@ -9,6 +9,7 @@ extents = Vector2( 35.5, 20.25 )
 
 [node name="Gem" type="Node2D" groups=["note"]]
 script = ExtResource( 3 )
+size = "middle"
 score = 200
 particle_color = Color( 0.937255, 0.156863, 0.466667, 1 )
 score_color = Color( 0.976471, 0.509804, 0.631373, 1 )

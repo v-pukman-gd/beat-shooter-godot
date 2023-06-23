@@ -9,6 +9,7 @@ extents = Vector2( 33.0625, 30.9062 )
 
 [node name="InstantNote" type="Node2D" groups=["instant"]]
 script = ExtResource( 1 )
+size = "short"
 score = 50
 particle_color = Color( 0.211765, 0.796078, 1, 1 )
 score_color = Color( 0.576471, 0.878431, 0.984314, 1 )

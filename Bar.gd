@@ -1,58 +1,50 @@
 extends Node2D
 
-var short_note_scn = preload("res://InstantNote.tscn")
-var middle_note_scn = preload("res://Gem.tscn")
 var normal_note_scn = preload("res://Coin.tscn")
+var middle_note_scn = preload("res://Gem.tscn")
+var short_note_scn = preload("res://InstantNote.tscn")
 
 var notes_data = [
 	{
 		"pos": 0,
-		"len": 100,
-		"full_len": 100,
-		"markers": ["d"]
+		"length": 100,
+		"full_length": 100,
+	
+		"note_scn": "normal_note_scn",
+		"size": "big",
+		"score": 100,
+		"damage": 1
 	},
 	{
 		"pos": 100,
-		"len": 100,
-		"full_len": 100,
-		"markers": ["d"]
+		"length": 100,
+		"full_length": 100,
+		
+		"note_scn": "normal_note_scn",
+		"size": "big",
+		"score": 100,
+		"damage": 1
 	},
 	{
 		"pos": 200,
-		"len": 100,
-		"full_len": 100,
-		"markers": ["d"]
+		"length": 100,
+		"full_length": 100,
+		
+		"note_scn": "middle_note_scn",
+		"size": "middle",
+		"score": 200,
+		"damage": 0.1
 	},
 	{
-		"pos": 300,
-		"len": 100,
-		"full_len": 100,
-		"markers": ["d"]
+		"pos": 500,
+		"length": 100,
+		"full_length": 100,
+		
+		"note_scn": "short_note_scn",
+		"size": "short",
+		"score": 50,
+		"damage": 0.1
 	},
-#	{
-#		"pos": 0,
-#		"len": 100,
-#		"full_len": 400,
-#		"markers": ["DD"]
-#	},
-	{
-		"pos": 400,
-		"len": 100,
-		"full_len": 400,
-		"markers": ["DD"]
-	},
-	{
-		"pos": 800,
-		"len": 100,
-		"full_len": 400,
-		"markers": []
-	},
-	{
-		"pos": 1200,
-		"len": 100,
-		"full_len": 400,
-		"markers": ["KK"]
-	}
 ]
 
 var note_scale = 0.5
@@ -62,7 +54,9 @@ var is_ready = false
 var speed = 0
 
 func _ready():
+	#debug:
 	#add_notes(4)
+	#self.position.y = 400
 	if !is_ready:
 		for n in notes:
 			$NotesC.add_child(n)
@@ -82,7 +76,7 @@ func add_notes(curr_line):
 		
 		var next_line
 	
-		if note_data.full_len < 400:
+		if note_data.full_length < 400:
 			next_line = curr_line
 			while abs(next_line-curr_line) != 1:
 				next_line = rand_line()
@@ -120,16 +114,16 @@ func add_notes(curr_line):
 func add_note(curr_line, note_data, next_note_data):
 	var note_scn = normal_note_scn
 		
-	if note_data.markers.has("big"):
-		note_scn = normal_note_scn
-	elif note_data.markers.has("middle"):
+	if note_data.note_scn == "middle_note_scn":
 		note_scn = middle_note_scn
-	elif note_data.full_len <= 100 or note_data.markers.has("short"):
-		note_scn = short_note_scn
-	elif note_data.full_len < 400:
-		note_scn = middle_note_scn
+	elif note_data.note_scn == "short_note_scn":
+		note_scn = short_note_scn	
+	
 		
 	var note = note_scn.instance()
+	note.size = note_data.size
+	note.score = note_data.score
+	note.damage =  note_data.damage
 	note.position = Vector2(125*curr_line-25, -float(note_data.pos)*note_scale)
 	note.speed = speed
 	

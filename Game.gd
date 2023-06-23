@@ -22,6 +22,7 @@ var flow_scn = preload("res://Flow.tscn")
 var flow
 
 var is_ready = false
+var is_finished = false
 
 var bullet_hole_scn = preload("res://BulletHole.tscn")
 var shot_score_scn = preload("res://ShotScore.tscn")
@@ -90,12 +91,13 @@ func setup():
 	bars = bars.slice(curr_bar_index, last_bar_index)
 	bars.push_front({"index": -1, "quarters_count": 4, "notes": []})
 	
-	flow = flow_scn.instance()	
+	flow = flow_scn.instance()
 	flow.note_scale = note_scale
 	flow.bar_length_in_m = bar_length_in_m
-	flow.original_bars_data = bars
 	flow.speed = Vector2(0, speed)
 	flow.start_y = SHOOT_LINE_Y - start_pos_in_px
+	flow.set_bars_data(bars) # set bars data and make calculations
+	flow.connect("finished", self, "_on_flow_finished")
 	$BottomC.position.y = SHOOT_LINE_Y	 
 	$FlowC.add_child(flow)
 	
@@ -107,7 +109,7 @@ func setup():
 	is_ready = true
 
 func _process(delta):
-	if not is_ready:
+	if not is_ready or is_finished:
 		return
 		
 	if GameSpace.paused:
@@ -155,9 +157,10 @@ func _on_bottom_area_exited(area):
 	if n.is_in_group("note") or n.is_in_group("instant"):
 		if !n.is_collected and n.entered_bottom:
 			if n.size == 'big':
+				# ignore note damage and use GameSpace params
 				missed_notes_temp += GameSpace.big_miss_damage
 			else:
-				missed_notes_temp += GameSpace.small_miss_damage
+				missed_notes_temp += GameSpace.short_miss_damage
 			
 			if missed_notes_temp >= heart_duration:
 				$LifesSet.lost_life()
@@ -193,3 +196,20 @@ func _on_play_btn_press():
 	popup_screen.hide_all()
 	$Target.show()
 	$Pointer.hide()
+
+func _on_flow_finished():
+	is_finished = true
+	GameSpace.paused = true
+	music.pause()	
+	print(total_score, "/", flow.max_score, " : ", calc_progress_level())
+	popup_screen.show_success(total_score, calc_progress_level())
+	$Target.hide()
+	$Pointer.show()
+
+func calc_progress_level():
+	if total_score > 0:
+		return 1
+	elif total_score > flow.max_score*0.5:
+		return 2
+	elif total_score > flow.max_score:
+		return 3

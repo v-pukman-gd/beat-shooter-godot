@@ -12,7 +12,7 @@ var failed = false
 
 # difficulty level
 var auto_reload_gun = true
-var small_miss_damage = 1
+var short_miss_damage = 1
 var big_miss_damage = 2
 var heart_duration = 5
 
