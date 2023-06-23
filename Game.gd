@@ -207,9 +207,9 @@ func _on_flow_finished():
 	$Pointer.show()
 
 func calc_progress_level():
-	if total_score > 0:
-		return 1
-	elif total_score > flow.max_score*0.5:
-		return 2
-	elif total_score > flow.max_score:
+	if total_score > flow.max_score+200:
 		return 3
+	elif total_score > flow.max_score*0.75:
+		return 2
+	else:
+		return 1

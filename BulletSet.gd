@@ -4,19 +4,14 @@ var index = 0
 var RELOAD_BONUS = 25
 
 func _ready():
+	GameEvent.connect("shoot", self, "_on_shoot")
 	reload_all()
 	
 func _input(event):
 	if GameSpace.paused: return
-	
-	if event.is_action_pressed("fire"):
-		shoot()
-	elif event.is_action_pressed("reload_gun"):
-		if index > 0:
-			var bonus = 0
-			if index > get_child_count()*0.5: bonus = RELOAD_BONUS
-			reload_all()
-			GameEvent.emit_signal("reload_gun", bonus)
+
+	if event.is_action_pressed("reload_gun"):
+		_on_reload_gun()
 
 
 func reload_all():
@@ -24,8 +19,15 @@ func reload_all():
 	for b in get_children():
 		b.modulate = Color.white
 		b.self_modulate = Color.white
+		
+func _on_reload_gun():
+	if index > 0:
+		var bonus = 0
+		if index > get_child_count()*0.5: bonus = RELOAD_BONUS
+		reload_all()
+		GameEvent.emit_signal("reload_gun", bonus)
 
-func shoot():
+func _on_shoot(pos):
 	index += 1
 	if index <= get_child_count():
 		var b = get_node("Sprite" + str(index))

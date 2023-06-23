@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/claps3.mp3-b29c06350c77f505406596387e427395.mp3str"
+
+[deps]
+
+source_file="res://UI/claps3.mp3"
+dest_files=[ "res://.import/claps3.mp3-b29c06350c77f505406596387e427395.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

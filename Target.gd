@@ -37,9 +37,12 @@ func _process(delta):
 		if no_bullets:
 			play_sound($AudioStreamPlayer2D2, no_bullets_sound)
 			return
-		
-
+			
+		if global_position.y < 100:
+			return
+			
 		play_sound($AudioStreamPlayer2D, big_fire_sound)
+		GameEvent.emit_signal("shoot", global_position)
 		
 		var collected = 0
 		for n in get_tree().get_nodes_in_group("note"):
@@ -60,7 +63,10 @@ func _process(delta):
 			
 		print("check collected:", collected)	
 		if collected <= 0:
-			emit_signal("missed", global_position)
+			# ignore UI header
+			if global_position.y > 70:
+				emit_signal("missed", global_position)
+				
 
 func _input(event):	
 	if event.is_action_pressed("ui_cancel"):
@@ -96,3 +102,4 @@ func _on_reload_gun(reload_bonus):
 	play_sound($AudioStreamPlayer2D2, reload_sound)
 	if reload_bonus > 0:
 		emit_signal("hit", reload_bonus, Color.white, global_position, 0, -1, false)
+	

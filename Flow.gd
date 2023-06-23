@@ -194,11 +194,14 @@ func prepare_bars_data():
 		
 func prepare_note_data(note):
 	var note_scn = "big_note_scn"
-	var size = "big" # big small
+	var size = "big" 
 	var score = 100
 	var damage = 1
 	if note.markers.has("big"):
 		note_scn = "big_note_scn"
+		size = "big" 
+		score = 100
+		damage = 1
 	elif note.markers.has("middle"):
 		note_scn = "middle_note_scn"
 		size = "middle"
@@ -211,6 +214,9 @@ func prepare_note_data(note):
 		damage = 0.1
 	elif note.full_length < 400:
 		note_scn = "middle_note_scn"
+		size = "middle"
+		score = 200
+		damage = 0.1
 		
 	note.note_scn = note_scn
 	note.size = size 
