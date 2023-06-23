@@ -5,6 +5,7 @@ var map_path
 var audio_path
 var cover_path
 var sections = []
+var song_progress = {"completed": false, "progress_level": 0}
 
 var map = {}
 var audio

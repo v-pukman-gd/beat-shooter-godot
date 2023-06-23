@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/music128.png" type="Texture" id=1]
-[ext_resource path="res://UI/disk2.png" type="Texture" id=2]
 [ext_resource path="res://GameTheme.tres" type="Theme" id=3]
-[ext_resource path="res://UI/sound_icons.png" type="Texture" id=5]
 [ext_resource path="res://UI/trophy3.png" type="Texture" id=6]
 [ext_resource path="res://SongOption.gd" type="Script" id=7]
 
@@ -44,16 +42,6 @@ margin_bottom = 90.0
 rect_min_size = Vector2( 120, 90 )
 mouse_filter = 1
 
-[node name="Disk1" type="Sprite" parent="HBoxC/IconC"]
-visible = false
-position = Vector2( 70, 45 )
-rotation = 0.523599
-scale = Vector2( 0.45, 0.35 )
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="SongIcon" type="Button" parent="HBoxC/IconC"]
 margin_left = 20.0
 margin_right = 110.0
@@ -68,15 +56,6 @@ flat = true
 clip_text = true
 icon_align = 1
 expand_icon = true
-
-[node name="Disk2" type="Sprite" parent="HBoxC/IconC"]
-visible = false
-position = Vector2( 64, 46 )
-rotation = 0.586431
-scale = Vector2( 0.5, 0.4 )
-texture = ExtResource( 5 )
-region_enabled = true
-region_rect = Rect2( 409.876, 411.803, 217.921, 212.732 )
 
 [node name="Info" type="VBoxContainer" parent="HBoxC"]
 margin_left = 124.0
@@ -103,22 +82,27 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Control" type="Control" parent="HBoxC/Info"]
+[node name="HBoxC" type="HBoxContainer" parent="HBoxC/Info"]
 margin_top = 58.0
 margin_right = 450.0
 margin_bottom = 68.0
-rect_min_size = Vector2( 0, 10 )
+
+[node name="Control" type="Control" parent="HBoxC/Info/HBoxC"]
+margin_right = 280.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 280, 10 )
 mouse_filter = 1
 
-[node name="ProgressBar" type="HBoxContainer" parent="HBoxC/Info"]
+[node name="ProgressBar" type="HBoxContainer" parent="HBoxC/Info/HBoxC"]
+margin_left = 284.0
+margin_right = 384.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Control2" type="CenterContainer" parent="HBoxC/Info"]
 margin_top = 72.0
 margin_right = 450.0
 margin_bottom = 72.0
-
-[node name="Control2" type="CenterContainer" parent="HBoxC/Info"]
-margin_top = 76.0
-margin_right = 450.0
-margin_bottom = 76.0
 mouse_filter = 1
 
 [node name="SectionsC" type="VBoxContainer" parent="."]

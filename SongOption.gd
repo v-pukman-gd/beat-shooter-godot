@@ -15,36 +15,59 @@ var song = {
 	],
 	"sections_progress": {"01": {"completed": true, "progress_level": 2} },
 	"cover": null,
+	"song_progress": {"completed": true, "progress_level": 2}
 }
 
 onready var panel = $Panel
+onready var progress_bar = $HBoxC/Info/HBoxC/ProgressBar
+onready var artist_label = $HBoxC/Info/Artist
+onready var title_label = $HBoxC/Info/Title
+onready var song_icon_sprite = $HBoxC/IconC/SongIcon
+onready var sections_c = $SectionsC
 
 func _ready():
 	setup()
 
 func setup():
-	$HBoxC/Info/Artist.text = song.map.audio.artist
-	$HBoxC/Info/Title.text = song.map.audio.title
+	artist_label.text = song.map.audio.artist
+	title_label.text = song.map.audio.title
 	
 	if song.cover:
-		$HBoxC/IconC/SongIcon.icon = song.cover
+		song_icon_sprite.icon = song.cover
 	
 	toggle_sections(false)
-	var progress_bar = $HBoxC/Info/ProgressBar	
+	
+	for i in range(0, GameSpace.MAX_PROGRESS_LEVEL):
+		# progress bar
+		var p = progress_mark_scn.instance()
+		p.rect_position.x = 10+i*40
+		p.get_node("Sprite").modulate = Color("3effffff")
+		p.get_node("Sprite").self_modulate = Color("000000")
+		progress_bar.add_child(p)
+		
+		if song.song_progress:
+			if song.song_progress.completed and i < song.song_progress.progress_level:
+				p.get_node("Sprite").modulate = Color.white
+				p.get_node("Sprite").self_modulate = Color.white
+			
+		
+	
 	var i = 0
 	for section in song.sections:
 		# progress bar
-		var p = progress_mark_scn.instance()
-		p.get_node("Sprite").modulate = Color("ffffff")
-		p.rect_position.x = 10+i*30
-		progress_bar.add_child(p)
+#		var p = progress_mark_scn.instance()
+#		p.rect_position.x = 10+i*40
+#		p.get_node("Sprite").modulate = Color("3effffff")
+#		p.get_node("Sprite").self_modulate = Color("000000")
+#		progress_bar.add_child(p)
 			
 		var section_id = section.section_id
 		var section_progress = null 
 		if song.sections_progress.has(section_id): section_progress = song.sections_progress[section_id]
-		if section_progress:
-			if section_progress.completed:
-				p.get_node("Sprite").modulate = Color("f9fb07")
+#		if section_progress:
+#			if section_progress.completed:
+#				p.get_node("Sprite").modulate = Color.white
+#				p.get_node("Sprite").self_modulate = Color.white
 		
 		# section bar
 		var section_node = song_section_option_scn.instance()
@@ -56,16 +79,16 @@ func setup():
 			section_node.completed = section_progress.completed
 			section_node.progress_level = section_progress.progress_level		
 		section_node.connect("section_pressed", self, "_on_section_pressed")
-		$SectionsC.add_child(section_node) 
+		sections_c.add_child(section_node) 
 			
 		i += 1
 			
 		
 func toggle_sections(val):
 	if val:
-		$SectionsC.show()
+		sections_c.show()
 	else:
-		$SectionsC.hide()
+		sections_c.hide()
 
 func _on_SongOption_pressed():
 	GameFX.click()

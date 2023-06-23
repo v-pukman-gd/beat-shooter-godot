@@ -3,6 +3,8 @@ extends Node
 const GAME_SONGS_DIR = "res://songs"
 const USER_SONGS_DIR = "user://songs"
 
+const MAX_PROGRESS_LEVEL= 3
+
 var curr_song
 var curr_section
 var paused = false
