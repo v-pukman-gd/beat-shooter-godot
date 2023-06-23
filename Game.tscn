@@ -15,7 +15,7 @@
 [ext_resource path="res://BgLeaf.tscn" type="PackedScene" id=13]
 [ext_resource path="res://icons8-nut-94.png" type="Texture" id=14]
 [ext_resource path="res://Bg.tscn" type="PackedScene" id=15]
-[ext_resource path="res://ResultScreen.tscn" type="PackedScene" id=16]
+[ext_resource path="res://PopupScreen.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Pointer.tscn" type="PackedScene" id=17]
 [ext_resource path="res://BulletSet.tscn" type="PackedScene" id=18]
 [ext_resource path="res://HurtScreen.tscn" type="PackedScene" id=19]
@@ -145,7 +145,7 @@ position = Vector2( 37, 180 )
 
 [node name="HurtScreen" parent="." instance=ExtResource( 19 )]
 
-[node name="ResultScreen" parent="." instance=ExtResource( 16 )]
+[node name="PopupScreen" parent="." instance=ExtResource( 16 )]
 
 [node name="Target" parent="." instance=ExtResource( 11 )]
 

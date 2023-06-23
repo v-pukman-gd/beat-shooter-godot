@@ -8,6 +8,8 @@ var tempo = 60
 var pre_start_length = 1600
 var start_pos_in_sec = 0
 var started = false
+var paused = false
+var paused_at = 0
 
 var time = 0
 var beat = 0
@@ -27,11 +29,18 @@ func start():
 	#player.play(0)
 	#anim.play("sound_on")
 	
-func stop():
+func pause():
+	paused_at = player.get_playback_position()
 	player.stop()
+	paused = true
+	
+func resume():
+	player.play(paused_at)
+	paused = false
 	
 func _process(delta):
 	#if not game.game_started: return
+	if paused: return
 
 	if not started:
 		#print(pre_start_length)

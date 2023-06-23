@@ -1,6 +1,6 @@
 extends Control
 
-signal menu_btn_press
+signal pause_btn_press
 
 var total_score = 0
 var changed = false
@@ -40,5 +40,5 @@ func update_progress(val):
 	$TitleC/ProgressBar.value = progress_curr
 
 
-func _on_BackBtn_pressed():
-	emit_signal("menu_btn_press")
+func _on_PauseBtn_pressed():
+	emit_signal("pause_btn_press")

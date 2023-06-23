@@ -5,7 +5,8 @@ const USER_SONGS_DIR = "user://songs"
 
 var curr_song
 var curr_section
-var is_paused = false
+var paused = false
+var failed = false
 
 # difficulty level
 var auto_reload_gun = true

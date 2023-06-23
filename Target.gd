@@ -27,7 +27,7 @@ func _ready():
 	GameEvent.connect("reload_gun", self, "_on_reload_gun")
 
 func _process(delta):	
-	if GameSpace.is_paused: return
+	if GameSpace.paused: return
 	
 	self.position = get_global_mouse_position()
 	

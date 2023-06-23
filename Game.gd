@@ -32,10 +32,11 @@ const SHOOT_LINE_Y = 645
 var missed_notes_temp = 0
 var heart_duration = GameSpace.heart_duration
 
-onready var result_screen = $ResultScreen
+onready var popup_screen = $PopupScreen
 
 func _ready():
-	GameSpace.is_paused = false
+	GameSpace.paused = false
+	GameSpace.failed = false
 	$Pointer.hide()
 	
 	if GameSpace.curr_song:
@@ -55,10 +56,11 @@ func _ready():
 	
 	GameEvent.connect("no_lifes", self, "_on_no_lifes")
 	
-	result_screen.connect("menu_btn_press", self, "_on_menu_btn_press")
-	result_screen.connect("replay_btn_press", self, "_on_replay_btn_press")
+	popup_screen.connect("menu_btn_press", self, "_on_menu_btn_press")
+	popup_screen.connect("replay_btn_press", self, "_on_replay_btn_press")
+	popup_screen.connect("play_btn_press", self, "_on_play_btn_press")
 	
-	$UI.connect("menu_btn_press", self, "_on_menu_btn_press")
+	$UI.connect("pause_btn_press", self, "_on_pause_btn_press")
 	
 	# TODO: cleanup after the development
 	$FlowDev.queue_free()
@@ -108,7 +110,7 @@ func _process(delta):
 	if not is_ready:
 		return
 		
-	if GameSpace.is_paused:
+	if GameSpace.paused:
 		return
 		
 	flow.process_with_time(music.time, delta)
@@ -165,9 +167,10 @@ func _on_bottom_area_exited(area):
 				$HurtScreen/AnimationPlayer.play("hurt")
 
 func _on_no_lifes():
-	GameSpace.is_paused = true
-	music.stop()	
-	result_screen.show_fail()
+	GameSpace.paused = true
+	GameSpace.failed = true
+	music.pause()	
+	popup_screen.show_fail()
 	$Target.hide()
 	$Pointer.show()
 	
@@ -176,3 +179,17 @@ func _on_menu_btn_press():
 	
 func _on_replay_btn_press():
 	get_tree().change_scene("res://Game.tscn")
+
+func _on_pause_btn_press():
+	GameSpace.paused = true
+	music.pause()	
+	popup_screen.show_pause()
+	$Target.hide()
+	$Pointer.show()
+	
+func _on_play_btn_press():
+	GameSpace.paused = false
+	music.resume()	
+	popup_screen.hide_all()
+	$Target.show()
+	$Pointer.hide()
