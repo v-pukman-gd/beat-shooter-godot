@@ -20,6 +20,7 @@ func spawn_songs():
 		option.song = song
 		list_c.add_child(option)
 		option.connect("song_pressed", self, "_on_song_pressed")
+		
 		# Skip sections logic for now
 		# always pick the fist section
 		#option.connect("section_pressed", self, "_on_section_pressed")

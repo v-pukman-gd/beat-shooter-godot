@@ -40,11 +40,14 @@ func _ready():
 	GameSpace.failed = false
 	$Pointer.hide()
 	
+	# curr_song is empty in debug mode
 	if GameSpace.curr_song:
 		audio_path = GameSpace.curr_song.audio_path
 		map_path = GameSpace.curr_song.map_path
 		curr_bar_index =  GameSpace.curr_section.start_index
 		last_bar_index = GameSpace.curr_section.end_index
+		
+		MemoryCard.set_track(GameSpace.curr_song, GameSpace.curr_section)
 		
 	audio = load(audio_path)
 	map = GameSpace.read_json_file(map_path)
@@ -201,10 +204,19 @@ func _on_flow_finished():
 	is_finished = true
 	GameSpace.paused = true
 	music.pause()	
-	print(total_score, "/", flow.max_score, " : ", calc_progress_level())
-	popup_screen.show_success(total_score, calc_progress_level())
 	$Target.hide()
 	$Pointer.show()
+	
+	var progress_level = calc_progress_level() 
+	print(total_score, "/", flow.max_score, " : ", progress_level)
+	popup_screen.show_success(total_score, progress_level)
+	
+	MemoryCard.save_finished_track()
+	if MemoryCard.get_highscore() == null or (MemoryCard.get_highscore() != null and MemoryCard.get_highscore() < total_score):
+		MemoryCard.save_highscore(total_score)
+		MemoryCard.save_param("progress_level", progress_level)
+		MemoryCard.write()
+		print(MemoryCard.data)
 
 func calc_progress_level():
 	if total_score > flow.max_score+200:

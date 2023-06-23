@@ -16,16 +16,23 @@ var data = {
 	#highscore
 	# track
 	# value
+	
+var curr_song_id = ""
+var curr_section_id = ""
 
 func _ready():
 	read()
+	
+func set_track(curr_song, curr_section):
+	curr_song_id = str(curr_song.song_id)
+	curr_section_id = "section_" + str(curr_section.section_id)
 
 # don't use open_encrypted_with_pass for now
 func write():
 	var file = File.new()
 	#var err = file.open_encrypted_with_pass(path, File.WRITE, str(OS.get_unique_ID())+"bangbang")
 	var err = file.open(path, File.WRITE)
-	file.store_line(data.to_json())
+	file.store_line(JSON.print(data))
 	file.close()
 
 func read():
@@ -36,7 +43,13 @@ func read():
 
 	#var err = file.open_encrypted_with_pass(path, File.READ, str(OS.get_unique_ID())+"bangbang")
 	var err = file.open(path, File.READ)
-	data.parse_json(file.get_as_text())
+	var json = JSON.parse(file.get_as_text())
+	if json.error != OK:
+		print("File JSON parse error!", path)
+		file.close()
+		return
+
+	data = json.result
 	file.close()
 
 func check_track(track_dir, mode):
@@ -48,36 +61,34 @@ func check_track(track_dir, mode):
 		data.tracks[track_dir][mode] = {}
 
 
-func get_track_param(track_dir, mode, param_name):
-	check_track(track_dir, mode)
-	mode = str(mode)
-	track_dir = str(track_dir)
-	if data.tracks[track_dir][mode].has(param_name):
-		return data.tracks[track_dir][mode][param_name]
+func get_param(param_name):
+	print("get param:", param_name)
+	check_track(curr_song_id, curr_section_id)
+	if data.tracks[curr_song_id][curr_section_id].has(param_name):
+		return data.tracks[curr_song_id][curr_section_id][param_name]
 	else: return null
 
-func set_track_param(track_dir, mode, param_name, param_value):
-	check_track(track_dir, mode)
-	mode = str(mode)
-	track_dir = str(track_dir)
-	data.tracks[track_dir][mode][param_name] = param_value
+func save_param(param_name, param_value):
+	print("save_param: ", param_name, param_value)
+	check_track(curr_song_id, curr_section_id)
+	data.tracks[curr_song_id][curr_section_id][param_name] = param_value
 
 func save_highscore(total_score):
-	var highscore = get_track_param(GameSpace.curr_track_dir, GameSpace.original_mode, "highscore")
+	var highscore = get_param("highscore")
 	if highscore != null:
 		var prev_value = int(highscore)
 		if total_score > prev_value:
-			set_track_param(GameSpace.curr_track_dir, GameSpace.original_mode, "highscore", total_score)
+			save_param("highscore", total_score)
 			write()
 			return true
 	else:
-		set_track_param(GameSpace.curr_track_dir, GameSpace.original_mode, "highscore", total_score)
+		save_param("highscore", total_score)
 		write()
 		return true
 	return false
 
 func get_highscore():
-	return get_track_param(GameSpace.curr_track_dir, GameSpace.original_mode, "highscore")
+	return get_param("highscore")
 
 func add_recent_track(track_dir):
 	var played_size = data.recent_tracks.size()
@@ -93,7 +104,7 @@ func get_recent_tracks():
 	return data.recent_tracks
 
 func save_recent_track():
-	add_recent_track(GameSpace.curr_track.track_dir)
+	add_recent_track(curr_song_id)
 	write()
 
 func get_finished_tracks():
@@ -102,15 +113,15 @@ func get_finished_tracks():
 	else:
 		return []
 
-func is_track_finished(track):
-	return get_finished_tracks().has(track.track_dir)
+func is_track_finished():
+	return get_finished_tracks().has(curr_song_id)
 
 func save_finished_track():
 	if not data.has("finished_tracks"):
 		data["finished_tracks"] = []
 
-	if not data.finished_tracks.has(GameSpace.curr_track.track_dir):
-		data.finished_tracks.append(GameSpace.curr_track.track_dir)
+	if not data.finished_tracks.has(curr_song_id):
+		data.finished_tracks.append(curr_song_id)
 		write()
 
 

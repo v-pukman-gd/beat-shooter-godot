@@ -20,6 +20,7 @@ GameSpace="*res://GameSpace.gd"
 GameEvent="*res://GameEvent.gd"
 SongsLoader="*res://SongsLoader.gd"
 GameFX="*res://GameFX.tscn"
+MemoryCard="*res://MemoryCard.gd"
 
 [display]
 

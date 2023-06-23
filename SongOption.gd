@@ -15,7 +15,7 @@ var song = {
 	],
 	"sections_progress": {"01": {"completed": true, "progress_level": 2} },
 	"cover": null,
-	"song_progress": {"completed": true, "progress_level": 2}
+	"song_progress": {"completed": true, "progress_level": 2, "highscore": 1000}
 }
 
 onready var panel = $Panel
@@ -24,6 +24,7 @@ onready var artist_label = $HBoxC/Info/Artist
 onready var title_label = $HBoxC/Info/Title
 onready var song_icon_sprite = $HBoxC/IconC/SongIcon
 onready var sections_c = $SectionsC
+onready var last_record_c = $LastRecord
 
 func _ready():
 	setup()
@@ -45,11 +46,16 @@ func setup():
 		p.get_node("Sprite").self_modulate = Color("000000")
 		progress_bar.add_child(p)
 		
-		if song.song_progress:
-			if song.song_progress.completed and i < song.song_progress.progress_level:
-				p.get_node("Sprite").modulate = Color.white
-				p.get_node("Sprite").self_modulate = Color.white
-			
+		
+		if song.song_progress.completed and i < song.song_progress.progress_level:
+			p.get_node("Sprite").modulate = Color.white
+			p.get_node("Sprite").self_modulate = Color.white
+				
+	if song.song_progress.completed  and song.song_progress.highscore != null:
+		last_record_c.get_node("Score").show()
+		last_record_c.get_node("Score").text = "$" + str(song.song_progress.highscore)
+	else:
+		last_record_c.get_node("Score").hide()
 		
 	
 	var i = 0

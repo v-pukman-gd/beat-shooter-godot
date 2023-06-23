@@ -10,11 +10,9 @@ func load_songs(catalog_dir):
 		var curr_dir = dir.get_next()
 		while(curr_dir != ""):
 			if not (curr_dir == "." or curr_dir == ".."):
-				if dir.current_is_dir():
-					var song_dir = catalog_dir + "/" + curr_dir
-					
+				if dir.current_is_dir():					
 					var song = Song.new()
-					var result = song.setup(catalog_dir, song_dir)
+					var result = song.setup(catalog_dir, curr_dir)
 					if result:
 						songs_list.append(song)
 							

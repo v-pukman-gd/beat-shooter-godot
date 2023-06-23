@@ -85,24 +85,29 @@ __meta__ = {
 [node name="HBoxC" type="HBoxContainer" parent="HBoxC/Info"]
 margin_top = 58.0
 margin_right = 450.0
-margin_bottom = 68.0
+margin_bottom = 83.0
 
 [node name="Control" type="Control" parent="HBoxC/Info/HBoxC"]
+visible = false
 margin_right = 280.0
 margin_bottom = 10.0
 rect_min_size = Vector2( 280, 10 )
 mouse_filter = 1
 
 [node name="ProgressBar" type="HBoxContainer" parent="HBoxC/Info/HBoxC"]
-margin_left = 284.0
-margin_right = 384.0
-margin_bottom = 10.0
+margin_right = 100.0
+margin_bottom = 25.0
 rect_min_size = Vector2( 100, 0 )
 
+[node name="Label" type="Label" parent="HBoxC/Info/HBoxC"]
+margin_left = 104.0
+margin_right = 104.0
+margin_bottom = 25.0
+
 [node name="Control2" type="CenterContainer" parent="HBoxC/Info"]
-margin_top = 72.0
+margin_top = 87.0
 margin_right = 450.0
-margin_bottom = 72.0
+margin_bottom = 87.0
 mouse_filter = 1
 
 [node name="SectionsC" type="VBoxContainer" parent="."]
@@ -112,28 +117,28 @@ margin_right = 132.0
 margin_bottom = 131.0
 
 [node name="LastRecord" type="Control" parent="."]
-visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -150.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 90, 90 )
+margin_left = -329.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 90, 85 )
 mouse_filter = 1
 
 [node name="Score" type="Label" parent="LastRecord"]
-anchor_left = 0.5
+visible = false
+modulate = Color( 1, 1, 0, 1 )
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -60.0
 margin_top = -25.0
-margin_right = 60.0
 mouse_filter = 1
 text = "$1,000,000"
+align = 1
 
 [node name="Sprite" type="Sprite" parent="LastRecord"]
+visible = false
 position = Vector2( 69, 30 )
-scale = Vector2( 0.2, 0.15 )
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 1220.37, 450.062, 435.868, 607.816 )
