@@ -12,6 +12,7 @@ onready var replay_buttons_c = $Popup/ReplayButtonsC
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_all()
+	pass
 	
 func hide_all():
 	$Popup/Success.hide()
@@ -58,9 +59,10 @@ func show_pause():
 	
 func _on_MenuBtn_pressed():
 	emit_signal("menu_btn_press")
-
+	
 func _on_ReplayBtn_pressed():
 	emit_signal("replay_btn_press")
 
 func _on_PlayBtn_pressed():
 	emit_signal("play_btn_press")
+	

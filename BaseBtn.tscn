@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/menu_icon128.png" type="Texture" id=1]
+[ext_resource path="res://BaseBtn.gd" type="Script" id=3]
+
+[node name="BaseBtn" type="Control"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+script = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="."]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 30, 30 )
+focus_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 1 )
+flat = true
+clip_text = true
+icon_align = 1
+expand_icon = true
+
+[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

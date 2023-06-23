@@ -46,10 +46,14 @@ func _on_section_pressed(song, section_id):
 	if song and section:
 		get_tree().change_scene("res://Game.tscn")
 	
-func _on_BackBtn_pressed():
-	if curr_song:
-		for option in list_c.get_children():
-			option.show()
-			option.toggle_sections(false)
-		
-		curr_song = null
+#func _on_BackBtn_pressed():
+#	if curr_song:
+#		for option in list_c.get_children():
+#			option.show()
+#			option.toggle_sections(false)
+#
+#		curr_song = null
+
+
+func _on_ConfigBtn_pressed():
+	print("config!")

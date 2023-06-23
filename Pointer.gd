@@ -13,5 +13,5 @@ func _input(event):
 		if Input.mouse_mode != Input.MOUSE_MODE_HIDDEN:
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-	if self.visible and event is InputEventMouseButton and event.is_pressed():
-		$AudioStreamPlayer.play()
+	#if self.visible and event is InputEventMouseButton and event.is_pressed():
+	#	$AudioStreamPlayer.play()

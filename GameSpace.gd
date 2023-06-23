@@ -38,3 +38,4 @@ func read_json_file(path):
 	data = JSON.parse(content).get_result()
 	file.close()
 	return data
+
