@@ -16,6 +16,8 @@ var song = {
 	"sections_progress": {"01": {"completed": true, "progress_level": 2} },
 }
 
+onready var panel = $Panel
+
 func _ready():
 	setup()
 
@@ -62,7 +64,20 @@ func toggle_sections(val):
 		$SectionsC.hide()
 
 func _on_SongOption_pressed():
+	GameFX.click()
 	emit_signal("song_pressed", song)
 
 func _on_section_pressed(section_id):
 	emit_signal("section_pressed", song, section_id)
+
+func _on_SongOption_mouse_entered():
+	panel.modulate.a = 0.6
+	
+func _on_SongOption_mouse_exited():
+	panel.modulate.a = 1
+
+func _on_SongOption_button_down():
+	self.rect_scale = Vector2(0.99, 0.99)
+
+func _on_SongOption_button_up():
+	self.rect_scale = Vector2(1, 1)

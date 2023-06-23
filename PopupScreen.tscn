@@ -41,9 +41,9 @@ normal_map = SubResource( 11 )
 
 [node name="Popup" type="Control" parent="."]
 margin_left = 102.0
-margin_top = 364.0
+margin_top = 362.0
 margin_right = 142.0
-margin_bottom = 404.0
+margin_bottom = 402.0
 
 [node name="Panel" type="Panel" parent="Popup"]
 anchor_left = 0.5
