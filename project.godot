@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="BeatShooterDev"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://SongsMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

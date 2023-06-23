@@ -14,6 +14,7 @@ var song = {
 		{"section_id": "02", "section_name": "Final","start_index": 32, "end_index": 64}
 	],
 	"sections_progress": {"01": {"completed": true, "progress_level": 2} },
+	"cover": null,
 }
 
 onready var panel = $Panel
@@ -24,6 +25,9 @@ func _ready():
 func setup():
 	$HBoxC/Info/Artist.text = song.map.audio.artist
 	$HBoxC/Info/Title.text = song.map.audio.title
+	
+	if song.cover:
+		$HBoxC/IconC/SongIcon.icon = song.cover
 	
 	toggle_sections(false)
 	var progress_bar = $HBoxC/Info/ProgressBar	

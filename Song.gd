@@ -8,6 +8,7 @@ var sections = []
 
 var map = {}
 var audio
+var cover
 var sections_progress = {} # loaded from memory card
 var is_user_content = false
 
@@ -30,6 +31,9 @@ func setup(catalog_dir, song_dir):
 	
 	map = GameSpace.read_json_file(map_path)
 	set_title()
+	
+	if config.cover:
+		cover = load(cover_path)
 	
 	return true
 

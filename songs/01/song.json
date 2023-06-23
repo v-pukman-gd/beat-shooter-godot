@@ -3,10 +3,8 @@
   "song_id": "01",
   "map": "From The Dust - Supernova_CC_BY.mboy",
   "audio": "From The Dust - Supernova_CC_BY.mp3",
-  "cover": "cover.png",
+  "cover": "agrofox.png",
   "sections": [
     {"section_id": "01", "section_name": "Full song", "start_index": 0, "end_index": null},
-    {"section_id": "02", "section_name": "", "start_index": 0, "end_index": 32},
-    {"section_id": "03", "section_name": "", "start_index": 32, "end_index": 64},
   ],
 }

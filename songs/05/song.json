@@ -3,11 +3,8 @@
   "song_id": "05",
   "map": "beethoven.mboy",
   "audio": "beethoven.ogg",
-  "cover": "",
+  "cover": "moon128.png",
   "sections": [
     {"section_id": "01", "section_name": "Full song", "start_index": 0, "end_index": null},
-    {"section_id": "02", "section_name": "", "start_index": 0, "end_index": 32},
-    {"section_id": "04", "section_name": "", "start_index": 32, "end_index": 64},
-    {"section_id": "05", "section_name": "", "start_index": 64, "end_index": 128},
   ],
 }
