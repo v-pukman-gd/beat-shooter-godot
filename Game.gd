@@ -211,12 +211,13 @@ func _on_flow_finished():
 	print(total_score, "/", flow.max_score, " : ", progress_level)
 	popup_screen.show_success(total_score, progress_level)
 	
-	MemoryCard.save_finished_track()
-	if MemoryCard.get_highscore() == null or (MemoryCard.get_highscore() != null and MemoryCard.get_highscore() < total_score):
-		MemoryCard.save_highscore(total_score)
-		MemoryCard.save_param("progress_level", progress_level)
-		MemoryCard.write()
-		print(MemoryCard.data)
+	var mc = MemoryCard
+	mc.save_finished_track()
+	if mc.get_highscore() == null or (mc.get_highscore() != null and mc.get_highscore() < total_score):
+		mc.save_highscore(total_score)
+		mc.save_param("progress_level", progress_level)
+		mc.write()
+		#print(mc.data)
 
 func calc_progress_level():
 	if total_score > flow.max_score+200:
