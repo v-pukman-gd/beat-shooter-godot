@@ -32,27 +32,33 @@ font_data = ExtResource( 2 )
 [node name="PopupScreen" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="Bg" type="Sprite" parent="."]
+[node name="BgC" type="Control" parent="."]
+margin_left = -162.0
+margin_top = -114.0
+margin_right = 742.0
+margin_bottom = 1110.0
+
+[node name="Bg" type="Sprite" parent="BgC"]
 modulate = Color( 1, 1, 1, 0.654902 )
-position = Vector2( 293, 513 )
+position = Vector2( 464, 609 )
 scale = Vector2( 800, 1200 )
 texture = SubResource( 10 )
 normal_map = SubResource( 11 )
 
 [node name="Popup" type="Control" parent="."]
-margin_left = 102.0
-margin_top = 362.0
-margin_right = 142.0
-margin_bottom = 402.0
+margin_left = 100.0
+margin_top = 200.0
+margin_right = 140.0
+margin_bottom = 240.0
 
 [node name="Panel" type="Panel" parent="Popup"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -22.0
+margin_left = -20.0
 margin_top = -22.0
-margin_right = 378.0
+margin_right = 380.0
 margin_bottom = 278.0
 rect_min_size = Vector2( 400, 300 )
 
