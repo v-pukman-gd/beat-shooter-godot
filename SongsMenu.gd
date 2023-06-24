@@ -10,9 +10,8 @@ onready var list_c = $ListC/VBoxC
 
 func _ready():
 	songs_list = SongsLoader.load_songs(GameSpace.GAME_SONGS_DIR)
-	#TODO: add memory card class and load progress
 	spawn_songs()
-	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	GameAudio.play_bg_music()
 
 func spawn_songs():
 	for song in songs_list:
@@ -45,6 +44,7 @@ func _on_section_pressed(song, section_id):
 			break
 	GameSpace.curr_section = section
 	if song and section:
+		GameAudio.stop_bg_music()
 		get_tree().change_scene("res://Game.tscn")
 
 #func _on_BackBtn_pressed():

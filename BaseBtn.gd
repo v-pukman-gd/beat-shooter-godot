@@ -9,7 +9,7 @@ func _ready():
 		$Button.icon = icon_texture
 
 func _on_Button_pressed():
-	GameFX.click()
+	GameAudio.click()
 	emit_signal("pressed")
 
 func _on_Button_mouse_entered():

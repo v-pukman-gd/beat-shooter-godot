@@ -19,8 +19,8 @@ config/icon="res://icon.png"
 GameSpace="*res://GameSpace.gd"
 GameEvent="*res://GameEvent.gd"
 SongsLoader="*res://SongsLoader.gd"
-GameFX="*res://GameFX.tscn"
 MemoryCard="*res://MemoryCard.gd"
+GameAudio="*res://GameAudio.tscn"
 
 [display]
 

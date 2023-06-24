@@ -35,8 +35,9 @@ func pause():
 	paused = true
 	
 func resume():
-	player.play(paused_at)
 	paused = false
+	if started:
+		player.play(paused_at)
 	
 func _process(delta):
 	#if not game.game_started: return

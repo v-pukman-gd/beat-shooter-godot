@@ -32,12 +32,12 @@ func _ready():
 func setup():
 	artist_label.text = song.map.audio.artist
 	title_label.text = song.map.audio.title
-	
+
 	if song.cover:
 		song_icon_sprite.icon = song.cover
-	
+
 	toggle_sections(false)
-	
+
 	for i in range(0, GameSpace.MAX_PROGRESS_LEVEL):
 		# progress bar
 		var p = progress_mark_scn.instance()
@@ -45,19 +45,19 @@ func setup():
 		p.get_node("Sprite").modulate = Color("3effffff")
 		p.get_node("Sprite").self_modulate = Color("000000")
 		progress_bar.add_child(p)
-		
-		
+
+
 		if song.song_progress.completed and i < song.song_progress.progress_level:
 			p.get_node("Sprite").modulate = Color.white
 			p.get_node("Sprite").self_modulate = Color.white
-				
+
 	if song.song_progress.completed  and song.song_progress.highscore != null:
 		last_record_c.get_node("Score").show()
 		last_record_c.get_node("Score").text = "$" + str(song.song_progress.highscore)
 	else:
 		last_record_c.get_node("Score").hide()
-		
-	
+
+
 	var i = 0
 	for section in song.sections:
 		# progress bar
@@ -66,15 +66,15 @@ func setup():
 #		p.get_node("Sprite").modulate = Color("3effffff")
 #		p.get_node("Sprite").self_modulate = Color("000000")
 #		progress_bar.add_child(p)
-			
+
 		var section_id = section.section_id
-		var section_progress = null 
+		var section_progress = null
 		if song.sections_progress.has(section_id): section_progress = song.sections_progress[section_id]
 #		if section_progress:
 #			if section_progress.completed:
 #				p.get_node("Sprite").modulate = Color.white
 #				p.get_node("Sprite").self_modulate = Color.white
-		
+
 		# section bar
 		var section_node = song_section_option_scn.instance()
 		section_node.section_id = section_id
@@ -83,13 +83,13 @@ func setup():
 		section_node.end_index = section.end_index
 		if section_progress:
 			section_node.completed = section_progress.completed
-			section_node.progress_level = section_progress.progress_level		
+			section_node.progress_level = section_progress.progress_level
 		section_node.connect("section_pressed", self, "_on_section_pressed")
-		sections_c.add_child(section_node) 
-			
+		sections_c.add_child(section_node)
+
 		i += 1
-			
-		
+
+
 func toggle_sections(val):
 	if val:
 		sections_c.show()
@@ -97,7 +97,7 @@ func toggle_sections(val):
 		sections_c.hide()
 
 func _on_SongOption_pressed():
-	GameFX.click()
+	GameAudio.click()
 	emit_signal("song_pressed", song)
 
 func _on_section_pressed(section_id):
@@ -105,7 +105,7 @@ func _on_section_pressed(section_id):
 
 func _on_SongOption_mouse_entered():
 	panel.modulate.a = 0.6
-	
+
 func _on_SongOption_mouse_exited():
 	panel.modulate.a = 1
 
