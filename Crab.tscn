@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://icons8-crab-94.png" type="Texture" id=1]
-[ext_resource path="res://bubble2.png" type="Texture" id=2]
+[ext_resource path="res://img/icons8-crab-94.png" type="Texture" id=1]
+[ext_resource path="res://img/bubble2.png" type="Texture" id=2]
 [ext_resource path="res://Crab.gd" type="Script" id=3]
-[ext_resource path="res://clap02.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/clap02.wav" type="AudioStream" id=4]
 
 [sub_resource type="ParticlesMaterial" id=9]
 emission_shape = 1

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ani-big-pipe-hit-6814.mp3-1f3634ebe79aeaf4149ef1088d1d0a8a.mp3str"
+
+[deps]
+
+source_file="res://audio/ani-big-pipe-hit-6814.mp3"
+dest_files=[ "res://.import/ani-big-pipe-hit-6814.mp3-1f3634ebe79aeaf4149ef1088d1d0a8a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

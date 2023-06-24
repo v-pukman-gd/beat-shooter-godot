@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/happykids.mp3-f21d7c34873cff054d61fe83ff3dcd5e.mp3str"
+
+[deps]
+
+source_file="res://audio/happykids.mp3"
+dest_files=[ "res://.import/happykids.mp3-f21d7c34873cff054d61fe83ff3dcd5e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

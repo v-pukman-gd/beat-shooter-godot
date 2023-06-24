@@ -34,6 +34,7 @@ var missed_notes_temp = 0
 var heart_duration = GameSpace.heart_duration
 
 onready var popup_screen = $PopupScreen
+onready var header = $Header
 
 func _ready():
 	GameSpace.paused = false
@@ -64,7 +65,7 @@ func _ready():
 	popup_screen.connect("replay_btn_press", self, "_on_replay_btn_press")
 	popup_screen.connect("play_btn_press", self, "_on_play_btn_press")
 	
-	$UI.connect("pause_btn_press", self, "_on_pause_btn_press")
+	header.connect("pause_btn_press", self, "_on_pause_btn_press")
 	
 	# TODO: cleanup after the development
 	$FlowDev.queue_free()
@@ -104,10 +105,10 @@ func setup():
 	$BottomC.position.y = SHOOT_LINE_Y	 
 	$FlowC.add_child(flow)
 	
-	$UI.setup_title(map.audio.artist, map.audio.title)
-	$UI.update_total_score(total_score)
-	$UI.hide_total_score()
-	$UI.setup_progress(music.get_length())
+	header.setup_title(map.audio.artist, map.audio.title)
+	header.update_total_score(total_score)
+	header.hide_total_score()
+	header.setup_progress(music.get_length())
 
 	is_ready = true
 
@@ -120,7 +121,7 @@ func _process(delta):
 		
 	flow.process_with_time(music.time, delta)
 	
-	$UI.update_progress(music.get_playback_position())
+	header.update_progress(music.get_playback_position())
 
 func _on_missed_shot(pos):
 	print("missed at:", pos)
@@ -142,12 +143,11 @@ func _on_hit(score, particle_color, pos, progress_val=1, dir=1, check_precision=
 	shot_score.dir = dir
 	$ShotScoreC.add_child(shot_score)
 	
-	
 	if score != 0:
 		total_score += score
 		if total_score < 0: total_score = 0
-		$UI.update_total_score(total_score)
-		$UI.show_total_score()
+		header.update_total_score(total_score)
+		header.show_total_score()
 	
 func _on_bottom_area_enter(area):
 	var n = area.get_parent()

@@ -1,6 +1,6 @@
 extends Node
 
-var click_sound = preload("res://click2.mp3")
+var click_sound = preload("res://audio/click2.mp3")
 onready var audio_player = $AudioStreamPlayer
 
 func click():

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/no_bullets.mp3-757721caeb71cc8131bebdb18087d8ab.mp3str"
+
+[deps]
+
+source_file="res://audio/no_bullets.mp3"
+dest_files=[ "res://.import/no_bullets.mp3-757721caeb71cc8131bebdb18087d8ab.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

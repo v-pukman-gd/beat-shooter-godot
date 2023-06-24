@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://UI/menu_icon128.png" type="Texture" id=1]
+[ext_resource path="res://img/menu_icon128.png" type="Texture" id=1]
 [ext_resource path="res://BaseBtn.gd" type="Script" id=3]
 
 [node name="BaseBtn" type="Control"]
