@@ -50,13 +50,13 @@ colors = PoolColorArray( 1, 1, 1, 1, 0, 0.572549, 0.94902, 1 )
 gradient = SubResource( 11 )
 width = 600
 
-[sub_resource type="DynamicFont" id=9]
-size = 30
-font_data = ExtResource( 10 )
-
 [sub_resource type="DynamicFont" id=10]
 size = 30
 outline_color = Color( 0.0588235, 0.87451, 0.313726, 1 )
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
 font_data = ExtResource( 8 )
 
 [node name="Header" type="Control"]
@@ -136,27 +136,28 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Artist" type="Label" parent="TitleC"]
+[node name="Title" type="Label" parent="TitleC"]
+modulate = Color( 0.988235, 0.619608, 0.619608, 1 )
 margin_top = 10.0
 margin_right = 600.0
 margin_bottom = 41.0
-custom_colors/font_color = Color( 0.988235, 0.619608, 0.619608, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 9 )
-text = "Vıc Rock"
-align = 1
-clip_text = true
-
-[node name="Title" type="Label" parent="TitleC"]
-margin_top = 40.0
-margin_right = 600.0
-margin_bottom = 71.0
-custom_colors/font_color = Color( 0.960784, 0.886275, 0.886275, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "Song name привет chock suselüğ"
 align = 1
 valign = 1
+
+[node name="Artist" type="Label" parent="TitleC"]
+modulate = Color( 0.960784, 0.886275, 0.886275, 1 )
+margin_left = 1.0
+margin_top = 38.0
+margin_right = 601.0
+margin_bottom = 69.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Vıc Rock"
+align = 1
+clip_text = true
 
 [node name="Icon" type="Sprite" parent="TitleC"]
 visible = false

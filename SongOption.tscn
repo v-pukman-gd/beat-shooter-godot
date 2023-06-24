@@ -64,6 +64,7 @@ margin_bottom = 90.0
 rect_min_size = Vector2( 450, 0 )
 
 [node name="Title" type="Label" parent="HBoxC/Info"]
+modulate = Color( 0.901961, 0.941176, 1, 1 )
 margin_right = 450.0
 margin_bottom = 25.0
 text = "Song name here"
@@ -73,6 +74,7 @@ __meta__ = {
 }
 
 [node name="Artist" type="Label" parent="HBoxC/Info"]
+modulate = Color( 0.901961, 0.941176, 1, 1 )
 margin_top = 29.0
 margin_right = 450.0
 margin_bottom = 54.0
