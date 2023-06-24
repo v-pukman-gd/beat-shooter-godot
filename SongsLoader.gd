@@ -2,6 +2,10 @@ extends Node
 
 const Song = preload("res://Song.gd")
 
+var skip_songs = [
+	"05"
+]
+
 func load_songs(catalog_dir):
 	var dir = Directory.new()
 	var songs_list = []
@@ -10,7 +14,7 @@ func load_songs(catalog_dir):
 		var curr_dir = dir.get_next()
 		while(curr_dir != ""):
 			if not (curr_dir == "." or curr_dir == ".."):
-				if dir.current_is_dir():					
+				if dir.current_is_dir() and not skip_songs.has(curr_dir):			
 					var song = Song.new()
 					var result = song.setup(catalog_dir, curr_dir)
 					if result:

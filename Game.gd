@@ -131,9 +131,9 @@ func _on_missed_shot(pos):
 
 func _on_hit(score, particle_color, pos, progress_val=1, dir=1, check_precision=true):
 	if check_precision:
-		if abs(pos.y - SHOOT_LINE_Y) >= 240:
+		if abs(pos.y - SHOOT_LINE_Y) >= 120:
 			score = 0
-		elif abs(pos.y - SHOOT_LINE_Y) >= 120:
+		elif abs(pos.y - SHOOT_LINE_Y) >= 60:
 			score = int(score/2.0)
 		
 	var shot_score = shot_score_scn.instance()
