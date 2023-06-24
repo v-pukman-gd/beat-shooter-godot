@@ -107,7 +107,7 @@ func setup():
 	$UI.setup_title(map.audio.artist, map.audio.title)
 	$UI.update_total_score(total_score)
 	$UI.hide_total_score()
-	$UI.setup_progress(flow.notes_count)
+	$UI.setup_progress(music.get_length())
 
 	is_ready = true
 
@@ -120,6 +120,7 @@ func _process(delta):
 		
 	flow.process_with_time(music.time, delta)
 	
+	$UI.update_progress(music.get_playback_position())
 
 func _on_missed_shot(pos):
 	print("missed at:", pos)
@@ -147,8 +148,6 @@ func _on_hit(score, particle_color, pos, progress_val=1, dir=1, check_precision=
 		if total_score < 0: total_score = 0
 		$UI.update_total_score(total_score)
 		$UI.show_total_score()
-	
-	$UI.update_progress(progress_val)
 	
 func _on_bottom_area_enter(area):
 	var n = area.get_parent()

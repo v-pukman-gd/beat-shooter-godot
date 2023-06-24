@@ -65,3 +65,9 @@ func _process(delta):
 		
 		#beat = int(time * tempo / 60.0)
 		#print("beat is: ", beat)
+
+func get_length():
+	return player.stream.get_length()
+	
+func get_playback_position():
+	return player.get_playback_position()
