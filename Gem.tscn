@@ -16,14 +16,6 @@ score_color = Color( 0.976471, 0.509804, 0.631373, 1 )
 
 [node name="SpriteC" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="SpriteC"]
-visible = false
-rotation = 0.785398
-scale = Vector2( 0.12, 0.12 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 1777.51, 141.769, 512.734, 509.383 )
-
 [node name="Sprite2" type="Sprite" parent="SpriteC"]
 visible = false
 scale = Vector2( 0.15, 0.07 )

@@ -62,14 +62,12 @@ func check_track(track_dir, mode):
 
 
 func get_param(param_name):
-	print("get param:", param_name)
 	check_track(curr_song_id, curr_section_id)
 	if data.tracks[curr_song_id][curr_section_id].has(param_name):
 		return data.tracks[curr_song_id][curr_section_id][param_name]
 	else: return null
 
 func save_param(param_name, param_value):
-	print("save_param: ", param_name, param_value)
 	check_track(curr_song_id, curr_section_id)
 	data.tracks[curr_song_id][curr_section_id][param_name] = param_value
 

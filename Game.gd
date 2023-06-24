@@ -66,9 +66,6 @@ func _ready():
 	popup_screen.connect("play_btn_press", self, "_on_play_btn_press")
 	
 	header.connect("pause_btn_press", self, "_on_pause_btn_press")
-	
-	# TODO: cleanup after the development
-	$FlowDev.queue_free()
 
 func setup():
 	print("start at:", curr_bar_index)

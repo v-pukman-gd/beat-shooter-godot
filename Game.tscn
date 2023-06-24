@@ -1,19 +1,10 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Header.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Bomb.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Crab.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Star.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Spider.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Gem.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Cherry.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Dog.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Coin.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Target.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Game.gd" type="Script" id=12]
 [ext_resource path="res://BgLeaf.tscn" type="PackedScene" id=13]
-[ext_resource path="res://img/icons8-nut-94.png" type="Texture" id=14]
 [ext_resource path="res://Bg.tscn" type="PackedScene" id=15]
 [ext_resource path="res://PopupScreen.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Pointer.tscn" type="PackedScene" id=17]
@@ -51,59 +42,6 @@ script = ExtResource( 12 )
 texture = ExtResource( 22 )
 
 [node name="FLowBg" parent="." instance=ExtResource( 20 )]
-
-[node name="FlowDev" type="Node2D" parent="."]
-visible = false
-
-[node name="Coin6" parent="FlowDev" instance=ExtResource( 10 )]
-position = Vector2( 266, 376 )
-
-[node name="Coin8" parent="FlowDev" instance=ExtResource( 10 )]
-position = Vector2( 217, -9 )
-
-[node name="Coin7" parent="FlowDev" instance=ExtResource( 10 )]
-position = Vector2( 141, 143 )
-
-[node name="Gem" parent="FlowDev" instance=ExtResource( 7 )]
-position = Vector2( 257, 192 )
-
-[node name="Gem2" parent="FlowDev" instance=ExtResource( 7 )]
-position = Vector2( 259, 267 )
-
-[node name="Gem3" parent="FlowDev" instance=ExtResource( 7 )]
-position = Vector2( 263, 461 )
-
-[node name="Gem4" parent="FlowDev" instance=ExtResource( 7 )]
-position = Vector2( 263, 488 )
-
-[node name="Gem5" parent="FlowDev" instance=ExtResource( 7 )]
-position = Vector2( 263, 541 )
-
-[node name="Cherry" parent="FlowDev" instance=ExtResource( 8 )]
-
-[node name="Nut" type="Sprite" parent="FlowDev"]
-position = Vector2( 435, 555 )
-texture = ExtResource( 14 )
-
-[node name="Star" parent="FlowDev" instance=ExtResource( 5 )]
-position = Vector2( 84, 318 )
-
-[node name="Star2" parent="FlowDev" instance=ExtResource( 5 )]
-position = Vector2( 85, 406 )
-
-[node name="Spider" parent="FlowDev" instance=ExtResource( 6 )]
-position = Vector2( 428, 723 )
-scale = Vector2( 0.996494, 1 )
-
-[node name="Bomb" parent="FlowDev" instance=ExtResource( 3 )]
-position = Vector2( 259, 91 )
-
-[node name="Dog" parent="FlowDev" instance=ExtResource( 9 )]
-position = Vector2( 122, 808 )
-
-[node name="Bullet" parent="FlowDev" instance=ExtResource( 1 )]
-visible = false
-position = Vector2( 434, 492 )
 
 [node name="FlowC" type="Node2D" parent="."]
 position = Vector2( 45, 0 )
