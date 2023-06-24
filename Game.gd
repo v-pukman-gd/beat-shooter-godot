@@ -172,6 +172,7 @@ func _on_bottom_area_exited(area):
 				$HurtScreen/AnimationPlayer.play("hurt")
 
 func _on_no_lifes():
+	return
 	GameSpace.paused = true
 	GameSpace.failed = true
 	music.pause()	

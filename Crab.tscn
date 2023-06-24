@@ -22,15 +22,6 @@ radius = 133.184
 [node name="Crab" type="Node2D" groups=["crab"]]
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 497, 951 )
-rotation = -0.560387
-scale = Vector2( 2.94652, 2.82377 )
-texture = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Particles1" type="Particles2D" parent="."]
 modulate = Color( 1, 1, 1, 0.427451 )
 self_modulate = Color( 0.776471, 1, 0.776471, 1 )
@@ -57,3 +48,12 @@ shape = SubResource( 10 )
 position = Vector2( 300, 900 )
 stream = ExtResource( 4 )
 volume_db = 7.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 499, 951 )
+rotation = -0.560387
+scale = Vector2( 2.94652, 2.82377 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
