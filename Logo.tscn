@@ -16,13 +16,14 @@ font_data = ExtResource( 1 )
 margin_left = 87.0
 margin_top = 18.0
 margin_right = 486.0
-margin_bottom = 183.0
+margin_bottom = 239.0
 custom_colors/font_color = Color( 1, 0.113725, 0.113725, 1 )
 custom_colors/font_color_shadow = Color( 0.952941, 0.952941, 0.952941, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "beat
-fire
-shooter"
+text = "music
+beat
+shooter
+"
 align = 1
 
 [node name="Sprite" type="Sprite" parent="."]
