@@ -4,7 +4,4 @@
   "map": "beethoven.mboy",
   "audio": "beethoven.ogg",
   "cover": "moon128.png",
-  "sections": [
-    {"section_id": "01", "section_name": "Full song", "start_index": 0, "end_index": null},
-  ],
 }

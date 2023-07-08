@@ -41,10 +41,11 @@ func show_success(score, progress_level):
 	for child in progress_c.get_children():
 		child.self_modulate = Color("82000000") # fade out
 
-	for i in progress_level:
-		var node = progress_c.get_node("Sprite"+str(i+1))
-		if node:
-			node.self_modulate = Color("ffffff") # fade in
+	if progress_level > 0:
+		for i in progress_level:
+			var node = progress_c.get_node("Sprite"+str(i+1))
+			if node:
+				node.self_modulate = Color("ffffff") # fade in
 
 	$AudioStreamPlayer.stream = success_sound
 	$AudioStreamPlayer.play()

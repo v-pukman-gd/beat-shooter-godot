@@ -80,7 +80,6 @@ var bars = []
 onready var bars_node = $BarsC
 
 func _ready():	
-	#calc_notes_count()
 	#prepare_bars_data()
 	
 	bars_node.position.y = start_y
@@ -222,18 +221,5 @@ func prepare_note_data(note):
 	note.size = size 
 	note.score = score
 	note.damage = damage
-	
-#func calc_notes_count():
-#	var extended = false
-#	for bar in original_bars_data:
-#		for note in bar.notes:
-#			if extended:
-#				extended = false
-#				continue
-#
-#			if note.markers.has("extended"):
-#				extended = true
-#
-#			notes_count += 1
 
 	
