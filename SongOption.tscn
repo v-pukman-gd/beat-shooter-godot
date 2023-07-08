@@ -112,12 +112,6 @@ margin_right = 450.0
 margin_bottom = 87.0
 mouse_filter = 1
 
-[node name="SectionsC" type="VBoxContainer" parent="."]
-margin_left = 92.0
-margin_top = 91.0
-margin_right = 132.0
-margin_bottom = 131.0
-
 [node name="LastRecord" type="Control" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0

@@ -4,7 +4,4 @@
   "map": "galaxies.mboy",
   "audio": "galaxies.ogg",
   "cover": "jens2.png",
-  "sections": [
-    {"section_id": "01", "section_name": "Full song", "start_index": 0, "end_index": null},
-  ],
 }
