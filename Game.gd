@@ -187,12 +187,16 @@ func _on_no_lifes():
 	$Pointer.show()
 
 func _on_menu_btn_press():
+	# TODO: use scene loader 
+	yield(get_tree().create_timer(0.2), "timeout")
 	get_tree().change_scene("res://SongsMenu.tscn")
 
 func _on_replay_btn_press():
 	# reload song to get config and map changes in dev mode
 	if OS.is_debug_build() and GameSpace.curr_song: 
 		GameSpace.curr_song.reload_song()
+	# TODO: use scene loader 
+	yield(get_tree().create_timer(0.2), "timeout")
 	get_tree().change_scene("res://Game.tscn")
 
 func _on_pause_btn_press():
