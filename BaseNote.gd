@@ -25,6 +25,7 @@ func reset():
 		sprite_c.modulate.a = 1
 	if shot_particle:
 		shot_particle.emitting = false
+		shot_particle.set_process(false)
 
 func collect():
 	if !is_colliding: return false
@@ -38,6 +39,7 @@ func collect():
 	return true
 
 func play_shot_anim():
+	shot_particle.set_process(true)
 	shot_particle.one_shot = true
 	shot_particle.emitting = true 
 	shot_particle.self_modulate = particle_color
