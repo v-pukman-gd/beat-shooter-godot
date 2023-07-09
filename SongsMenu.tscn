@@ -9,8 +9,7 @@
 [ext_resource path="res://BaseBtn.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.995556 )
-colors = PoolColorArray( 0.015625, 0.015625, 0.015625, 1, 0.177979, 0.40694, 0.949219, 1 )
+colors = PoolColorArray( 0.015625, 0.015625, 0.015625, 1, 0.176471, 0.407843, 0.94902, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )

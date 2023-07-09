@@ -9,6 +9,7 @@ var curr_song = null
 onready var list_c = $ListC/VBoxC
 
 func _ready():
+	VisualServer.set_default_clear_color(Color('#25252a'))
 	songs_list = SongsLoader.load_songs(GameSpace.GAME_SONGS_DIR)
 	spawn_songs()
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -28,7 +29,7 @@ func _on_song_pressed(song):
 		GameSpace.curr_song = song
 		GameAudio.stop_bg_music()
 		yield(get_tree().create_timer(0.2), "timeout")
-		get_tree().change_scene("res://Game.tscn")
+		SceneLoader.goto_scene("res://Game.tscn")
 
 func _on_ConfigBtn_pressed():
 	print("config!")
