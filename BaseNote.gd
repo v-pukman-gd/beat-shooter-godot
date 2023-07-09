@@ -1,4 +1,4 @@
-extends Node2D
+extends  "res://PoolableNode2D.gd"
 
 var is_colliding = false
 var is_collected = false
@@ -9,11 +9,22 @@ export var damage = 0.1
 
 export(Color) var particle_color = Color.yellow
 export(Color) var score_color = Color.yellow
-var particle_scn = preload("res://ShotParticle.tscn")
 
 onready var sprite_c = $SpriteC
+onready var shot_particle = $ShotParticle
 
 var speed = 0 # will be set by bar
+	
+func reset():
+	print("RESET")
+	is_colliding = false
+	is_collected = false
+	entered_bottom = false
+	if sprite_c:
+		sprite_c.show()
+		sprite_c.modulate.a = 1
+	if shot_particle:
+		shot_particle.emitting = false
 
 func collect():
 	if !is_colliding: return false
@@ -27,18 +38,16 @@ func collect():
 	return true
 
 func play_shot_anim():
-	var p = particle_scn.instance()
-	p.one_shot = true
-	p.emitting = true 
-	p.self_modulate = particle_color
+	shot_particle.one_shot = true
+	shot_particle.emitting = true 
+	shot_particle.self_modulate = particle_color
 	
 	if size == "big":
-		p.lifetime = 0.4
-		p.process_material.set("scale", 40)
+		shot_particle.lifetime = 0.4
+		shot_particle.process_material.set("scale", 40)
 	else:
-		p.lifetime = 0.3
-		p.process_material.set("scale", 35)
-	add_child(p)
+		shot_particle.lifetime = 0.3
+		shot_particle.process_material.set("scale", 35)
 	
 func process_fade_anim(delta):
 	if entered_bottom and sprite_c.modulate.a > 0:

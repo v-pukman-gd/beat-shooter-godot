@@ -40,6 +40,8 @@ onready var header = $Header
 var mc = MemoryCard
 
 func _ready():
+	NotePool.setup()
+	
 	GameSpace.paused = false
 	GameSpace.failed = false
 	$Pointer.hide()

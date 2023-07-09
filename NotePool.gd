@@ -1,6 +1,6 @@
 extends Node
 
-const Pool = preload("res://pool.gd")
+const Pool = preload("res://Pool.gd")
 var pool = {}
 
 var NOTE_SCN = {
@@ -10,18 +10,14 @@ var NOTE_SCN = {
 }
 
 var pool_size = {
-	"big": 100,
-	"middle": 100,
-	"short": 50
+	"big": 30,
+	"middle": 50,
+	"short": 50,
 }
 
 func setup():
 	for type in pool_size.keys():
 		pool[type] =  Pool.new(pool_size[type], type+"_n", NOTE_SCN[type])
-
-	pool["big"] = pool["big"]
-	pool["middle"] = pool["middle"]
-	pool["short"] = pool["short"]
 
 func get_instance(type):
 	print("get instance: ", type)

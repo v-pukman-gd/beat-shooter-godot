@@ -1,9 +1,5 @@
 extends Node2D
 
-var normal_note_scn = preload("res://Coin.tscn")
-var middle_note_scn = preload("res://Gem.tscn")
-var short_note_scn = preload("res://InstantNote.tscn")
-
 var notes_data = [
 	{
 		"pos": 0,
@@ -53,13 +49,15 @@ var notes = []
 var is_ready = false
 var speed = 0
 
+onready var notes_c = $NotesC
+
 func _ready():
 	#debug:
 	#add_notes(4)
 	#self.position.y = 400
 	if !is_ready:
 		for n in notes:
-			$NotesC.add_child(n)
+			notes_c.add_child(n)
 			
 		is_ready = true
 
@@ -112,15 +110,9 @@ func add_notes(curr_line):
 	return curr_line
 		
 func add_note(curr_line, note_data, next_note_data):
-	var note_scn = normal_note_scn
 		
-	if note_data.note_scn == "middle_note_scn":
-		note_scn = middle_note_scn
-	elif note_data.note_scn == "short_note_scn":
-		note_scn = short_note_scn	
-	
 		
-	var note = note_scn.instance()
+	var note = NotePool.get_instance(note_data.size)
 	note.size = note_data.size
 	note.score = note_data.score
 	note.damage =  note_data.damage
@@ -136,3 +128,9 @@ func rand_line(max_val=4):
 func rand_binary():
 	randomize()
 	return (randi()%2) # 0 1
+
+func remove_notes():
+	for n in notes:
+		notes_c.remove_child(n)
+		n.kill()
+	notes = []
