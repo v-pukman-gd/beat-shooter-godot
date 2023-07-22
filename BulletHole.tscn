@@ -62,3 +62,5 @@ texture = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
 anims/fade = SubResource( 2 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_anim_finished"]

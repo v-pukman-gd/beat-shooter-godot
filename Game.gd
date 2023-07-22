@@ -39,9 +39,10 @@ onready var header = $Header
 
 var mc = MemoryCard
 
-func _ready():
+func _init():
 	GamePool.setup()
-	
+
+func _ready():
 	GameSpace.paused = false
 	GameSpace.failed = false
 	$Pointer.hide()
@@ -131,7 +132,7 @@ func _process(delta):
 
 func _on_missed_shot(pos):
 	print("missed at:", pos)
-	var h = bullet_hole_scn.instance()
+	var h = GamePool.get_instance("bullet_hole")
 	h.position = pos
 	$BulletHoleC.add_child(h)
 
@@ -178,7 +179,7 @@ func _on_bottom_area_exited(area):
 				$HurtScreen/AnimationPlayer.play("hurt")
 
 func _on_no_lifes():
-	#return
+	return
 	GameSpace.paused = true
 	GameSpace.failed = true
 	music.pause()

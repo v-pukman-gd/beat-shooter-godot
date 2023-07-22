@@ -7,14 +7,16 @@ var pool_scn = {
 	"big_note": preload("res://Coin.tscn"),
 	"middle_note": preload("res://Gem.tscn"),
 	"short_note":  preload("res://InstantNote.tscn"),
-	"bar_grid": preload("res://BarGrid.tscn")
+	"bar_grid": preload("res://BarGrid.tscn"),
+	"bullet_hole": preload("res://BulletHole.tscn")
 }
 
 var pool_size = {
 	"big_note": 30,
 	"middle_note": 50,
 	"short_note": 50,
-	"bar_grid": 6
+	"bar_grid": 6,
+	"bullet_hole": 10
 }
 
 func setup():
@@ -22,6 +24,5 @@ func setup():
 		pool[type] =  Pool.new(pool_size[type], type+"_n", pool_scn[type])
 
 func get_instance(type):
-	if type == "bar_grid":
-		print("get instance: ", type)
+	print("get_instance: ", type)
 	return pool[type].get_first_dead()

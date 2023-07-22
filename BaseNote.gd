@@ -1,4 +1,4 @@
-extends  "res://PoolableNode2D.gd"
+extends "res://PoolableNode2D.gd"
 
 var is_colliding = false
 var is_collected = false
