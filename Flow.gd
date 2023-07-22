@@ -97,7 +97,7 @@ func add_bar():
 	bar.notes_data = bars_data[curr_bar_index].notes
 	bar.position = Vector2(curr_location.x, curr_location.y)
 	bar.speed = speed.y
-	curr_line = bar.add_notes(curr_line)
+	curr_line = bar.build_notes(curr_line)
 	
 	bars.append(bar)
 	bars_node.add_child(bar)
@@ -107,6 +107,7 @@ func add_bar():
 	
 func remove_bar(bar):
 	bar.remove_notes()
+	bar.remove_grid()
 	bar.queue_free()
 	bars.erase(bar)
 	
@@ -192,32 +193,26 @@ func prepare_bars_data():
 		note_index += 1
 		
 func prepare_note_data(note):
-	var note_scn = "big_note_scn"
-	var size = "big" 
+	var size = NoteSize.BIG
 	var score = 100
 	var damage = 1
 	if note.markers.has("big"):
-		note_scn = "big_note_scn"
-		size = "big" 
+		size = NoteSize.BIG 
 		score = 100
 		damage = 1
 	elif note.markers.has("middle"):
-		note_scn = "middle_note_scn"
-		size = "middle"
+		size = NoteSize.MIDDLE
 		score = 200
 		damage = 0.1
 	elif note.full_length <= 100 or note.markers.has("short"):
-		note_scn = "short_note_scn"
-		size = "short"
+		size = NoteSize.SHORT
 		score = 50
 		damage = 0.1
 	elif note.full_length < 400:
-		note_scn = "middle_note_scn"
-		size = "middle"
+		size = NoteSize.MIDDLE
 		score = 200
 		damage = 0.1
 		
-	note.note_scn = note_scn
 	note.size = size 
 	note.score = score
 	note.damage = damage

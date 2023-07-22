@@ -8,8 +8,6 @@ var markers = []
 var bar_index
 var global_pos
 
-
-var note_scn
-var size # big middle short
+var size # NoteSize
 var score
 var damage

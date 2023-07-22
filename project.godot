@@ -16,8 +16,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-NoteType="*res://NoteType.gd"
-NotePool="*res://NotePool.gd"
+NoteSize="*res://NoteSize.gd"
+GamePool="*res://GamePool.gd"
 GameSpace="*res://GameSpace.gd"
 GameEvent="*res://GameEvent.gd"
 SongsLoader="*res://SongsLoader.gd"

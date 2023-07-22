@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://img/bg1.png" type="Texture" id=1]
+[ext_resource path="res://BarGrid.gd" type="Script" id=2]
+
+[node name="BarGrid" type="Node2D"]
+z_index = -1
+script = ExtResource( 2 )
+
+[node name="Line" type="Sprite" parent="."]
+position = Vector2( -100, 0 )
+scale = Vector2( 800, 10 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Line_h2" type="Sprite" parent="."]
+position = Vector2( -100, 512 )
+scale = Vector2( 800, 10 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Line_h3" type="Sprite" parent="."]
+position = Vector2( -100, 0 )
+scale = Vector2( 800, 10 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Line_h4" type="Sprite" parent="."]
+position = Vector2( -100, 0 )
+scale = Vector2( 800, 10 )
+texture = ExtResource( 1 )
+centered = false

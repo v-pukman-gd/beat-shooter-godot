@@ -40,7 +40,7 @@ onready var header = $Header
 var mc = MemoryCard
 
 func _ready():
-	NotePool.setup()
+	GamePool.setup()
 	
 	GameSpace.paused = false
 	GameSpace.failed = false
