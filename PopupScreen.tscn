@@ -63,6 +63,7 @@ margin_bottom = 278.0
 rect_min_size = Vector2( 400, 300 )
 
 [node name="Success" type="Control" parent="Popup"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 

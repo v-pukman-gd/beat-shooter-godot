@@ -24,6 +24,9 @@ func load_songs(catalog_dir):
 			curr_dir = dir.get_next()
 	else:
 		print("cant open songs folder")
-
-	songs_list.invert()
+	
+	songs_list.sort_custom(self, "sort_songs")
 	return songs_list
+
+func sort_songs(a, b):
+	return a.song_dir < b.song_dir

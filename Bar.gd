@@ -1,46 +1,42 @@
 extends Node2D
 
-var normal_note_scn = preload("res://Coin.tscn")
-var middle_note_scn = preload("res://Gem.tscn")
-var short_note_scn = preload("res://InstantNote.tscn")
-
 var notes_data = [
 	{
 		"pos": 0,
 		"length": 100,
 		"full_length": 100,
 	
-		"note_scn": "normal_note_scn",
+		#"note_scn": "normal_note_scn",
 		"size": "big",
 		"score": 100,
 		"damage": 1
 	},
 	{
-		"pos": 100,
+		"pos": 400,
 		"length": 100,
 		"full_length": 100,
 		
-		"note_scn": "normal_note_scn",
+		#"note_scn": "normal_note_scn",
 		"size": "big",
 		"score": 100,
 		"damage": 1
 	},
 	{
-		"pos": 200,
+		"pos": 800,
 		"length": 100,
 		"full_length": 100,
 		
-		"note_scn": "middle_note_scn",
+		#"note_scn": "middle_note_scn",
 		"size": "middle",
 		"score": 200,
 		"damage": 0.1
 	},
 	{
-		"pos": 500,
+		"pos": 1200,
 		"length": 100,
 		"full_length": 100,
 		
-		"note_scn": "short_note_scn",
+		#"note_scn": "short_note_scn",
 		"size": "short",
 		"score": 50,
 		"damage": 0.1
@@ -53,17 +49,32 @@ var notes = []
 var is_ready = false
 var speed = 0
 
+onready var notes_c = $NotesC
+var grid
+
 func _ready():
 	#debug:
-	#add_notes(4)
-	#self.position.y = 400
-	if !is_ready:
-		for n in notes:
-			$NotesC.add_child(n)
-			
-		is_ready = true
+	#GamePool.setup()
+	#build_notes(4)
+	#self.position.y = length*note_scale
 
-func add_notes(curr_line):
+	if !is_ready:
+		add_grid()
+		add_notes()
+		is_ready = true
+		
+func add_notes():
+	for n in notes:
+		notes_c.add_child(n)
+		
+func add_grid():
+	if grid: return
+	grid = GamePool.get_instance("bar_grid")
+	grid.length = length
+	grid.note_scale = note_scale
+	add_child(grid)
+	
+func build_notes(curr_line):
 	var index = 0
 	for note_data in notes_data:
 		if curr_line < 0: curr_line = rand_line()
@@ -72,7 +83,7 @@ func add_notes(curr_line):
 		if notes_data.size() > index + 1:
 			next_note_data = notes_data[index+1]
 		
-		add_note(curr_line, note_data, next_note_data)
+		build_note(curr_line, note_data, next_note_data)
 		
 		var next_line
 	
@@ -86,41 +97,11 @@ func add_notes(curr_line):
 		
 		curr_line = next_line
 		index += 1
-		
-#	var y = length*note_scale
-#	self.position.y = y # Y has positive values from top to bottom
-#	$Line.position.y = 0
-#	$Line2.position.y = -y*0.5
-
-	$Grid/Line.position.y = 0
-	$Grid/Line_h2.position.y = length*note_scale*0.5
-	$Grid/Line_h3.position.y = length*note_scale*0.25
-	$Grid/Line_h4.position.y = length*note_scale*0.75
-	
-#	$Grid/Line3.scale.x = note_scale
-#	$Grid/Line4.scale.x = note_scale
-#	$Grid/Line5.scale.x = note_scale
-#	$Grid/Line6.scale.x = note_scale
-#
-#	$Grid/Line3.position.y = length*note_scale*0.5
-#	$Grid/Line4.position.y = length*note_scale*0.5
-#	$Grid/Line5.position.y = length*note_scale*0.5
-#	$Grid/Line6.position.y = length*note_scale*0.5
-	#$Line4.position.y = length*note_scale*0.5
-	#$Line5.position.y = length*note_scale*0.5
 	
 	return curr_line
 		
-func add_note(curr_line, note_data, next_note_data):
-	var note_scn = normal_note_scn
-		
-	if note_data.note_scn == "middle_note_scn":
-		note_scn = middle_note_scn
-	elif note_data.note_scn == "short_note_scn":
-		note_scn = short_note_scn	
-	
-		
-	var note = note_scn.instance()
+func build_note(curr_line, note_data, next_note_data):
+	var note = GamePool.get_instance(str(note_data.size) + "_note")
 	note.size = note_data.size
 	note.score = note_data.score
 	note.damage =  note_data.damage
@@ -136,3 +117,16 @@ func rand_line(max_val=4):
 func rand_binary():
 	randomize()
 	return (randi()%2) # 0 1
+
+func remove_notes():
+	for n in notes:
+		notes_c.remove_child(n)
+		n.kill()
+	notes = []
+
+func remove_grid():
+	remove_child(grid)
+	grid.kill()
+	
+func global_end_y():
+	return self.global_position.y - length*note_scale

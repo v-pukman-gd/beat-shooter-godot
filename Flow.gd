@@ -79,8 +79,9 @@ var curr_line = -1 # local
 var bars = []
 onready var bars_node = $BarsC
 
+const SCREEN_HEIGHT = 1024 # the value is valid even if window is resized (2d keep mode)
+
 func _ready():	
-	#calc_notes_count()
 	#prepare_bars_data()
 	
 	bars_node.position.y = start_y
@@ -98,7 +99,7 @@ func add_bar():
 	bar.notes_data = bars_data[curr_bar_index].notes
 	bar.position = Vector2(curr_location.x, curr_location.y)
 	bar.speed = speed.y
-	curr_line = bar.add_notes(curr_line)
+	curr_line = bar.build_notes(curr_line)
 	
 	bars.append(bar)
 	bars_node.add_child(bar)
@@ -107,7 +108,8 @@ func add_bar():
 	curr_bar_index += 1
 	
 func remove_bar(bar):
-	#TODO: back notes to pool before queue_free
+	bar.remove_notes()
+	bar.remove_grid()
 	bar.queue_free()
 	bars.erase(bar)
 	
@@ -133,9 +135,9 @@ func process_with_time(time, delta):
 		print("FIX delay! ", bars_node.position.y - position_y)
 		bars_node.position.y = position_y	
 		
-	for bar in bars:		
-		if bar.global_position.y - bar_length_in_m > OS.window_size.y:
-			print("delete at", bar.global_position.y - bar_length_in_m)
+	for bar in bars:
+		if bar.global_end_y() > SCREEN_HEIGHT+SCREEN_HEIGHT*0.25:
+			print("delete bar at", bar.global_end_y())
 			remove_bar(bar)
 			add_bar()
 			
@@ -193,47 +195,28 @@ func prepare_bars_data():
 		note_index += 1
 		
 func prepare_note_data(note):
-	var note_scn = "big_note_scn"
-	var size = "big" 
+	var size = NoteSize.BIG
 	var score = 100
 	var damage = 1
 	if note.markers.has("big"):
-		note_scn = "big_note_scn"
-		size = "big" 
+		size = NoteSize.BIG 
 		score = 100
 		damage = 1
 	elif note.markers.has("middle"):
-		note_scn = "middle_note_scn"
-		size = "middle"
+		size = NoteSize.MIDDLE
 		score = 200
 		damage = 0.1
 	elif note.full_length <= 100 or note.markers.has("short"):
-		note_scn = "short_note_scn"
-		size = "short"
+		size = NoteSize.SHORT
 		score = 50
 		damage = 0.1
 	elif note.full_length < 400:
-		note_scn = "middle_note_scn"
-		size = "middle"
+		size = NoteSize.MIDDLE
 		score = 200
 		damage = 0.1
 		
-	note.note_scn = note_scn
 	note.size = size 
 	note.score = score
 	note.damage = damage
-	
-#func calc_notes_count():
-#	var extended = false
-#	for bar in original_bars_data:
-#		for note in bar.notes:
-#			if extended:
-#				extended = false
-#				continue
-#
-#			if note.markers.has("extended"):
-#				extended = true
-#
-#			notes_count += 1
 
 	

@@ -6,26 +6,24 @@ const LAST_PLAYED_LIST_SIZE = 3
 
 var path = "user://memory_card"
 var data = {
-"tracks":
-	{"examle_123": { "mode_1": {} }},
+	"tracks": {},
 	"recent_tracks": []
 }
 
-#data:
-	#last_track #string
-	#highscore
-	# track
-	# value
+# data example:
+#  "tracks": {"song_123": { "mode_1": {} }},
+#  "recent_tracks": ["song_123"]
 	
 var curr_song_id = ""
-var curr_section_id = ""
+var curr_mode_id = ""
 
 func _ready():
 	read()
 	
-func set_track(curr_song, curr_section):
-	curr_song_id = str(curr_song.song_id)
-	curr_section_id = "section_" + str(curr_section.section_id)
+func setup(song_id, mode_id="default"):
+	curr_song_id = "song_" + str(song_id)
+	curr_mode_id = "mode_" + str(mode_id)
+	check_track(curr_song_id, curr_mode_id)
 
 # don't use open_encrypted_with_pass for now
 func write():
@@ -62,27 +60,23 @@ func check_track(track_dir, mode):
 
 
 func get_param(param_name):
-	print("get param:", param_name)
-	check_track(curr_song_id, curr_section_id)
-	if data.tracks[curr_song_id][curr_section_id].has(param_name):
-		return data.tracks[curr_song_id][curr_section_id][param_name]
+	if data.tracks[curr_song_id][curr_mode_id].has(param_name):
+		return data.tracks[curr_song_id][curr_mode_id][param_name]
 	else: return null
 
-func save_param(param_name, param_value):
-	print("save_param: ", param_name, param_value)
-	check_track(curr_song_id, curr_section_id)
-	data.tracks[curr_song_id][curr_section_id][param_name] = param_value
+func set_param(param_name, param_value):
+	data.tracks[curr_song_id][curr_mode_id][param_name] = param_value
 
 func save_highscore(total_score):
 	var highscore = get_param("highscore")
 	if highscore != null:
 		var prev_value = int(highscore)
 		if total_score > prev_value:
-			save_param("highscore", total_score)
+			set_param("highscore", total_score)
 			write()
 			return true
 	else:
-		save_param("highscore", total_score)
+		set_param("highscore", total_score)
 		write()
 		return true
 	return false

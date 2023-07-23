@@ -1,72 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://img/coins2.png" type="Texture" id=1]
-[ext_resource path="res://img/coins.png" type="Texture" id=2]
-[ext_resource path="res://img/coins_anim.png" type="Texture" id=3]
 [ext_resource path="res://BaseNote.gd" type="Script" id=4]
-
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 250, 0, 775, 1000 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 1025, 0, 775, 1000 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 1800, 0, 775, 1000 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 2575, 0, 775, 1000 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 3350, 0, 775, 1000 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 4125, 0, 775, 1000 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 4900, 0, 775, 1000 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 5675, 0, 775, 1000 )
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 6450, 0, 775, 1000 )
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 7225, 0, 775, 1000 )
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 7225, 1000, 775, 1000 )
-
-[sub_resource type="SpriteFrames" id=12]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
 
 [sub_resource type="CircleShape2D" id=13]
 radius = 47.0425
@@ -79,14 +14,6 @@ particle_color = Color( 1, 1, 0.611765, 1 )
 
 [node name="SpriteC" type="Node2D" parent="."]
 
-[node name="Skull" type="Sprite" parent="SpriteC"]
-visible = false
-position = Vector2( 0.999999, 9.53674e-07 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 40, 100, 1000, 1000 )
-
 [node name="Skull2" type="Sprite" parent="SpriteC"]
 modulate = Color( 0.992157, 0.815686, 0, 1 )
 position = Vector2( 0.999999, 9.53674e-07 )
@@ -94,53 +21,6 @@ scale = Vector2( 0.12, 0.12 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 900, 100, 1000, 1000 )
-
-[node name="Skull4" type="Sprite" parent="SpriteC"]
-visible = false
-position = Vector2( 0.999999, 9.53674e-07 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 900, 100, 1000, 1000 )
-
-[node name="Skull3" type="Sprite" parent="SpriteC"]
-visible = false
-position = Vector2( 0.999999, 9.53674e-07 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 1795, 100, 1000, 1000 )
-
-[node name="Dollar" type="Sprite" parent="SpriteC"]
-visible = false
-modulate = Color( 0.635294, 0.988235, 0.996078, 1 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 900, 30, 1000, 1000 )
-
-[node name="Dollar2" type="Sprite" parent="SpriteC"]
-visible = false
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 30, 30, 1000, 1000 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="SpriteC"]
-visible = false
-position = Vector2( 3, -1 )
-scale = Vector2( 0.2, 0.2 )
-frames = SubResource( 12 )
-frame = 2
-speed_scale = 3.0
-
-[node name="Sprite6" type="Sprite" parent="SpriteC"]
-visible = false
-position = Vector2( 3, -1 )
-scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 3 )
-region_enabled = true
-region_rect = Rect2( 292.457, 201.635, 748.315, 671.191 )
 
 [node name="Area2D" type="Area2D" parent="."]
 

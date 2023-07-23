@@ -1,10 +1,9 @@
 {
   "version": "2.0",
   "song_id": "01",
+  "start_index": 0,
+  "end_index": 48,
   "map": "From The Dust - Supernova_CC_BY.mboy",
   "audio": "From The Dust - Supernova_CC_BY.mp3",
-  "cover": "agrofox.png",
-  "sections": [
-    {"section_id": "01", "section_name": "Full song", "start_index": 0, "end_index": null},
-  ],
+  "cover": "agrofox.png"
 }

@@ -11,18 +11,10 @@ extents = Vector2( 35.5, 20.25 )
 script = ExtResource( 3 )
 size = "middle"
 score = 200
-particle_color = Color( 0.937255, 0.156863, 0.466667, 1 )
+particle_color = Color( 1, 0.470588, 0.603922, 1 )
 score_color = Color( 0.976471, 0.509804, 0.631373, 1 )
 
 [node name="SpriteC" type="Node2D" parent="."]
-
-[node name="Sprite" type="Sprite" parent="SpriteC"]
-visible = false
-rotation = 0.785398
-scale = Vector2( 0.12, 0.12 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 1777.51, 141.769, 512.734, 509.383 )
 
 [node name="Sprite2" type="Sprite" parent="SpriteC"]
 visible = false
