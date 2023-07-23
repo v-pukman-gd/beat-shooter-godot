@@ -15,8 +15,8 @@ func reset():
 		$Particles2D.lifetime = 0.3
 		$Particles2D.process_material.set("scale", 35)
 	elif note_size == NoteSize.MIDDLE:
-		$Particles2D.lifetime = 0.38
-		$Particles2D.process_material.set("scale", 35)
+		$Particles2D.lifetime = 0.37
+		$Particles2D.process_material.set("scale", 37)
 	else:
 		$Particles2D.lifetime = 0.4
 		$Particles2D.process_material.set("scale", 40)		
