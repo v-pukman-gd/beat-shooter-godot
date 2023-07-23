@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ShotParticle.gd" type="Script" id=1]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.487562, 1 )
@@ -28,7 +30,10 @@ scale = 30.0
 scale_curve = SubResource( 4 )
 color_initial_ramp = SubResource( 2 )
 
-[node name="ShotParticle" type="Particles2D"]
+[node name="ShotParticle" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
 self_modulate = Color( 0.176471, 0.917647, 0.0941176, 1 )
 emitting = false
 amount = 50

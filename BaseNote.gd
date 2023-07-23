@@ -11,7 +11,6 @@ export(Color) var particle_color = Color.yellow
 export(Color) var score_color = Color.yellow
 
 onready var sprite_c = $SpriteC
-onready var shot_particle = $ShotParticle
 
 var speed = 0 # will be set by bar
 	
@@ -30,27 +29,11 @@ func collect():
 	if sprite_faded_out(): return false
 	
 	sprite_c.hide()
-	play_shot_anim()
 	is_collected = true
 	print("collected!")
 		
 	return true
-
-func play_shot_anim():
-	#shot_particle.show()
-	shot_particle.set_process(true)
-	shot_particle.one_shot = true
-	shot_particle.emitting = true 
-	shot_particle.self_modulate = particle_color
-	
-	if size == "big":
-		shot_particle.lifetime = 0.4
-		shot_particle.process_material.set("scale", 40)
-	else:
-		shot_particle.lifetime = 0.3
-		shot_particle.process_material.set("scale", 35)
 		
-	
 func process_fade_anim(delta):
 	if entered_bottom and sprite_c.modulate.a > 0:
 		sprite_c.modulate.a = max(0, sprite_c.modulate.a - 4*delta*(speed/733.3))
@@ -60,9 +43,3 @@ func _process(delta):
 	
 func sprite_faded_out():
 	return sprite_c.modulate.a == 0
-	
-func kill():
-	shot_particle.emitting = false
-	shot_particle.set_process(false)
-	#shot_particle.hide()
-	.kill()

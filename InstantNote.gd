@@ -7,7 +7,6 @@ func collect():
 	is_collected = true
 	
 	sprite_c.hide()
-	play_shot_anim()
 	play_instant_sound()
 	
 func play_instant_sound():

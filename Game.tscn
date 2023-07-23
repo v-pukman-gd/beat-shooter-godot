@@ -84,6 +84,8 @@ position = Vector2( 37, 180 )
 
 [node name="BulletHoleC" type="Node2D" parent="."]
 
+[node name="ShotParticleC" type="Node2D" parent="."]
+
 [node name="ShotScoreC" type="Node2D" parent="."]
 
 [node name="HurtScreen" parent="." instance=ExtResource( 19 )]

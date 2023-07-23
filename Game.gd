@@ -59,6 +59,7 @@ func _ready():
 	setup()
 	$Target.connect("missed", self, "_on_missed_shot")
 	$Target.connect("hit", self, "_on_hit")
+	$Target.connect("bonus_hit", self, "_on_bonus_hit")
 
 	$BottomC/Area2D.connect("area_entered", self, "_on_bottom_area_enter")
 	$BottomC/Area2D.connect("area_exited", self, "_on_bottom_area_exited")
@@ -133,17 +134,28 @@ func _on_missed_shot(pos):
 	h.position = pos
 	$BulletHoleC.add_child(h)
 
-func _on_hit(score, particle_color, pos, progress_val=1, dir=1, check_precision=true):
-	if check_precision:
-		if abs(pos.y - SHOOT_LINE_Y) >= 120:
-			score = 0
-		elif abs(pos.y - SHOOT_LINE_Y) >= 60:
-			score = int(score/2.0)
-
+func _on_hit(score, score_color, particle_color, note_size, pos, dir=1):
+	if abs(pos.y - SHOOT_LINE_Y) >= 120:
+		score = 0
+	elif abs(pos.y - SHOOT_LINE_Y) >= 60:
+		score = int(score/2.0)
+			
+	var shot_particle = GamePool.get_instance("shot_particle")
+	shot_particle.position = pos
+	shot_particle.particle_color = particle_color
+	shot_particle.note_size = note_size
+	$ShotParticleC.add_child(shot_particle)		
+	
+	update_score(score, score_color, pos, dir)
+	
+func _on_bonus_hit(score, score_color, pos, dir=1):
+	update_score(score, score_color, pos, dir)
+	
+func update_score(score, score_color, pos, dir=1):
 	var shot_score = GamePool.get_instance("shot_score")
 	shot_score.score = score
 	shot_score.position = pos
-	shot_score.modulate = particle_color
+	shot_score.modulate = score_color
 	shot_score.dir = dir
 	$ShotScoreC.add_child(shot_score)
 

@@ -9,7 +9,8 @@ var pool_scn = {
 	"short_note":  preload("res://InstantNote.tscn"),
 	"bar_grid": preload("res://BarGrid.tscn"),
 	"bullet_hole": preload("res://BulletHole.tscn"),
-	"shot_score": preload("res://ShotScore.tscn")
+	"shot_score": preload("res://ShotScore.tscn"),
+	"shot_particle": preload("res://ShotParticle.tscn")
 }
 
 var pool_size = {
@@ -18,7 +19,8 @@ var pool_size = {
 	"short_note": 50,
 	"bar_grid": 6,
 	"bullet_hole": 10,
-	"shot_score": 10
+	"shot_score": 10,
+	"shot_particle": 20
 }
 
 func setup():
