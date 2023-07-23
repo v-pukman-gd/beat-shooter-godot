@@ -36,3 +36,4 @@ position = Vector2( 1, 0 )
 shape = SubResource( 1 )
 
 [node name="ShotParticle" parent="." instance=ExtResource( 4 )]
+one_shot = true

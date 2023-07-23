@@ -24,5 +24,5 @@ func setup():
 		pool[type] =  Pool.new(pool_size[type], type+"_n", pool_scn[type])
 
 func get_instance(type):
-	print("get_instance: ", type)
+	#print("get_instance: ", type)
 	return pool[type].get_first_dead()

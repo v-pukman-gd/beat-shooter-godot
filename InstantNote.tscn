@@ -33,3 +33,4 @@ shape = SubResource( 1 )
 stream = ExtResource( 3 )
 
 [node name="ShotParticle" parent="." instance=ExtResource( 4 )]
+one_shot = true

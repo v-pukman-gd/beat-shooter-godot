@@ -16,16 +16,13 @@ onready var shot_particle = $ShotParticle
 var speed = 0 # will be set by bar
 	
 func reset():
-	print("RESET")
+	#print("RESET")
 	is_colliding = false
 	is_collected = false
 	entered_bottom = false
 	if sprite_c:
 		sprite_c.show()
 		sprite_c.modulate.a = 1
-	if shot_particle:
-		shot_particle.emitting = false
-		shot_particle.set_process(false)
 
 func collect():
 	if !is_colliding: return false
@@ -39,6 +36,7 @@ func collect():
 	return true
 
 func play_shot_anim():
+	#shot_particle.show()
 	shot_particle.set_process(true)
 	shot_particle.one_shot = true
 	shot_particle.emitting = true 
@@ -50,6 +48,8 @@ func play_shot_anim():
 	else:
 		shot_particle.lifetime = 0.3
 		shot_particle.process_material.set("scale", 35)
+		
+	
 	
 func process_fade_anim(delta):
 	if entered_bottom and sprite_c.modulate.a > 0:
@@ -57,3 +57,9 @@ func process_fade_anim(delta):
 	
 func _process(delta):
 	process_fade_anim(delta)
+	
+func kill():
+	shot_particle.emitting = false
+	shot_particle.set_process(false)
+	#shot_particle.hide()
+	.kill()

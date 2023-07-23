@@ -79,6 +79,8 @@ var curr_line = -1 # local
 var bars = []
 onready var bars_node = $BarsC
 
+const SCREEN_HEIGHT = 1024 # the value is valid even if window is resized (2d keep mode)
+
 func _ready():	
 	#prepare_bars_data()
 	
@@ -133,9 +135,9 @@ func process_with_time(time, delta):
 		print("FIX delay! ", bars_node.position.y - position_y)
 		bars_node.position.y = position_y	
 		
-	for bar in bars:		
-		if bar.global_position.y - bar_length_in_m > OS.window_size.y:
-			print("delete at", bar.global_position.y - bar_length_in_m)
+	for bar in bars:
+		if bar.global_end_y() > SCREEN_HEIGHT+SCREEN_HEIGHT*0.25:
+			print("delete bar at", bar.global_end_y())
 			remove_bar(bar)
 			add_bar()
 			

@@ -60,7 +60,7 @@ func _ready():
 
 	if !is_ready:
 		add_grid()
-		add_notes()		
+		add_notes()
 		is_ready = true
 		
 func add_notes():
@@ -127,3 +127,6 @@ func remove_notes():
 func remove_grid():
 	remove_child(grid)
 	grid.kill()
+	
+func global_end_y():
+	return self.global_position.y - length*note_scale

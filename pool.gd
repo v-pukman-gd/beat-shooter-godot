@@ -129,7 +129,7 @@ func hide():
 
 # Event that all objects should emit so that the pool manager can manage dead/alive pools
 func _on_killed(target):
-	print("_on_killed:", target)
+	#print("_on_killed:", target)
 	# Get the name of the target object that was killed
 	var name = target.get_name()
 
