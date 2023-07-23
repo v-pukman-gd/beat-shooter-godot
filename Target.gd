@@ -48,7 +48,6 @@ func _process(delta):
 					collected += 1
 					# handle hit signal here as we need target position, not the note's position
 					emit_signal("hit", n.score, n.score_color, global_position)
-				#break
 
 		for crab in get_tree().get_nodes_in_group("crab"):
 			if crab.is_colliding:

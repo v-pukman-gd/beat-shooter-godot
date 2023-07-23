@@ -1,7 +1,9 @@
 extends "res://BaseNote.gd"
 
 func collect():
-	if is_collected: return
+	if is_collected: return false
+	if sprite_faded_out(): return false
+	
 	is_collected = true
 	
 	sprite_c.hide()

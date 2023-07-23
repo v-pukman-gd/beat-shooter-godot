@@ -25,8 +25,9 @@ func reset():
 		sprite_c.modulate.a = 1
 
 func collect():
-	if !is_colliding: return false
 	if is_collected: return false
+	if !is_colliding: return false
+	if sprite_faded_out(): return false
 	
 	sprite_c.hide()
 	play_shot_anim()
@@ -50,13 +51,15 @@ func play_shot_anim():
 		shot_particle.process_material.set("scale", 35)
 		
 	
-	
 func process_fade_anim(delta):
 	if entered_bottom and sprite_c.modulate.a > 0:
 		sprite_c.modulate.a = max(0, sprite_c.modulate.a - 4*delta*(speed/733.3))
 	
 func _process(delta):
 	process_fade_anim(delta)
+	
+func sprite_faded_out():
+	return sprite_c.modulate.a == 0
 	
 func kill():
 	shot_particle.emitting = false

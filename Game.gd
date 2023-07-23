@@ -164,7 +164,7 @@ func _on_bottom_area_enter(area):
 func _on_bottom_area_exited(area):
 	var n = area.get_parent()
 	if n.is_in_group("note"): #or n.is_in_group("instant"):
-		if !n.is_collected and n.entered_bottom:
+		if !n.is_collected:
 			if n.size == 'big':
 				# ignore note damage and use GameSpace params
 				missed_notes_temp += GameSpace.big_miss_damage
