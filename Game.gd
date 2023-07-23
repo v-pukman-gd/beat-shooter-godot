@@ -25,9 +25,6 @@ var flow
 var is_ready = false
 var is_finished = false
 
-var bullet_hole_scn = preload("res://BulletHole.tscn")
-var shot_score_scn = preload("res://ShotScore.tscn")
-
 var total_score = 0
 const SHOOT_LINE_Y = 645
 
@@ -143,7 +140,7 @@ func _on_hit(score, particle_color, pos, progress_val=1, dir=1, check_precision=
 		elif abs(pos.y - SHOOT_LINE_Y) >= 60:
 			score = int(score/2.0)
 
-	var shot_score = shot_score_scn.instance()
+	var shot_score = GamePool.get_instance("shot_score")
 	shot_score.score = score
 	shot_score.position = pos
 	shot_score.modulate = particle_color
