@@ -60,6 +60,7 @@ size = 30
 font_data = ExtResource( 8 )
 
 [node name="Header" type="Control"]
+pause_mode = 2
 theme = ExtResource( 7 )
 script = ExtResource( 6 )
 

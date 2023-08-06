@@ -34,3 +34,13 @@ func update_progress(val):
 
 func _on_PauseBtn_pressed():
 	emit_signal("pause_btn_press")
+	
+func _input(event):
+	# pause for debug/screenshot purposes 
+	if event.is_action_pressed("pause"):
+		if !get_tree().paused:
+			get_tree().paused = true
+			print("PAUSE!")
+		else:
+			get_tree().paused = false
+			print("PAUSE OFF")
