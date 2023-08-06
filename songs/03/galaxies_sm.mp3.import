@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/galaxies_sm.mp3-7c483d6453e66837dd0b7f9840955691.mp3str"
+
+[deps]
+
+source_file="res://songs/03/galaxies_sm.mp3"
+dest_files=[ "res://.import/galaxies_sm.mp3-7c483d6453e66837dd0b7f9840955691.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

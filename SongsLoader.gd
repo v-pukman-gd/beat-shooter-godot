@@ -3,7 +3,7 @@ extends Node
 const Song = preload("res://Song.gd")
 
 var skip_songs = [
-	"05"
+	#"05" <--- add folder name here
 ]
 
 func load_songs(catalog_dir):

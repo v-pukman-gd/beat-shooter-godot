@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tchaikovsky.mp3-20bcfa29275f17d501e350e5341b059b.mp3str"
+
+[deps]
+
+source_file="res://songs/02/tchaikovsky.mp3"
+dest_files=[ "res://.import/tchaikovsky.mp3-20bcfa29275f17d501e350e5341b059b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

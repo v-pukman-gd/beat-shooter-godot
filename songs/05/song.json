@@ -1,7 +1,9 @@
 {
   "version": "2.0",
   "song_id": "05",
-  "map": "beethoven.mboy",
-  "audio": "beethoven.ogg",
-  "cover": "moon128.png",
+  "start_index": 0,
+  "end_index": null,
+  "map": "JJMillon_Elbow.mboy",
+  "audio": "JJMillon_Elbow_CC_BY_sm.mp3",
+  "cover": "elbow.jpeg"
 }

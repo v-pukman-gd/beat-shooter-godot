@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/JJMillon_Elbow_CC_BY.mp3-acd999353756e0b2ae4f884b3ce69a6d.mp3str"
+
+[deps]
+
+source_file="res://songs/05/JJMillon_Elbow_CC_BY.mp3"
+dest_files=[ "res://.import/JJMillon_Elbow_CC_BY.mp3-acd999353756e0b2ae4f884b3ce69a6d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

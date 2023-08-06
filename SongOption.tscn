@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://img/music128.png" type="Texture" id=1]
 [ext_resource path="res://GameTheme.tres" type="Theme" id=3]
-[ext_resource path="res://img/trophy3.png" type="Texture" id=6]
 [ext_resource path="res://SongOption.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -130,14 +129,6 @@ margin_top = -25.0
 mouse_filter = 1
 text = "$1,000,000"
 align = 1
-
-[node name="Sprite" type="Sprite" parent="LastRecord"]
-visible = false
-position = Vector2( 69, 30 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 6 )
-region_enabled = true
-region_rect = Rect2( 1220.37, 450.062, 435.868, 607.816 )
 
 [connection signal="button_down" from="." to="." method="_on_SongOption_button_down"]
 [connection signal="button_up" from="." to="." method="_on_SongOption_button_up"]
