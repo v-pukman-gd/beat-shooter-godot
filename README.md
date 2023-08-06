@@ -16,6 +16,9 @@ Please note that game repo uses Git LFS to work with images and sounds. Be sure 
 cd export_folder # index.html should be there
 python3 -m http.server
 # go to http://localhost:8000/
+
+# or run by PHP
+php -S localhost:8080
 ```
 
 ## Copyright
