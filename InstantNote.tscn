@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://InstantNote.gd" type="Script" id=1]
-[ext_resource path="res://img/stars.png" type="Texture" id=2]
+[ext_resource path="res://img/star.png" type="Texture" id=2]
 [ext_resource path="res://audio/coin1.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -18,9 +18,9 @@ score_color = Color( 0.576471, 0.878431, 0.984314, 1 )
 
 [node name="Sprite" type="Sprite" parent="SpriteC"]
 self_modulate = Color( 0.211765, 0.796078, 1, 1 )
-scale = Vector2( 0.1, 0.1 )
+position = Vector2( 2, 0 )
+scale = Vector2( 0.12, 0.12 )
 texture = ExtResource( 2 )
-region_enabled = true
 region_rect = Rect2( 909.336, 249.056, 763.125, 690.327 )
 
 [node name="Area2D" type="Area2D" parent="."]

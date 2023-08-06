@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://img/gems.png" type="Texture" id=1]
 [ext_resource path="res://img/triangle.png" type="Texture" id=2]
 [ext_resource path="res://BaseNote.gd" type="Script" id=3]
 
@@ -15,13 +14,6 @@ particle_color = Color( 1, 0.470588, 0.603922, 1 )
 score_color = Color( 0.976471, 0.509804, 0.631373, 1 )
 
 [node name="SpriteC" type="Node2D" parent="."]
-
-[node name="Sprite2" type="Sprite" parent="SpriteC"]
-visible = false
-scale = Vector2( 0.15, 0.07 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 2436.08, 92.4205, 594.379, 604.285 )
 
 [node name="Sprite3" type="Sprite" parent="SpriteC"]
 position = Vector2( 1, 1 )
