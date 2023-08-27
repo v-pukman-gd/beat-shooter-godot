@@ -75,7 +75,6 @@ func check_hits():
 		if global_position.y > 70:
 			emit_signal("missed", global_position)
 
-
 func _input(event):
 	if GameSpace.paused: return
 	
