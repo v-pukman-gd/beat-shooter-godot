@@ -28,4 +28,3 @@ func _process(delta):
 	if $Particles1.emitting and particles_started_at > 0:
 		if Time.get_ticks_msec() - particles_started_at > 1000:
 			$Particles1.emitting = false
-	

@@ -19,6 +19,11 @@ python3 -m http.server
 
 # or run by PHP
 php -S localhost:8080
+
+# NPX to test on mobile
+# go to computer settings and find the IP. Then go to http://192.168.0.13:8080 in mobile browser
+npx http-server
+
 ```
 
 ## Copyright

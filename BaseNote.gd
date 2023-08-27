@@ -13,7 +13,7 @@ export(Color) var score_color = Color.yellow
 onready var sprite_c = $SpriteC
 
 var speed = 0 # will be set by bar
-	
+
 func reset():
 	#print("RESET")
 	is_colliding = false

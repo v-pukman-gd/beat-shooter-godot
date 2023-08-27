@@ -4,9 +4,9 @@
 [ext_resource path="res://Target.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 36.1248
+radius = 68.0
 
-[node name="Target" type="Node2D"]
+[node name="Target" type="Node2D" groups=["target"]]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
