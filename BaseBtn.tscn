@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://img/menu_icon128.png" type="Texture" id=1]
+[ext_resource path="res://GameFX.tscn" type="PackedScene" id=2]
 [ext_resource path="res://BaseBtn.gd" type="Script" id=3]
 
 [node name="BaseBtn" type="Control"]
@@ -21,6 +22,8 @@ flat = true
 clip_text = true
 icon_align = 1
 expand_icon = true
+
+[node name="GameFX" parent="." instance=ExtResource( 2 )]
 
 [connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

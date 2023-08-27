@@ -1,7 +1,11 @@
 extends Control
 
 var song_option_scn = preload("res://SongOption.tscn")
-var click_sound = preload("res://audio/click.wav")
+
+onready var bg_sound_01 = preload("res://audio/bg01.mp3")
+onready var bg_sound_02 = preload("res://audio/bg02.mp3")
+onready var bg_sound_03 = preload("res://audio/bg03.mp3")
+onready var bg_music_player = $BgMusicPlayer
 
 var songs_list = []
 var curr_song = null
@@ -12,8 +16,14 @@ func _ready():
 	VisualServer.set_default_clear_color(Color('#25252a'))
 	songs_list = SongsLoader.load_songs(GameSpace.GAME_SONGS_DIR)
 	spawn_songs()
-	yield(get_tree().create_timer(0.2), "timeout")
-	GameAudio.play_bg_music()
+	#yield(get_tree().create_timer(0.2), "timeout")
+	play_bg_music()
+
+func play_bg_music():
+	randomize()
+	var index = randi()%3 + 1
+	bg_music_player.stream = self["bg_sound_0" + str(index)]
+	bg_music_player.play()
 
 func spawn_songs():
 	for song in songs_list:
@@ -27,7 +37,8 @@ func _on_song_pressed(song):
 		curr_song = song
 		
 		GameSpace.curr_song = song
-		GameAudio.stop_bg_music()
+		bg_music_player.stream_paused = true
+		#yield(get_tree().create_timer(0.2), "timeout")
 		yield(get_tree().create_timer(0.2), "timeout")
 		SceneLoader.goto_scene("res://Game.tscn")
 

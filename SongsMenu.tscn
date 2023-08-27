@@ -50,4 +50,6 @@ icon_texture = ExtResource( 1 )
 
 [node name="Pointer" parent="." instance=ExtResource( 6 )]
 
+[node name="BgMusicPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="ConfigBtn" to="." method="_on_ConfigBtn_pressed"]

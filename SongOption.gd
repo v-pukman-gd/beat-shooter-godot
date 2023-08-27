@@ -50,7 +50,6 @@ func setup():
 		last_record_c.get_node("Score").hide()
 
 func _on_SongOption_pressed():
-	GameAudio.click()
 	emit_signal("song_pressed", song)
 
 func _on_SongOption_mouse_entered():

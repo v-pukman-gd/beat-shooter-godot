@@ -21,7 +21,6 @@ GamePool="*res://GamePool.gd"
 GameSpace="*res://GameSpace.gd"
 GameEvent="*res://GameEvent.gd"
 SongsLoader="*res://SongsLoader.gd"
-GameAudio="*res://GameAudio.tscn"
 MemoryCard="*res://MemoryCard.gd"
 SceneLoader="*res://SceneLoader.tscn"
 
