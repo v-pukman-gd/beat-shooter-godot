@@ -15,6 +15,8 @@ var short_miss_damage = 0.1
 var big_miss_damage = 0.1
 var heart_duration = 1
 
+var start_pressed = false
+
 func load_json(path):
 	var file = File.new()
 	file.open(path, File.READ)

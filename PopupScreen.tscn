@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://img/replay_btn.png" type="Texture" id=1]
 [ext_resource path="res://fonts/Foldit/static/Foldit-Bold.ttf" type="DynamicFontData" id=2]
@@ -20,6 +20,14 @@ width = 1
 
 [sub_resource type="GradientTexture" id=11]
 width = 1
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.145098, 0.145098, 0.164706, 0.87451 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
 
 [sub_resource type="DynamicFont" id=12]
 size = 36
@@ -61,6 +69,7 @@ margin_top = -22.0
 margin_right = 380.0
 margin_bottom = 278.0
 rect_min_size = Vector2( 400, 300 )
+custom_styles/panel = SubResource( 14 )
 
 [node name="Success" type="Control" parent="Popup"]
 visible = false

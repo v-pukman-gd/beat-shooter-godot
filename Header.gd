@@ -31,6 +31,12 @@ func setup_progress(max_val):
 	
 func update_progress(val):
 	$TitleC/ProgressBar.value = val
+	
+func show_pause_btn(val = true):
+	if val == false:
+		$TitleC/PauseBtn.hide()
+	else:
+		$TitleC/PauseBtn.show()
 
 func _on_PauseBtn_pressed():
 	emit_signal("pause_btn_press")

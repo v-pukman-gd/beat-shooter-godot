@@ -127,6 +127,10 @@ func _process(delta):
 	flow.process_with_time(music.time, delta)
 
 	header.update_progress(music.get_playback_position())
+	
+func _notification(what):
+	if what ==  MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+		_on_pause_btn_press()
 
 func _on_missed_shot(pos):
 	print("missed at:", pos)
@@ -214,6 +218,7 @@ func _on_pause_btn_press():
 	popup_screen.show_pause()
 	$Target.hide()
 	$Pointer.show()
+	header.show_pause_btn(false)
 
 func _on_play_btn_press():
 	GameSpace.paused = false
@@ -221,6 +226,7 @@ func _on_play_btn_press():
 	popup_screen.hide_all()
 	$Target.show()
 	$Pointer.hide()
+	header.show_pause_btn(true)
 
 func _on_flow_finished():
 	is_finished = true
