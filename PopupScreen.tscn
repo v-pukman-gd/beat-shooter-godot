@@ -22,7 +22,7 @@ width = 1
 width = 1
 
 [sub_resource type="StyleBoxFlat" id=14]
-bg_color = Color( 0.145098, 0.145098, 0.164706, 0.662745 )
+bg_color = Color( 0.145098, 0.145098, 0.164706, 0.87451 )
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
