@@ -127,6 +127,10 @@ func _process(delta):
 	flow.process_with_time(music.time, delta)
 
 	header.update_progress(music.get_playback_position())
+	
+func _notification(what):
+	if what ==  MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+		_on_pause_btn_press()
 
 func _on_missed_shot(pos):
 	print("missed at:", pos)

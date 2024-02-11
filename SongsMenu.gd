@@ -16,14 +16,24 @@ func _ready():
 	VisualServer.set_default_clear_color(Color('#25252a'))
 	songs_list = SongsLoader.load_songs(GameSpace.GAME_SONGS_DIR)
 	spawn_songs()
-	#yield(get_tree().create_timer(0.2), "timeout")
+	
+	yield(get_tree().create_timer(1), "timeout")
 	play_bg_music()
+	
+func _notification(what):
+	if what ==  MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+		stop_bg_music()
+	elif what == MainLoop.NOTIFICATION_WM_FOCUS_IN:
+		play_bg_music()
 
 func play_bg_music():
 	randomize()
 	var index = randi()%3 + 1
 	bg_music_player.stream = self["bg_sound_0" + str(index)]
 	bg_music_player.play()
+	
+func stop_bg_music():
+	bg_music_player.stop()
 
 func spawn_songs():
 	for song in songs_list:
