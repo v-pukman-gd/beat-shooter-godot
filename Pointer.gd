@@ -2,8 +2,12 @@ extends Node2D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	update_position()
 
 func _process(delta):
+	update_position()
+	
+func update_position():
 	self.position = get_global_mouse_position()
 	var screen = get_viewport_rect().size
 	

@@ -214,6 +214,7 @@ func _on_pause_btn_press():
 	popup_screen.show_pause()
 	$Target.hide()
 	$Pointer.show()
+	header.show_pause_btn(false)
 
 func _on_play_btn_press():
 	GameSpace.paused = false
@@ -221,6 +222,7 @@ func _on_play_btn_press():
 	popup_screen.hide_all()
 	$Target.show()
 	$Pointer.hide()
+	header.show_pause_btn(true)
 
 func _on_flow_finished():
 	is_finished = true

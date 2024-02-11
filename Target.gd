@@ -25,10 +25,14 @@ func _ready():
 
 	GameEvent.connect("no_bullets", self, "_on_no_bullets")
 	GameEvent.connect("reload_gun", self, "_on_reload_gun")
+	
+	update_position()
 
 func _process(delta):
 	if GameSpace.paused: return
+	update_position()
 
+func update_position():
 	self.position = get_global_mouse_position()
 	var screen = get_viewport_rect().size
 	
@@ -41,7 +45,6 @@ func _process(delta):
 		self.position.y = POS_OFFSET
 	elif self.position.y > screen.y - POS_OFFSET:
 		self.position.y = screen.y - POS_OFFSET
-	
 	
 func _physics_process(delta):
 	# Check hits after areas collisions are updated
