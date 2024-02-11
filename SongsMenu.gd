@@ -11,14 +11,18 @@ var songs_list = []
 var curr_song = null
 
 onready var list_c = $ListC/VBoxC
+onready var logo = $Logo
+onready var start_btn = $StartBtn
 
 func _ready():
 	VisualServer.set_default_clear_color(Color('#25252a'))
+	if GameSpace.start_pressed:
+		on_start()
+	else:
+		wait_start()
+	
 	songs_list = SongsLoader.load_songs(GameSpace.GAME_SONGS_DIR)
 	spawn_songs()
-	
-	yield(get_tree().create_timer(1), "timeout")
-	play_bg_music()
 	
 func _notification(what):
 	if what ==  MainLoop.NOTIFICATION_WM_FOCUS_OUT:
@@ -54,3 +58,23 @@ func _on_song_pressed(song):
 
 func _on_ConfigBtn_pressed():
 	print("config!")
+	
+	
+func on_start():
+	start_btn.hide()
+	list_c.show()
+	logo.show()
+	play_bg_music()
+	
+func wait_start():
+	start_btn.show()
+	list_c.hide()
+	logo.hide()
+
+func _input(event):
+	if GameSpace.start_pressed: return
+	if event is InputEventMouseButton or event is InputEventKey:
+		if event.pressed:
+			GameSpace.start_pressed = true
+			on_start()
+			
